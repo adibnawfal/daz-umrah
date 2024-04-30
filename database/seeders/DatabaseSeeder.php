@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
       UsersTableSeeder::class,
       HotelsTableSeeder::class,
       PackagesTableSeeder::class,
+      TravelDatesTableSeeder::class,
       FeedbackTableSeeder::class,
     ]);
   }

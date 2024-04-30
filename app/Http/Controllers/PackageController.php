@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Carbon\CarbonPeriod;
-use App\Models\Package;
 use App\Models\Hotel;
+use App\Models\Package;
+use App\Models\TravelDate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File; // To handle file and directories
 use Illuminate\View\View;
@@ -31,12 +32,34 @@ class PackageController extends Controller
    */
   public function getPackageTravelDate(Request $request): View
   {
-    $packages = Package::all();
+    $package = Package::all();
+    $travelDate = TravelDate::all();
 
     return view('package.travel-date', [
       'user' => $request->user(),
-      'packages' => $packages,
+      'package' => $package,
+      'travelDate' => $travelDate,
     ]);
+  }
+
+  /**
+   * Add travel date.
+   */
+  public function postTravelDateAdd(Request $request)
+  {
+    $travelDates = new TravelDate();
+
+    $this->validate($request, [
+      'package' => ['required', 'in:0,1'],
+      'from-date' => ['required', 'date'],
+      'to-date' => ['required', 'date'],
+    ]);
+
+    $travelDates->package = $request['package'];
+    $travelDates->date = json_encode(CarbonPeriod::create($request['from-date'], $request['to-date']));
+    $travelDates->save();
+
+    return Redirect::route('package.travel-date')->with('status', 'package-submitted');
   }
 
   /**
@@ -45,10 +68,12 @@ class PackageController extends Controller
   public function getPackageDetails(Request $request, string $id): View
   {
     $packageData = Package::find($id);
+    $travelDateData = TravelDate::all();
 
     return view('package.details', [
       'user' => $request->user(),
       'packageData' => $packageData,
+      'travelDateData' => $travelDateData,
     ]);
   }
 

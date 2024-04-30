@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
   // Package
   Route::get('/package', [PackageController::class, 'getPackage'])->name('package.view');
   Route::get('/package/travel-date', [PackageController::class, 'getPackageTravelDate'])->name('package.travel-date');
+  Route::post('/package/travel-date/add', [PackageController::class, 'postTravelDateAdd'])->name('package.travel-date.add-submit');
   Route::get('/package/details/{id}', [PackageController::class, 'getPackageDetails'])->name('package.details');
   Route::get('/package/add', [PackageController::class, 'getPackageAdd'])->name('package.add');
   Route::post('/package/add', [PackageController::class, 'postPackageAdd'])->name('package.add-submit');

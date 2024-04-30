@@ -66,7 +66,7 @@
   <!-- End Breadcrumb -->
 
   <div class="flex gap-x-6">
-    <div class="flex flex-col gap-y-6 basis-1/3">
+    <div class="flex flex-col gap-y-6 basis-1/3 2xl:basis-2/5">
       <!-- Update Profile Picture -->
       <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
         @include('profile.partials.update-profile-picture')
@@ -86,7 +86,7 @@
       <!-- End Delete User -->
     </div>
 
-    <div class="flex flex-col gap-y-6 basis-2/3">
+    <div class="flex flex-col gap-y-6 basis-2/3 2xl:basis-3/5">
       <!-- Update Profile -->
       <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
         @include('profile.partials.update-profile-information-form')

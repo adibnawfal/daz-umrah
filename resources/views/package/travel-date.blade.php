@@ -69,7 +69,7 @@
           12 Days 10 Nights
         </h2>
         <p class="text-sm text-gray-600 dark:text-gray-400">
-          Package musim biasa.
+          Musim biasa.
         </p>
       </div>
       <!-- End Title -->
@@ -83,6 +83,15 @@
 
       <!-- List -->
       <ul class="space-y-1 text-sm">
+        {{-- @if ($travelDateData->package == '12 Days 10 Nights')
+          @foreach ($travelDateData->date as $date)
+            @if ($loop->first)
+              {{ Carbon\Carbon::parse($date)->format('d M Y') }}
+            @elseif ($loop->last)
+              - {{ Carbon\Carbon::parse($date)->format('d M Y') }}
+            @endif
+          @endforeach
+        @endif --}}
         <li class="flex space-x-2">
           <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -108,16 +117,16 @@
     </div>
     <!-- End 12 Days 10 Nights -->
 
-    <!-- 12 Days 10 Nights -->
+    <!-- 22 Days 20 Nights -->
     <div
       class="p-4 bg-white border border-gray-200 w-[50%] h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
       <!-- Title -->
       <div>
         <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-          12 Days 10 Nights
+          22 Days 20 Nights
         </h2>
         <p class="text-sm text-gray-600 dark:text-gray-400">
-          Package musim biasa.
+          Musim cuti sekolah.
         </p>
       </div>
       <!-- End Title -->
@@ -154,7 +163,7 @@
       </ul>
       <!-- End List -->
     </div>
-    <!-- End 12 Days 10 Nights -->
+    <!-- End 22 Days 20 Nights -->
   </div>
 
 </x-app-layout>

@@ -4,7 +4,7 @@
     class="m-3 mt-0 transition-all ease-out opacity-0 hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 sm:max-w-lg sm:w-full sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
     <div
       class="w-full flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-      <form method="post" action="{{ route('profile.update-picture') }}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('package.travel-date.add-submit') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="flex items-center justify-between px-4 py-3 border-b dark:border-gray-700">
@@ -23,30 +23,37 @@
             </svg>
           </button>
         </div>
+
         <div class="p-4 overflow-y-auto">
           <div class="mb-2">
-            <label for="travel-date" class="block mb-2 text-sm font-medium dark:text-white">Package</label>
+            <label for="package" class="block mb-2 text-sm font-medium dark:text-white">Package</label>
             <div class="grid gap-2 sm:grid-cols-2">
               <label for="12-days-10-nights"
                 class="flex w-full p-3 text-sm bg-white border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
-                <input type="radio" name="travel-date" id="12-days-10-nights"
+                <input type="radio" name="package" id="12-days-10-nights" value="12 Days 10 Nights"
                   class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
                 <span class="text-sm ms-3 dark:text-neutral-400">12 Days 10 Nights</span>
               </label>
               <label for="22-days-20-nights"
                 class="flex w-full p-3 text-sm bg-white border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
-                <input type="radio" name="travel-date" id="22-days-20-nights"
+                <input type="radio" name="package" id="22-days-20-nights" value="22 Days 20 Nights"
                   class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
                 <span class="text-sm ms-3 dark:text-neutral-400">22 Days 20 Nights</span>
               </label>
             </div>
           </div>
+          <div class="mb-2">
+            <label for="from-date" class="block mb-2 text-sm font-medium dark:text-white">From Date</label>
+            <input type="date" name="from-date" id="from-date" value="{{ old('from-date') }}"
+              class="block w-full text-sm border border-gray-200 rounded-lg shadow-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400">
+          </div>
           <div>
-            <label for="date" class="block mb-2 text-sm font-medium dark:text-white">Date</label>
-            <input type="date" name="date" id="date"
+            <label for="to-date" class="block mb-2 text-sm font-medium dark:text-white">To Date</label>
+            <input type="date" name="to-date" id="to-date" value="{{ old('to-date') }}"
               class="block w-full text-sm border border-gray-200 rounded-lg shadow-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4 dark:file:bg-gray-700 dark:file:text-gray-400">
           </div>
         </div>
+
         <div class="flex items-center justify-end px-4 py-3 border-t gap-x-2 dark:border-gray-700">
           <button type="button"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
