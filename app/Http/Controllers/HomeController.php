@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-/**
- * Display the dashboard page.
- */
+
 class HomeController extends Controller
 {
+  /**
+   * Display the dashboard page.
+   */
   public function index(Request $request, TotalUsersChart $chart): View
   {
     $url = '';
