@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use App\Models\Hotel;
 use App\Models\Package;
@@ -45,21 +46,33 @@ class PackageController extends Controller
   /**
    * Add travel date.
    */
-  public function postTravelDateAdd(Request $request)
+  public function postTravelDate(Request $request)
   {
     $travelDates = new TravelDate();
 
     $this->validate($request, [
-      'package' => ['required', 'in:0,1'],
-      'from-date' => ['required', 'date'],
-      'to-date' => ['required', 'date'],
+      'package' => ['required', 'string', 'max:255'],
+      'from_date' => ['required', 'date'],
+      'to_date' => ['required', 'date'],
     ]);
 
     $travelDates->package = $request['package'];
-    $travelDates->date = json_encode(CarbonPeriod::create($request['from-date'], $request['to-date']));
+    $travelDates->from = Carbon::create($request['from_date']);
+    $travelDates->to = Carbon::create($request['to_date']);
     $travelDates->save();
 
-    return Redirect::route('package.travel-date')->with('status', 'package-submitted');
+    return Redirect::route('package.travel-date')->with('status', 'travel-date-submitted');
+  }
+
+  /**
+   * Delete travel date.
+   */
+  public function deleteTravelDate(string $id)
+  {
+    $travelDate = TravelDate::find($id);
+    $travelDate->delete();
+
+    return Redirect::route('package.travel-date')->with('status', 'travel-date-deleted');
   }
 
   /**

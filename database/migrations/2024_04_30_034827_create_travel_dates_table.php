@@ -13,7 +13,8 @@ return new class extends Migration {
     Schema::create('travel_dates', function (Blueprint $table) {
       $table->id();
       $table->string('package');
-      $table->json('date');
+      $table->date('from');
+      $table->date('to');
       $table->timestamps();
     });
   }
