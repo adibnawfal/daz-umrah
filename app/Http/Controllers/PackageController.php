@@ -7,10 +7,10 @@ use App\Models\Hotel;
 use App\Models\Package;
 use App\Models\TravelDate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File; // To handle file and directories
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Redirect;
-use Image; // For image manipulation
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class PackageController extends Controller
 {

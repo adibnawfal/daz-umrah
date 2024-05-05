@@ -62,106 +62,91 @@
   <div class="flex w-full gap-x-6">
     <!-- 12 Days 10 Nights -->
     <div
-      class="p-4 bg-white border border-gray-200 w-[50%] h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-      <!-- Title -->
-      <div>
-        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-          12 Days 10 Nights
-        </h2>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          Musim biasa.
-        </p>
-      </div>
-      <!-- End Title -->
+      class="w-1/2 p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+      <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-200">12 Days 10 Nights</h3>
+      <div class="text-sm text-gray-500 dark:text-neutral-500">Musim biasa.</div>
 
-      <!-- Info -->
-      <div class="my-5">
-        <span class="text-5xl font-bold text-gray-800 dark:text-neutral-200">13</span>
+      <div class="my-6">
+        <span
+          class="text-6xl font-bold text-gray-800 dark:text-neutral-200">{{ $travelDate->where('package', '12 Days 10 Nights')->count() }}</span>
         <span class="text-lg font-bold text-gray-800 dark:text-neutral-200">dates.</span>
       </div>
-      <!-- End Info -->
 
       <!-- List -->
-      <ul class="space-y-1 text-sm">
-        {{-- @if ($travelDateData->package == '12 Days 10 Nights')
-          @foreach ($travelDateData->date as $date)
-            @if ($loop->first)
-              {{ Carbon\Carbon::parse($date)->format('d M Y') }}
-            @elseif ($loop->last)
-              - {{ Carbon\Carbon::parse($date)->format('d M Y') }}
-            @endif
-          @endforeach
-        @endif --}}
-        <li class="flex space-x-2">
-          <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
-            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          <span class="text-gray-800 dark:text-gray-400">
-            24 Jul 2024 - 04 Aug 2024
-          </span>
-        </li>
-        <li class="flex space-x-2">
-          <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
-            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          <span class="text-gray-800 dark:text-gray-400">
-            21 Aug 2024 - 01 Sep 2024
-          </span>
-        </li>
+      <ul class="grid grid-cols-2 text-sm gap-y-2 sm:text-base">
+        @foreach ($travelDate as $travelDateData)
+          @if ($travelDateData->package == '12 Days 10 Nights')
+            @foreach (json_decode($travelDateData->date) as $date)
+              @if ($loop->first)
+                <li class="flex space-x-3">
+                  <span
+                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-[#c31e39]/10 text-[#c31e39]">
+                    <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <span class="text-gray-800 dark:text-neutral-200">
+                    {{ Carbon\Carbon::parse($date)->format('d M Y') }}
+                  @elseif ($loop->last)
+                    - {{ Carbon\Carbon::parse($date)->format('d M Y') }}
+                  </span>
+                </li>
+              @endif
+            @endforeach
+          @endif
+        @endforeach
       </ul>
       <!-- End List -->
+
+      <div class="mt-8">
+        <p class="text-sm text-gray-500 dark:text-neutral-500">Cancel anytime.</p>
+      </div>
     </div>
     <!-- End 12 Days 10 Nights -->
 
     <!-- 22 Days 20 Nights -->
     <div
-      class="p-4 bg-white border border-gray-200 w-[50%] h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-      <!-- Title -->
-      <div>
-        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-          22 Days 20 Nights
-        </h2>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          Musim cuti sekolah.
-        </p>
-      </div>
-      <!-- End Title -->
+      class="w-1/2 p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+      <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-200">22 Days 20 Nights</h3>
+      <div class="text-sm text-gray-500 dark:text-neutral-500">Musim cuti sekolah.</div>
 
-      <!-- Info -->
-      <div class="my-5">
-        <span class="text-5xl font-bold text-gray-800 dark:text-neutral-200">13</span>
+      <div class="mt-5">
+        <span
+          class="text-6xl font-bold text-gray-800 dark:text-neutral-200">{{ $travelDate->where('package', '22 Days 20 Nights')->count() }}</span>
         <span class="text-lg font-bold text-gray-800 dark:text-neutral-200">dates.</span>
       </div>
-      <!-- End Info -->
 
-      <!-- List -->
-      <ul class="space-y-1 text-sm">
-        <li class="flex space-x-2">
-          <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
-            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          <span class="text-gray-800 dark:text-gray-400">
-            24 Jul 2024 - 04 Aug 2024
-          </span>
-        </li>
-        <li class="flex space-x-2">
-          <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
-            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          <span class="text-gray-800 dark:text-gray-400">
-            21 Aug 2024 - 01 Sep 2024
-          </span>
-        </li>
-      </ul>
-      <!-- End List -->
+      <div class="py-4 mt-5">
+        <!-- List -->
+        <ul class="grid grid-cols-2 text-sm gap-y-2 sm:text-base">
+          @foreach ($travelDate as $travelDateData)
+            @if ($travelDateData->package == '22 Days 20 Nights')
+              @foreach (json_decode($travelDateData->date) as $date)
+                @if ($loop->first)
+                  <li class="flex space-x-3">
+                    <span
+                      class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-[#c31e39]/10 text-[#c31e39]">
+                      <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span class="text-gray-800 dark:text-neutral-200">
+                      {{ Carbon\Carbon::parse($date)->format('d M Y') }}
+                    @elseif ($loop->last)
+                      - {{ Carbon\Carbon::parse($date)->format('d M Y') }}
+                    </span>
+                  </li>
+                @endif
+              @endforeach
+            @endif
+          @endforeach
+        </ul>
+        <!-- End List -->
+      </div>
     </div>
     <!-- End 22 Days 20 Nights -->
   </div>

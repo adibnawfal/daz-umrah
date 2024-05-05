@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Http\Requests\Profile\PictureUpdateRequest;
 use App\Http\Requests\Profile\ProfileUpdateRequest;
 use App\Http\Requests\Profile\AddressUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File; // To handle file and directories
-use Illuminate\View\View;
-use Image; // For image manipulation
+use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -31,9 +29,6 @@ class ProfileController extends Controller
    */
   public function updatePicture(Request $request)
   {
-    $userId = Auth()->user()->id;
-    // $user = new User();
-
     $this->validate($request, [
       'profile_img' => ['nullable', 'mimes:jpeg,jpg,png', 'max:10000'],
     ]);
@@ -41,7 +36,7 @@ class ProfileController extends Controller
     // Save profile picture
     if ($request->hasFile('profile_img')) {
       $image = $request->file('profile_img');
-      $filename = 'user_' . $userId . '_' . time() . '.' . $image->getClientOriginalExtension();
+      $filename = 'user_' . $request->user()->id . '_' . time() . '.' . $image->getClientOriginalExtension();
 
       // Ensure the directory exists
       $path = public_path('images/users');
@@ -50,11 +45,8 @@ class ProfileController extends Controller
       }
 
       Image::make($image)->resize(300, 300)->save($path . '/' . $filename);
-      // $user->profile_img = $filename;
-      Auth()->user()->update(['profile_img' => $filename]);
+      $request->user()->update(['profile_img' => $filename]);
     }
-
-    // $user->save();
 
     return Redirect::route('profile.view')->with('status', 'picture-updated');
   }
@@ -91,9 +83,9 @@ class ProfileController extends Controller
     return Redirect::route('profile.view')->with('status', 'address-updated');
   }
 
-  public function deletePicture()
+  public function deletePicture(Request $request)
   {
-    Auth()->user()->update(['profile_img' => null]);
+    $request->user()->update(['profile_img' => null]);
     return Redirect::route('profile.view')->with('status', 'picture-deleted');
   }
 
