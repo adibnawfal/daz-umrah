@@ -273,12 +273,18 @@
 
         <!-- Badge -->
         <div class="flex gap-x-2">
-          @foreach (json_decode($packageData->details, true) as $key => $value)
+          @if (isset($packageData->package_12_10_id))
             <p
               class="text-[0.6rem] gap-1.5 py-1.5 mb-2 px-3 rounded-lg uppercase font-semibold bg-gray-800/[0.1] text-gray-800">
-              {{ Str::title(Str::replace('_', ' ', $key)) }}
+              {{ $packageData->package_12_10->package }}
             </p>
-          @endforeach
+          @endif
+          @if (isset($packageData->package_22_20_id))
+            <p
+              class="text-[0.6rem] gap-1.5 py-1.5 mb-2 px-3 rounded-lg uppercase font-semibold bg-gray-800/[0.1] text-gray-800">
+              {{ $packageData->package_22_20->package }}
+            </p>
+          @endif
         </div>
         <!-- End Badge -->
 
@@ -319,13 +325,10 @@
             <p class="text-xs text-gray-800 dark:text-gray-200">Price from</p>
             <p class="text-xl font-semibold text-gray-800 dark:text-gray-400">
               RM
-              @php
-                $details = json_decode($packageData->details, true);
-              @endphp
-              @if (Arr::exists($details, '12_days_10_nights'))
-                {{ Arr::get($details, '12_days_10_nights.price.room_4_5') }}
+              @if (isset($packageData->package_12_10_id))
+                {{ number_format($packageData->package_12_10->room_4_5, 0, ',') }}
               @else
-                {{ Arr::get($details, '22_days_20_nights.price.room_4_5') }}
+                {{ number_format($packageData->package_22_20->room_4_5, 0, ',') }}
               @endif
             </p>
           </div>

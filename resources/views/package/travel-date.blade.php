@@ -169,7 +169,7 @@
       <!-- End List -->
 
       <!-- Information -->
-      <p class="mt-8 text-sm text-gray-500 dark:text-neutral-500">Select any date to update.</p>
+      <p class="mt-8 text-sm text-gray-500 dark:text-neutral-500">Select any date to delete.</p>
       <!-- End Information -->
     </div>
     <!-- End 22 Days 20 Nights -->

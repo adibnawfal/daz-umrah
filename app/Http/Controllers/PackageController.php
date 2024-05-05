@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use Carbon\CarbonPeriod;
+use App\Models\Price;
 use App\Models\Hotel;
-use App\Models\Package;
 use App\Models\TravelDate;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Redirect;
@@ -20,18 +20,195 @@ class PackageController extends Controller
    */
   public function getPackage(Request $request): View
   {
-    $packages = Package::all();
+    $package = Package::all();
 
     return view('package.view', [
       'user' => $request->user(),
-      'packages' => $packages,
+      'package' => $package,
     ]);
+  }
+
+  /**
+   * Display the package details page.
+   */
+  public function getPackageDetails(Request $request, string $id): View
+  {
+    $packageData = Package::find($id);
+    $travelDate = TravelDate::all();
+
+    return view('package.details', [
+      'user' => $request->user(),
+      'packageData' => $packageData,
+      'travelDate' => $travelDate,
+    ]);
+  }
+
+  /**
+   * Display the package details page.
+   */
+  public function getUpdateDetails(Request $request, string $id): View
+  {
+    $packageData = Package::find($id);
+    $hotel = Hotel::all();
+
+    return view('package.update-details', [
+      'user' => $request->user(),
+      'packageData' => $packageData,
+      'hotel' => $hotel,
+    ]);
+  }
+
+  public function putUpdateDetails(Request $request, string $id)
+  {
+    $package = Package::findOrFail($id);
+
+    // Save profile picture
+    if ($request->hasFile('cover_img')) {
+      $image = $request->file('cover_img');
+      $filename = 'package_' . time() . '.' . $image->getClientOriginalExtension();
+
+      // Ensure the directory exists
+      $path = public_path('images/packages');
+      if (!File::isDirectory($path)) {
+        File::makeDirectory($path, 0777, true, true);
+      }
+
+      Image::make($image)->save($path . '/' . $filename);
+      $package->update(['cover_img' => $filename]);
+    }
+
+    $packageData = $request->validate([
+      'name' => ['required', 'string', 'max:255'],
+      'year' => ['required', 'integer', 'min:1900'],
+      'hotel_makkah' => ['required', 'exists:hotels,id'],
+      'hotel_madinah' => ['required', 'exists:hotels,id'],
+    ]);
+
+    $package->update($packageData);
+
+    $this->validate($request, [
+      'price_12_10_room_4_5' => ['nullable', 'numeric', 'min:1'],
+      'price_12_10_room_3' => ['nullable', 'numeric', 'min:1'],
+      'price_12_10_room_2' => ['nullable', 'numeric', 'min:1'],
+      'price_22_20_room_4_5' => ['nullable', 'numeric', 'min:1'],
+      'price_22_20_room_3' => ['nullable', 'numeric', 'min:1'],
+      'price_22_20_room_2' => ['nullable', 'numeric', 'min:1'],
+    ]);
+
+    $package->package_12_10()->update([
+      'room_4_5' => $request['price_12_10_room_4_5'],
+      'room_3' => $request['price_12_10_room_3'],
+      'room_2' => $request['price_12_10_room_2'],
+    ]);
+
+    $package->package_22_20()->update([
+      'room_4_5' => $request['price_22_20_room_4_5'],
+      'room_3' => $request['price_22_20_room_3'],
+      'room_2' => $request['price_22_20_room_2'],
+    ]);
+
+    return Redirect::route('package.details', $id)->with('status', 'package-updated');
+  }
+
+  /**
+   * Delete package details.
+   */
+  public function deletePackageDetails(string $id)
+  {
+    $package = Package::find($id);
+    $package->package_12_10()->delete();
+    $package->package_22_20()->delete();
+    $package->delete();
+
+    return Redirect::route('package.view')->with('status', 'package-details-deleted');
+  }
+
+  /**
+   * Display the package add page.
+   */
+  public function getPackageAdd(Request $request): View
+  {
+    $hotel = Hotel::all();
+
+    return view('package.add', [
+      'user' => $request->user(),
+      'hotel' => $hotel,
+    ]);
+  }
+
+  /**
+   * Submit the package add form.
+   */
+  public function postPackageAdd(Request $request)
+  {
+    $price_12_10 = new Price();
+    $price_22_20 = new Price();
+    $package = new Package();
+
+    $this->validate($request, [
+      'cover_img' => ['required', 'mimes:jpeg,jpg,png', 'max:10000'],
+      'name' => ['required', 'string', 'max:255'],
+      'year' => ['required', 'integer', 'min:1900'],
+      'hotel_makkah' => ['required', 'exists:hotels,id'],
+      'hotel_madinah' => ['required', 'exists:hotels,id'],
+      'price_12_10_room_4_5' => ['nullable', 'numeric', 'min:1'],
+      'price_12_10_room_3' => ['nullable', 'numeric', 'min:1'],
+      'price_12_10_room_2' => ['nullable', 'numeric', 'min:1'],
+      'price_22_20_room_4_5' => ['nullable', 'numeric', 'min:1'],
+      'price_22_20_room_3' => ['nullable', 'numeric', 'min:1'],
+      'price_22_20_room_2' => ['nullable', 'numeric', 'min:1'],
+    ]);
+
+    if (!$request->has('price_12_10_room_4_5') && !$request->has('price_22_20_room_4_5')) {
+      // trows error to view
+    }
+
+    if ($request->filled('price_12_10_room_4_5')) {
+      $price_12_10->package = '12 Days 10 Nights';
+      $price_12_10->room_4_5 = $request['price_12_10_room_4_5'];
+      $price_12_10->room_3 = $request['price_12_10_room_3'];
+      $price_12_10->room_2 = $request['price_12_10_room_2'];
+      $price_12_10->save();
+      $package->package_12_10_id = $price_12_10->id;
+    }
+
+    if ($request->filled('price_22_20_room_4_5')) {
+      $price_22_20->package = '22 Days 20 Nights';
+      $price_22_20->room_4_5 = $request['price_22_20_room_4_5'];
+      $price_22_20->room_3 = $request['price_22_20_room_3'];
+      $price_22_20->room_2 = $request['price_22_20_room_2'];
+      $price_22_20->save();
+      $package->package_22_20_id = $price_22_20->id;
+    }
+
+    // Save profile picture
+    if ($request->hasFile('cover_img')) {
+      $image = $request->file('cover_img');
+      $filename = 'package_' . time() . '.' . $image->getClientOriginalExtension();
+
+      // Ensure the directory exists
+      $path = public_path('images/packages');
+      if (!File::isDirectory($path)) {
+        File::makeDirectory($path, 0777, true, true);
+      }
+
+      Image::make($image)->save($path . '/' . $filename);
+      $package->cover_img = $filename;
+    }
+
+    $package->name = $request['name'];
+    $package->year = $request['year'];
+    $package->hotel_makkah_id = $request['hotel_makkah'];
+    $package->hotel_madinah_id = $request['hotel_madinah'];
+    $package->save();
+
+    return Redirect::route('package.view')->with('status', 'package-submitted');
   }
 
   /**
    * Display the package page.
    */
-  public function getPackageTravelDate(Request $request): View
+  public function getTravelDate(Request $request): View
   {
     $package = Package::all();
     $travelDate = TravelDate::all();
@@ -73,159 +250,5 @@ class PackageController extends Controller
     $travelDate->delete();
 
     return Redirect::route('package.travel-date')->with('status', 'travel-date-deleted');
-  }
-
-  /**
-   * Display the package details page.
-   */
-  public function getPackageDetails(Request $request, string $id): View
-  {
-    $packageData = Package::find($id);
-    $travelDateData = TravelDate::all();
-
-    return view('package.details', [
-      'user' => $request->user(),
-      'packageData' => $packageData,
-      'travelDateData' => $travelDateData,
-    ]);
-  }
-
-  /**
-   * Display the package add page.
-   */
-  public function getPackageAdd(Request $request): View
-  {
-    $hotels = Hotel::all();
-
-    return view('package.add', [
-      'user' => $request->user(),
-      'hotels' => $hotels,
-    ]);
-  }
-
-  /**
-   * Submit the package add form.
-   */
-  public function postPackageAdd(Request $request)
-  {
-    $packages = new Package();
-
-    $this->validate($request, [
-      'hotel_makkah' => ['required', 'integer', 'min:1'],
-      'hotel_madinah' => ['required', 'integer', 'min:1'],
-      'cover_img' => ['required', 'mimes:jpeg,jpg,png', 'max:10000'],
-      'name' => ['required', 'string', 'max:255'],
-      'year' => ['required', 'integer', 'min:1'],
-      'room_12_4_5' => ['nullable', 'integer', 'min:0'],
-      'room_12_3' => ['nullable', 'integer', 'min:0'],
-      'room_12_2' => ['nullable', 'integer', 'min:0'],
-      'room_22_4_5' => ['nullable', 'integer', 'min:0'],
-      'room_22_3' => ['nullable', 'integer', 'min:0'],
-      'room_22_2' => ['nullable', 'integer', 'min:0'],
-    ]);
-
-    // Save profile picture
-    if ($request->hasFile('cover_img')) {
-      $image = $request->file('cover_img');
-      $filename = 'package_' . time() . '.' . $image->getClientOriginalExtension();
-
-      // Ensure the directory exists
-      $path = public_path('images/packages');
-      if (!File::isDirectory($path)) {
-        File::makeDirectory($path, 0777, true, true);
-      }
-
-      Image::make($image)->save($path . '/' . $filename);
-      $packages->cover_img = $filename;
-    }
-
-    $packages->hotel_makkah_id = $request['hotel_makkah'];
-    $packages->hotel_madinah_id = $request['hotel_madinah'];
-    // $packages->cover_img = "package_4_0000.jpg";
-    $packages->name = $request['name'];
-    $packages->year = $request['year'];
-
-    if ($request['room_12_4_5'] && $request['room_22_4_5']) {
-      $packages->details = json_encode([
-        '12_days_10_nights' => [
-          'price' => [
-            'room_4_5' => $request['room_12_4_5'],
-            'room_3' => $request['room_12_3'],
-            'room_2' => $request['room_12_2'],
-          ],
-          'travel_date' => [
-            CarbonPeriod::create('2024-07-24', '2024-08-04'),
-            CarbonPeriod::create('2024-08-21', '2024-09-01'),
-            CarbonPeriod::create('2024-09-04', '2024-09-15'),
-            CarbonPeriod::create('2024-09-10', '2024-09-21'),
-            CarbonPeriod::create('2024-10-02', '2024-10-13'),
-            CarbonPeriod::create('2024-10-16', '2024-10-27'),
-            CarbonPeriod::create('2024-11-06', '2024-11-17'),
-            CarbonPeriod::create('2024-11-20', '2024-12-01'),
-            CarbonPeriod::create('2024-12-04', '2024-12-15'),
-            CarbonPeriod::create('2024-12-20', '2024-12-31'),
-          ]
-        ],
-        '22_days_20_nights' => [
-          'price' => [
-            'room_4_5' => $request['room_22_4_5'],
-            'room_3' => $request['room_22_3'],
-            'room_2' => $request['room_22_2'],
-          ],
-          'travel_date' => [
-            CarbonPeriod::create('2024-07-17', '2024-08-07'),
-            CarbonPeriod::create('2024-08-07', '2024-08-28'),
-            CarbonPeriod::create('2024-09-01', '2024-09-22'),
-            CarbonPeriod::create('2024-10-02', '2024-10-23'),
-            CarbonPeriod::create('2024-11-06', '2024-11-28'),
-            CarbonPeriod::create('2024-12-04', '2024-12-25'),
-          ]
-        ],
-      ]);
-    } else if ($request['room_12_4_5'] && !$request['room_22_4_5']) {
-      $packages->details = json_encode([
-        '12_days_10_nights' => [
-          'price' => [
-            'room_4_5' => $request['room_12_4_5'],
-            'room_3' => $request['room_12_3'],
-            'room_2' => $request['room_12_2'],
-          ],
-          'travel_date' => [
-            CarbonPeriod::create('2024-07-24', '2024-08-04'),
-            CarbonPeriod::create('2024-08-21', '2024-09-01'),
-            CarbonPeriod::create('2024-09-04', '2024-09-15'),
-            CarbonPeriod::create('2024-09-10', '2024-09-21'),
-            CarbonPeriod::create('2024-10-02', '2024-10-13'),
-            CarbonPeriod::create('2024-10-16', '2024-10-27'),
-            CarbonPeriod::create('2024-11-06', '2024-11-17'),
-            CarbonPeriod::create('2024-11-20', '2024-12-01'),
-            CarbonPeriod::create('2024-12-04', '2024-12-15'),
-            CarbonPeriod::create('2024-12-20', '2024-12-31'),
-          ]
-        ],
-      ]);
-    } else if (!$request['room_12_4_5'] && $request['room_22_4_5']) {
-      $packages->details = json_encode([
-        '22_days_20_nights' => [
-          'price' => [
-            'room_4_5' => $request['room_22_4_5'],
-            'room_3' => $request['room_22_3'],
-            'room_2' => $request['room_22_2'],
-          ],
-          'travel_date' => [
-            CarbonPeriod::create('2024-07-17', '2024-08-07'),
-            CarbonPeriod::create('2024-08-07', '2024-08-28'),
-            CarbonPeriod::create('2024-09-01', '2024-09-22'),
-            CarbonPeriod::create('2024-10-02', '2024-10-23'),
-            CarbonPeriod::create('2024-11-06', '2024-11-28'),
-            CarbonPeriod::create('2024-12-04', '2024-12-25'),
-          ]
-        ],
-      ]);
-    }
-
-    $packages->save();
-
-    return Redirect::route('package.view')->with('status', 'package-submitted');
   }
 }

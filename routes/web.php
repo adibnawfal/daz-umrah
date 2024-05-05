@@ -39,12 +39,15 @@ Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 
 Route::middleware('auth')->group(function () {
   // Package
   Route::get('/package', [PackageController::class, 'getPackage'])->name('package.view');
-  Route::get('/package/travel-date', [PackageController::class, 'getPackageTravelDate'])->name('package.travel-date');
-  Route::post('/package/travel-date', [PackageController::class, 'postTravelDate'])->name('package.add-travel-date');
-  Route::delete('/package/travel-date/{id}', [PackageController::class, 'deleteTravelDate'])->name('package.delete-travel-date');
   Route::get('/package/details/{id}', [PackageController::class, 'getPackageDetails'])->name('package.details');
+  Route::get('/package/details/update/{id}', [PackageController::class, 'getUpdateDetails'])->name('package.update-details');
+  Route::put('/package/details/update/{id}', [PackageController::class, 'putUpdateDetails'])->name('package.put-update-details');
+  Route::delete('/package/details/{id}', [PackageController::class, 'deletePackageDetails'])->name('package.delete-details');
   Route::get('/package/add', [PackageController::class, 'getPackageAdd'])->name('package.add');
   Route::post('/package/add', [PackageController::class, 'postPackageAdd'])->name('package.add-submit');
+  Route::get('/package/travel-date', [PackageController::class, 'getTravelDate'])->name('package.travel-date');
+  Route::post('/package/travel-date', [PackageController::class, 'postTravelDate'])->name('package.add-travel-date');
+  Route::delete('/package/travel-date/{id}', [PackageController::class, 'deleteTravelDate'])->name('package.delete-travel-date');
 
   // Profile
   Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile.view');

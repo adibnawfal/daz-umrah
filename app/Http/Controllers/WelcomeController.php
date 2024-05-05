@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\TravelDate;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -38,9 +39,11 @@ class WelcomeController extends Controller
   public function getPackageDetails(Request $request, string $id): View
   {
     $packageData = Package::find($id);
+    $travelDate = TravelDate::all();
 
     return view('landing.details', [
       'packageData' => $packageData,
+      'travelDate' => $travelDate,
     ]);
   }
 }

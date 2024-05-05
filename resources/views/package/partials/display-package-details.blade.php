@@ -1,17 +1,13 @@
 @php
-  $details = json_decode($packageData->details, true);
-  $is12Days10Nights = Arr::exists($details, '12_days_10_nights');
-  $is22Days20Nights = Arr::exists($details, '22_days_20_nights');
+  $is12Days10Nights = isset($packageData->package_12_10_id);
+  $is22Days20Nights = isset($packageData->package_22_20_id);
   $selectedDate = $is12Days10Nights ? '12 days 10 nights' : '22 days 20 nights';
 @endphp
 
 <div x-data="{ selectedDate: '{{ $selectedDate }}', isOpen1: {{ $is12Days10Nights ? 'true' : 'false' }}, isOpen2: {{ $is12Days10Nights ? 'false' : 'true' }} }" class="relative border border-gray-200 h-max rounded-xl dark:border-gray-700">
   <div class="overflow-hidden">
-    <!-- Background Color -->
+    <!-- Background -->
     <div class="absolute top-0 bottom-0 left-0 right-0 overflow-hidden bg-white rounded-xl -z-[1]"></div>
-    <!-- End Background Color -->
-
-    <!-- Background Image -->
     @if ($packageData->cover_img)
       <div
         class="absolute rounded-t-xl top-0 left-0 right-0 w-full h-[550px] overflow-hidden saturate-0 bg-center bg-cover -z-[1]"
@@ -19,7 +15,7 @@
         <div class="absolute top-0 bg-white size-full opacity-80 -z-[1]"></div>
       </div>
     @endif
-    <!-- End Background Image -->
+    <!-- End Background -->
 
     <div class="max-w-[85rem] px-4 pt-10 sm:px-6 lg:px-8 md:pt-14 lg:pt-20 mx-auto">
       <!-- Title -->
@@ -31,7 +27,7 @@
       </div>
       <!-- End Title -->
 
-      <!-- Toggle -->
+      <!-- Package Toggle -->
       <div class="flex items-center justify-center">
         <div id="toggle-count" class="p-0.5 inline-block bg-white border border-gray-200 rounded-lg dark:bg-gray-700">
           @if ($is12Days10Nights)
@@ -58,28 +54,33 @@
           @endif
         </div>
       </div>
-      <!-- End Toggle -->
+      <!-- End Package Toggle -->
 
-      <!-- Grid -->
+      <!-- Price -->
       <div class="grid gap-3 mt-6 md:mt-12 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-3 xl:gap-6 lg:items-center">
-        <!-- Card -->
+        <!-- Room for 3 -->
         <div
           class="flex flex-col p-4 text-center bg-white border border-gray-200 rounded-2xl md:p-8 dark:bg-slate-900 dark:border-gray-700">
           <h4 class="text-lg font-medium text-gray-800 dark:text-gray-200">Room for 3</h4>
           <p class="mt-2 text-3xl font-bold text-gray-800 md:text-4xl xl:text-5xl dark:text-gray-200">RM
             @php
-              $price12Days10Nights = Arr::get($details, '12_days_10_nights.price.room_3');
-              $price22Days20Nights = Arr::get($details, '22_days_20_nights.price.room_3');
+              if ($is12Days10Nights) {
+                  $price_12_10_room_3 = number_format($packageData->package_12_10->room_3, 0, '', '');
+              }
+              if ($is22Days20Nights) {
+                  $price_22_20_room_3 = number_format($packageData->package_22_20->room_3, 0, '', '');
+              }
             @endphp
-            @if ($is12Days10Nights)
+            @if ($is12Days10Nights && $is22Days20Nights)
               <span
-                data-hs-toggle-count='{"target": "#toggle-count", "min": {{ $price12Days10Nights }}, "max": {{ $price22Days20Nights }}}'>{{ $price12Days10Nights }}</span>
+                data-hs-toggle-count='{"target": "#toggle-count", "min": {{ $price_12_10_room_3 }}, "max": {{ $price_22_20_room_3 }}}'>{{ $price_12_10_room_3 }}</span>
+            @elseif ($is12Days10Nights)
+              <span>{{ $price_12_10_room_3 }}</span>
             @else
-              <span>{{ $price22Days20Nights }}</span>
+              <span>{{ $price_22_20_room_3 }}</span>
             @endif
           </p>
           <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet</p>
-
           <ul class="mt-7 space-y-2.5 text-sm">
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -91,7 +92,6 @@
                 3 people
               </span>
             </li>
-
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -102,7 +102,6 @@
                 Fullboard
               </span>
             </li>
-
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -114,15 +113,14 @@
               </span>
             </li>
           </ul>
-
-          <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:border-[#9c182e] hover:text-[#9c182e] disabled:opacity-50 disabled:pointer-events-none dark:border-violet-500 dark:text-violet-500 dark:hover:text-violet-400 dark:hover:border-violet-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+          <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:bg-[#c31e39] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
             href="#">
             Book Now
           </a>
         </div>
-        <!-- End Card -->
+        <!-- End Room for 3 -->
 
-        <!-- Card -->
+        <!-- Room for 4 or 5 -->
         <div
           class="flex flex-col p-4 text-center bg-white border-2 shadow-xl border-[#c31e39] rounded-2xl md:p-8 dark:bg-slate-900 dark:border-[#c31e39]">
           <p class="mb-3">
@@ -133,18 +131,23 @@
           <h4 class="text-lg font-medium text-gray-800 dark:text-gray-200">Room for 4 or 5</h4>
           <p class="mt-2 text-3xl font-bold text-gray-800 md:text-4xl xl:text-5xl dark:text-gray-200">RM
             @php
-              $price12Days10Nights = Arr::get($details, '12_days_10_nights.price.room_4_5');
-              $price22Days20Nights = Arr::get($details, '22_days_20_nights.price.room_4_5');
+              if ($is12Days10Nights) {
+                  $price_12_10_room_4_5 = number_format($packageData->package_12_10->room_4_5, 0, '', '');
+              }
+              if ($is22Days20Nights) {
+                  $price_22_20_room_4_5 = number_format($packageData->package_22_20->room_4_5, 0, '', '');
+              }
             @endphp
-            @if ($is12Days10Nights)
+            @if ($is12Days10Nights && $is22Days20Nights)
               <span
-                data-hs-toggle-count='{"target": "#toggle-count", "min": {{ $price12Days10Nights }}, "max": {{ $price22Days20Nights }}}'>{{ $price12Days10Nights }}</span>
+                data-hs-toggle-count='{"target": "#toggle-count", "min": {{ $price_12_10_room_4_5 }}, "max": {{ $price_22_20_room_4_5 }}}'>{{ $price_12_10_room_4_5 }}</span>
+            @elseif ($is12Days10Nights)
+              <span>{{ $price_12_10_room_4_5 }}</span>
             @else
-              <span>{{ $price22Days20Nights }}</span>
+              <span>{{ $price_22_20_room_4_5 }}</span>
             @endif
           </p>
           <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur</p>
-
           <ul class="mt-7 space-y-2.5 text-sm">
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -156,7 +159,6 @@
                 4 or 5 people
               </span>
             </li>
-
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -167,7 +169,6 @@
                 Fullboard
               </span>
             </li>
-
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -179,32 +180,36 @@
               </span>
             </li>
           </ul>
-
-          <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold text-white border border-transparent rounded-lg gap-x-2 bg-[#c31e39] hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+          <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold text-white border border-transparent rounded-lg gap-x-2 bg-[#c31e39] hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none"
             href="https://github.com/htmlstreamofficial/preline/tree/main/examples/html">
             Book Now
           </a>
         </div>
-        <!-- End Card -->
+        <!-- End Room for 4 or 5 -->
 
-        <!-- Card -->
+        <!-- Room for 2 -->
         <div
           class="flex flex-col p-4 text-center bg-white border border-gray-200 rounded-2xl md:p-8 dark:bg-slate-900 dark:border-gray-700">
           <h4 class="text-lg font-medium text-gray-800 dark:text-gray-200">Room for 2</h4>
           <p class="mt-2 text-3xl font-bold text-gray-800 md:text-4xl xl:text-5xl dark:text-gray-200">RM
             @php
-              $price12Days10Nights = Arr::get($details, '12_days_10_nights.price.room_2');
-              $price22Days20Nights = Arr::get($details, '22_days_20_nights.price.room_2');
+              if ($is12Days10Nights) {
+                  $price_12_10_room_2 = number_format($packageData->package_12_10->room_2, 0, '', '');
+              }
+              if ($is22Days20Nights) {
+                  $price_22_20_room_2 = number_format($packageData->package_22_20->room_2, 0, '', '');
+              }
             @endphp
-            @if ($is12Days10Nights)
+            @if ($is12Days10Nights && $is22Days20Nights)
               <span
-                data-hs-toggle-count='{"target": "#toggle-count", "min": {{ $price12Days10Nights }}, "max": {{ $price22Days20Nights }}}'>{{ $price12Days10Nights }}</span>
+                data-hs-toggle-count='{"target": "#toggle-count", "min": {{ $price_12_10_room_2 }}, "max": {{ $price_22_20_room_2 }}}'>{{ $price_12_10_room_2 }}</span>
+            @elseif ($is12Days10Nights)
+              <span>{{ $price_12_10_room_2 }}</span>
             @else
-              <span>{{ $price22Days20Nights }}</span>
+              <span>{{ $price_22_20_room_2 }}</span>
             @endif
           </p>
           <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet</p>
-
           <ul class="mt-7 space-y-2.5 text-sm">
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg"
@@ -216,7 +221,6 @@
                 2 people
               </span>
             </li>
-
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -227,7 +231,6 @@
                 Fullboard
               </span>
             </li>
-
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -239,15 +242,14 @@
               </span>
             </li>
           </ul>
-
-          <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:border-[#9c182e] hover:text-[#9c182e] disabled:opacity-50 disabled:pointer-events-none dark:border-[#c31e39] dark:text-[#c31e39] dark:hover:text-[#9c182e] dark:hover:border-[#9c182e] dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+          <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:bg-[#c31e39] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
             href="#">
             Book Now
           </a>
         </div>
-        <!-- End Card -->
+        <!-- End Room for 2 -->
       </div>
-      <!-- End Grid -->
+      <!-- End Price -->
 
       <!-- Flight -->
       <div class="mb-10 md:mb-14 lg:mb-20">
@@ -255,7 +257,6 @@
           <h2 class="text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit nam
             vitae risus fringilla</h2>
         </div>
-
         <div class="flex items-center justify-center gap-x-6 sm:gap-x-12 lg:gap-x-24">
           <img
             src="https://cdn.freelogovectors.net/wp-content/uploads/2023/05/saudi_airlines_logo-freelogovectors.net_-640x400.png"
@@ -277,7 +278,6 @@
           <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white">Hotel Makkah and Madinah</h2>
           <p class="mt-1 text-gray-600 dark:text-gray-400">Hotel Makkah and Madinah details</p>
         </div>
-
         <div class="grid gap-6 lg:grid-cols-2">
           <!-- Hotel Makkah -->
           <a class="relative block group rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
@@ -322,7 +322,6 @@
               </div>
             </div>
             <!-- End Slider -->
-
             <div class="absolute top-0 left-0 z-10">
               <div class="flex p-4 sm:p-6">
                 <p>
@@ -333,7 +332,6 @@
                 </p>
               </div>
             </div>
-
             <div class="absolute top-0 right-0 z-10">
               <div class="flex items-center p-4 sm:p-6">
                 <p class="font-semibold text-white me-2">{{ $packageData->hotel_makkah->rating }}</p>
@@ -366,7 +364,6 @@
                 </div>
               </div>
             </div>
-
             <div class="absolute bottom-0 left-0 z-10">
               <div class="flex flex-col h-full p-4 sm:p-6">
                 <h3 class="text-3xl font-semibold text-white">
@@ -385,7 +382,6 @@
                 </div>
               </div>
             </div>
-
             <div class="absolute bottom-0 right-0 z-10 p-4 sm:p-6">
               <div
                 class="flex flex-col text-sm items-center py-1.5 px-3 rounded-lg uppercase  bg-white/[0.1] text-white">
@@ -439,7 +435,6 @@
               </div>
             </div>
             <!-- End Slider -->
-
             <div class="absolute top-0 left-0 z-10">
               <div class="flex p-4 sm:p-6">
                 <p>
@@ -450,7 +445,6 @@
                 </p>
               </div>
             </div>
-
             <div class="absolute top-0 right-0 z-10">
               <div class="flex items-center p-4 sm:p-6">
                 <p class="font-semibold text-white me-2">{{ $packageData->hotel_madinah->rating }}</p>
@@ -483,7 +477,6 @@
                 </div>
               </div>
             </div>
-
             <div class="absolute bottom-0 left-0 z-10">
               <div class="flex flex-col h-full p-4 sm:p-6">
                 <h3 class="text-3xl font-semibold text-white">
@@ -502,7 +495,6 @@
                 </div>
               </div>
             </div>
-
             <div class="absolute bottom-0 right-0 z-10 p-4 sm:p-6">
               <div
                 class="flex flex-col text-sm items-center py-1.5 px-3 rounded-lg uppercase  bg-white/[0.1] text-white">
@@ -516,115 +508,94 @@
       </div>
       <!-- End Hotel -->
 
-      <!-- Date -->
+      <!-- Travel Date -->
       <div class="mb-10 md:mb-14 lg:mb-20"">
         <div class="max-w-2xl mx-auto mb-10 text-center lg:mb-14">
           <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white">Travel Date</h2>
           <p class="mt-1 text-gray-600 dark:text-gray-400"><span x-text="selectedDate"></span> travel dates</p>
         </div>
-
         <div class="flex flex-wrap items-center justify-center gap-3">
-          @php
-            $travelDate1 = Arr::get($details, '12_days_10_nights.travel_date');
-            $travelDate2 = Arr::get($details, '22_days_20_nights.travel_date');
-          @endphp
           @if ($is12Days10Nights)
-            @foreach ($travelDate1 as $dateRange)
-              <div x-show="isOpen1"
-                class="flex flex-col w-[17rem] transition bg-white border shadow-sm group rounded-xl hover:shadow-md dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                <div class="p-4 md:p-5">
-                  <div class="flex">
-                    <svg
-                      class="flex-shrink-0 mt-1 size-5 text-gray-800 group-hover:text-[#c31e39] dark:text-gray-200 dark:group-hover:text-[#c31e39]"
-                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" class="lucide lucide-calendar-days">
-                      <path d="M8 2v4" />
-                      <path d="M16 2v4" />
-                      <rect width="18" height="18" x="3" y="4" rx="2" />
-                      <path d="M3 10h18" />
-                      <path d="M8 14h.01" />
-                      <path d="M12 14h.01" />
-                      <path d="M16 14h.01" />
-                      <path d="M8 18h.01" />
-                      <path d="M12 18h.01" />
-                      <path d="M16 18h.01" />
-                    </svg>
-                    <div class="grow ms-5">
-                      <h3
-                        class="font-semibold text-gray-800 group-hover:text-[#c31e39] dark:text-gray-200 dark:group-hover:text-[#c31e39]">
-                        @foreach ($dateRange as $date)
-                          @if ($loop->first)
-                            {{ Carbon\Carbon::parse($date)->format('F') }}
-                          @endif
-                        @endforeach
-                        {{ $travelDate = Arr::get($dateRange, '22_days_20_nights.travel_date') }}
-                      </h3>
-                      <p class="text-sm text-gray-500">
-                        @foreach ($dateRange as $date)
-                          @if ($loop->first)
-                            {{ Carbon\Carbon::parse($date)->format('d M Y') }}
-                          @elseif ($loop->last)
-                            - {{ Carbon\Carbon::parse($date)->format('d M Y') }}
-                          @endif
-                        @endforeach
-                      </p>
+            @foreach ($travelDate as $travelDateData)
+              @if ($travelDateData->package == '12 Days 10 Nights')
+                <div x-show="isOpen1"
+                  class="flex flex-col w-[17rem] transition bg-white border shadow-sm group rounded-xl hover:shadow-md dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  <div class="p-4 md:p-5">
+                    <div class="flex">
+                      <svg
+                        class="flex-shrink-0 mt-1 size-5 text-gray-800 group-hover:text-[#c31e39] dark:text-gray-200 dark:group-hover:text-[#c31e39]"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-calendar-days">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                        <path d="M3 10h18" />
+                        <path d="M8 14h.01" />
+                        <path d="M12 14h.01" />
+                        <path d="M16 14h.01" />
+                        <path d="M8 18h.01" />
+                        <path d="M12 18h.01" />
+                        <path d="M16 18h.01" />
+                      </svg>
+                      <div class="grow ms-5">
+                        <h3
+                          class="font-semibold text-gray-800 group-hover:text-[#c31e39] dark:text-gray-200 dark:group-hover:text-[#c31e39]">
+                          {{ Carbon\Carbon::parse($travelDateData->from)->format('F') }}
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                          {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
+                          {{ Carbon\Carbon::parse($travelDateData->to)->format('d M Y') }}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              @endif
             @endforeach
           @endif
           @if ($is22Days20Nights)
-            @foreach ($travelDate2 as $dateRange)
-              <div x-show="isOpen2"
-                class="flex flex-col w-[17rem] transition bg-white border shadow-sm group rounded-xl hover:shadow-md dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                <div class="p-4 md:p-5">
-                  <div class="flex">
-                    <svg
-                      class="flex-shrink-0 mt-1 size-5 text-gray-800 group-hover:text-[#c31e39] dark:text-gray-200 dark:group-hover:text-[#c31e39]"
-                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" class="lucide lucide-calendar-days">
-                      <path d="M8 2v4" />
-                      <path d="M16 2v4" />
-                      <rect width="18" height="18" x="3" y="4" rx="2" />
-                      <path d="M3 10h18" />
-                      <path d="M8 14h.01" />
-                      <path d="M12 14h.01" />
-                      <path d="M16 14h.01" />
-                      <path d="M8 18h.01" />
-                      <path d="M12 18h.01" />
-                      <path d="M16 18h.01" />
-                    </svg>
-                    <div class="grow ms-5">
-                      <h3
-                        class="font-semibold text-gray-800 group-hover:text-[#c31e39] dark:text-gray-200 dark:group-hover:text-[#c31e39]">
-                        @foreach ($dateRange as $date)
-                          @if ($loop->first)
-                            {{ Carbon\Carbon::parse($date)->format('F') }}
-                          @endif
-                        @endforeach
-                        {{ $travelDate = Arr::get($dateRange, '22_days_20_nights.travel_date') }}
-                      </h3>
-                      <p class="text-sm text-gray-500">
-                        @foreach ($dateRange as $date)
-                          @if ($loop->first)
-                            {{ Carbon\Carbon::parse($date)->format('d M Y') }}
-                          @elseif ($loop->last)
-                            - {{ Carbon\Carbon::parse($date)->format('d M Y') }}
-                          @endif
-                        @endforeach
-                      </p>
+            @foreach ($travelDate as $travelDateData)
+              @if ($travelDateData->package == '22 Days 20 Nights')
+                <div x-show="isOpen2"
+                  class="flex flex-col w-[17rem] transition bg-white border shadow-sm group rounded-xl hover:shadow-md dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                  <div class="p-4 md:p-5">
+                    <div class="flex">
+                      <svg
+                        class="flex-shrink-0 mt-1 size-5 text-gray-800 group-hover:text-[#c31e39] dark:text-gray-200 dark:group-hover:text-[#c31e39]"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-calendar-days">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                        <path d="M3 10h18" />
+                        <path d="M8 14h.01" />
+                        <path d="M12 14h.01" />
+                        <path d="M16 14h.01" />
+                        <path d="M8 18h.01" />
+                        <path d="M12 18h.01" />
+                        <path d="M16 18h.01" />
+                      </svg>
+                      <div class="grow ms-5">
+                        <h3
+                          class="font-semibold text-gray-800 group-hover:text-[#c31e39] dark:text-gray-200 dark:group-hover:text-[#c31e39]">
+                          {{ Carbon\Carbon::parse($travelDateData->from)->format('F') }}
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                          {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
+                          {{ Carbon\Carbon::parse($travelDateData->to)->format('d M Y') }}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              @endif
             @endforeach
           @endif
         </div>
       </div>
-      <!-- End Date -->
+      <!-- End Travel Date -->
 
       <!-- Package Included -->
       <div class="mb-10 md:mb-14 lg:mb-20"">
@@ -632,12 +603,9 @@
           <h2 class="text-xl font-bold md:text-3xl md:leading-tight dark:text-white">Package Included</h2>
           <p class="mt-1 text-gray-600 dark:text-gray-400">List of items included in the package</p>
         </div>
-
         <div class="max-w-4xl mx-auto">
-          <!-- Grid -->
           <div class="grid gap-3 md:grid-cols-2">
             <div class="space-y-6">
-              <!-- Icon Block -->
               <div class="flex items-center">
                 <svg class="flex-shrink-0 text-gray-800 size-8 dark:text-white" xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -650,9 +618,6 @@
                   Visa dan Takaful Perjalanan
                 </h3>
               </div>
-              <!-- End Icon Block -->
-
-              <!-- Icon Block -->
               <div class="flex items-center">
                 <svg class="flex-shrink-0 text-gray-800 size-8 dark:text-white" xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -666,9 +631,6 @@
                   Jamuan Tengahari Nasi Arab di Taif
                 </h3>
               </div>
-              <!-- End Icon Block -->
-
-              <!-- Icon Block -->
               <div class="flex items-center">
                 <svg class="flex-shrink-0 text-gray-800 size-8 dark:text-white" xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -680,9 +642,6 @@
                   Umrah 3 Kali di Miqat yang Berbeza
                 </h3>
               </div>
-              <!-- End Icon Block -->
-
-              <!-- Icon Block -->
               <div class="flex items-center">
                 <svg class="flex-shrink-0 text-gray-800 size-8 dark:text-white" xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -700,11 +659,8 @@
                   Ziarah Makkah, Madinah, dan Taif
                 </h3>
               </div>
-              <!-- End Icon Block -->
             </div>
-
             <div class="space-y-6">
-              <!-- Icon Block -->
               <div class="flex items-center">
                 <svg class="flex-shrink-0 text-gray-800 size-8 dark:text-white" xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -719,9 +675,6 @@
                   Beg Bagasi, Beg Sling, dan Beg Kasut
                 </h3>
               </div>
-              <!-- End Icon Block -->
-
-              <!-- Icon Block -->
               <div class="flex items-center">
                 <svg class="flex-shrink-0 text-gray-800 size-8 dark:text-white" xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -735,9 +688,6 @@
                   Air Zam2 5 Liter
                 </h3>
               </div>
-              <!-- End Icon Block -->
-
-              <!-- Icon Block -->
               <div class="flex items-center">
                 <svg class="flex-shrink-0 text-gray-800 size-8 dark:text-white" xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -751,9 +701,6 @@
                   Kursus dan Buku Umrah
                 </h3>
               </div>
-              <!-- End Icon Block -->
-
-              <!-- Icon Block -->
               <div class="flex items-center">
                 <svg class="flex-shrink-0 text-gray-800 size-8 dark:text-white" xmlns="http://www.w3.org/2000/svg"
                   width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -767,10 +714,8 @@
                   Pembimbing Mutawif dan Mutawifah
                 </h3>
               </div>
-              <!-- End Icon Block -->
             </div>
           </div>
-          <!-- End Grid -->
         </div>
       </div>
       <!-- End Package Included -->

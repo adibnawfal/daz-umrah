@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot:title>
-    Add Package
+    Update Package
   </x-slot>
 
   <!-- Breadcrumb -->
@@ -45,29 +45,34 @@
       <p class="flex items-center text-sm font-semibold text-gray-800 dark:text-white">
         <svg class="flex-shrink-0 me-3 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" class="lucide lucide-plus">
-          <path d="M5 12h14" />
-          <path d="M12 5v14" />
+          stroke-linejoin="round" class="lucide lucide-clipboard-pen-line">
+          <rect width="8" height="4" x="8" y="2" rx="1" />
+          <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5" />
+          <path d="M16 4h2a2 2 0 0 1 1.73 1" />
+          <path d="M8 18h1" />
+          <path d="M18.4 9.6a2 2 0 0 1 3 3L17 17l-4 1 1-4Z" />
         </svg>
-        Add Package
+        Update Package
       </p>
     </li>
   </ol>
   <!-- End Breadcrumb -->
 
-  <!-- Add Package -->
+  <!-- Update Package -->
   <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
     <div class="mb-8">
       <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-        Add Package
+        Update Package
       </h2>
       <p class="text-sm text-gray-600 dark:text-gray-400">
-        Add new Umrah package.
+        Update Umrah package.
       </p>
     </div>
 
-    <form method="post" action="{{ route('package.add-submit') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('package.put-update-details', $packageData->id) }}"
+      enctype="multipart/form-data">
       @csrf
+      @method('put')
 
       <div class="grid gap-2 sm:grid-cols-12 sm:gap-6">
         <!-- Cover Image -->
@@ -92,7 +97,7 @@
         <div class="sm:col-span-9">
           <input type="text" id="name" name="name" placeholder="Enter package name"
             class="block w-full px-3 py-2 text-sm border-gray-200 rounded-lg shadow-sm pe-11 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-            value="{{ old('name') }}">
+            value="{{ old('name', $packageData->name) }}">
           <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
         <!-- End Package Name -->
@@ -108,9 +113,9 @@
             class="block w-full bg-white border border-gray-200 rounded-lg pe-3 dark:bg-slate-900 dark:border-gray-700"
             data-hs-input-number>
             <div class="flex items-center justify-between w-full">
-              <input type="number" id="year" name="year" placeholder="{{ \Carbon\Carbon::now()->year }}"
+              <input type="number" id="year" name="year"
                 class="block w-full text-sm text-gray-800 bg-transparent border-0 focus:ring-0 dark:text-white [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                value="{{ old('year', \Carbon\Carbon::now()->year) }}" data-hs-input-number-input>
+                value="{{ old('year', $packageData->year) }}" data-hs-input-number-input>
               <div class="flex justify-end items-center gap-x-1.5">
                 <button type="button"
                   class="inline-flex items-center justify-center text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-full shadow-sm size-6 gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
@@ -147,10 +152,10 @@
         <div class="sm:col-span-9">
           <select id="hotel_makkah" name="hotel_makkah"
             class="block w-full px-3 text-sm border-gray-200 rounded-lg pe-9 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-            <option @selected(old('hotel_makkah') == 0) disabled value=0>Select hotel Makkah</option>
+            <option @selected(old('hotel_makkah', $packageData->hotel_makkah_id) == 0) disabled value=0>Select hotel Makkah</option>
             @foreach ($hotel as $hotelData)
               @if ($hotelData->category == 'Makkah')
-                <option @selected(old('hotel_makkah') == $hotelData->id) value={{ $hotelData->id }}>
+                <option @selected(old('hotel_makkah', $packageData->hotel_makkah_id) == $hotelData->id) value={{ $hotelData->id }}>
                   {{ $hotelData->name }}, {{ $hotelData->distance }} Meter
                 </option>
               @endif
@@ -169,10 +174,10 @@
         <div class="sm:col-span-9">
           <select id="hotel_madinah" name="hotel_madinah"
             class="block w-full px-3 text-sm border-gray-200 rounded-lg pe-9 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-            <option @selected(old('hotel_madinah') == 0) disabled value=0>Select hotel Madinah</option>
+            <option @selected(old('hotel_madinah', $packageData->hotel_madinah_id) == 0) disabled value=0>Select hotel Madinah</option>
             @foreach ($hotel as $hotelData)
               @if ($hotelData->category == 'Madinah')
-                <option @selected(old('hotel_madinah') == $hotelData->id) value={{ $hotelData->id }}>
+                <option @selected(old('hotel_madinah', $packageData->hotel_madinah_id) == $hotelData->id) value={{ $hotelData->id }}>
                   {{ $hotelData->name }}, {{ $hotelData->distance }} Meter
                 </option>
               @endif
@@ -344,10 +349,10 @@
             <path d="M5 12h14" />
             <path d="M12 5v14" />
           </svg>
-          Add Package
+          Update Package
         </button>
       </div>
     </form>
   </div>
-  <!-- End Add Package -->
+  <!-- End Update Package -->
 </x-app-layout>
