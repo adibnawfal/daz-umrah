@@ -78,7 +78,7 @@
           Delete Package
         </button>
       </form>
-      <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none"
+      {{-- <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none"
         href="{{ route('package.update-details', $packageData->id) }}">
         <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -90,7 +90,7 @@
           <path d="M18.4 9.6a2 2 0 0 1 3 3L17 17l-4 1 1-4Z" />
         </svg>
         Update Package
-      </a>
+      </a> --}}
     </div>
     <!-- End Button -->
   </div>
