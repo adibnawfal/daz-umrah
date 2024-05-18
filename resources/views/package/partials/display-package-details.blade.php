@@ -114,7 +114,7 @@
             </li>
           </ul>
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:bg-[#c31e39] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
-            href="#">
+            href="{{ route('welcome.umrah-reservation', $packageData->id) }}">
             Book Now
           </a>
         </div>

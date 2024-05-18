@@ -1,33 +1,3 @@
-{{-- <x-app-layout>
-  <x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800">
-      {{ __('Profile') }}
-    </h2>
-  </x-slot>
-
-  <div class="py-12">
-    <div class="mx-auto space-y-6 max-w-7xl sm:px-6 lg:px-8">
-      <div class="p-4 bg-white shadow sm:p-8 sm:rounded-lg">
-        <div class="max-w-xl">
-          @include('profile.partials.update-profile-information-form')
-        </div>
-      </div>
-
-      <div class="p-4 bg-white shadow sm:p-8 sm:rounded-lg">
-        <div class="max-w-xl">
-          @include('profile.partials.update-password-form')
-        </div>
-      </div>
-
-      <div class="p-4 bg-white shadow sm:p-8 sm:rounded-lg">
-        <div class="max-w-xl">
-          @include('profile.partials.delete-user-form')
-        </div>
-      </div>
-    </div>
-  </div>
-</x-app-layout> --}}
-
 <x-app-layout>
   <x-slot:title>
     Account
@@ -100,33 +70,34 @@
       <!-- End Update Address -->
     </div>
   </div>
-
-  {{-- <div class="flex gap-x-6">
-    <!-- Update Profile Picture -->
-    <div
-      class="p-4 bg-white border border-gray-200 h-max basis-1/4 rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-      @include('profile.partials.update-profile-picture')
-    </div>
-    <!-- End Update Profile Picture -->
-
-    <!-- Update Profile -->
-    <div class="p-4 bg-white border border-gray-200 basis-3/4 rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-      @include('profile.partials.update-profile-information-form')
-    </div>
-    <!-- End Update Profile -->
-  </div>
-
-  <div class="flex gap-x-6">
-    <!-- Update Password -->
-    <div class="p-4 bg-white border border-gray-200 rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-      @include('profile.partials.update-password-form')
-    </div>
-    <!-- End Update Password -->
-
-    <!-- Delete User -->
-    <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-      @include('profile.partials.delete-user-form')
-    </div>
-    <!-- End Delete User -->
-  </div> --}}
 </x-app-layout>
+
+{{-- <x-app-layout>
+  <x-slot name="header">
+    <h2 class="text-xl font-semibold leading-tight text-gray-800">
+      {{ __('Profile') }}
+    </h2>
+  </x-slot>
+
+  <div class="py-12">
+    <div class="mx-auto space-y-6 max-w-7xl sm:px-6 lg:px-8">
+      <div class="p-4 bg-white shadow sm:p-8 sm:rounded-lg">
+        <div class="max-w-xl">
+          @include('profile.partials.update-profile-information-form')
+        </div>
+      </div>
+
+      <div class="p-4 bg-white shadow sm:p-8 sm:rounded-lg">
+        <div class="max-w-xl">
+          @include('profile.partials.update-password-form')
+        </div>
+      </div>
+
+      <div class="p-4 bg-white shadow sm:p-8 sm:rounded-lg">
+        <div class="max-w-xl">
+          @include('profile.partials.delete-user-form')
+        </div>
+      </div>
+    </div>
+  </div>
+</x-app-layout> --}}

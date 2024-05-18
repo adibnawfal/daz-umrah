@@ -26,6 +26,19 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900">
+  <!-- Navbar -->
+  @include('layouts.navigation')
+
+  <!-- Sidebar -->
+  @include('layouts.sidebar')
+
+  <!-- Content -->
+  <div class="flex flex-col w-full gap-6 px-4 py-10 sm:px-6 md:px-8 lg:ps-72">
+    {{ $slot }}
+  </div>
+</body>
+
 {{-- <body class="font-sans antialiased">
   <div class="min-h-screen bg-gray-100">
     @include('layouts.navigation')
@@ -45,18 +58,5 @@
     </main>
   </div>
 </body> --}}
-
-<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900">
-  <!-- Navbar -->
-  @include('layouts.navigation')
-
-  <!-- Sidebar -->
-  @include('layouts.sidebar')
-
-  <!-- Content -->
-  <div class="flex flex-col w-full gap-6 px-4 py-10 sm:px-6 md:px-8 lg:ps-72">
-    {{ $slot }}
-  </div>
-</body>
 
 </html>

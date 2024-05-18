@@ -64,7 +64,7 @@
     <div
       class="w-1/2 p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
       <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-200">12 Days 10 Nights</h3>
-      <div class="text-sm text-gray-500 dark:text-neutral-500">Musim biasa.</div>
+      <div class="text-sm text-gray-500 dark:text-neutral-500">Musim persekolahan.</div>
 
       <div class="my-6">
         <span
@@ -173,6 +173,98 @@
       <!-- End Information -->
     </div>
     <!-- End 22 Days 20 Nights -->
+
+    <!-- Exceed Days Alert -->
+    @if (session('status') === 'exceed-12-days')
+      <div id="dismiss-toast"
+        class="absolute bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+        <div class="space-y-5">
+          <div class="p-4 border-red-500 rounded-xl bg-red-50 border-s-4 dark:bg-red-800/30" role="alert">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <!-- Icon -->
+                <span
+                  class="inline-flex items-center justify-center text-red-800 bg-red-200 border-4 border-red-100 rounded-full size-8 dark:border-red-900 dark:bg-red-800 dark:text-red-400">
+                  <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                </span>
+                <!-- End Icon -->
+              </div>
+              <div class="ms-3">
+                <h3 class="font-semibold text-gray-800 dark:text-white">
+                  Invalid Date!
+                </h3>
+                <p class="text-sm text-gray-700 dark:text-neutral-400">
+                  Please select 12 days input range.
+                </p>
+              </div>
+              <div class="ms-8">
+                <button type="button"
+                  class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                  data-hs-remove-element="#dismiss-toast">
+                  <span class="sr-only">Close</span>
+                  <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    @elseif (session('status') === 'exceed-22-days')
+      <div id="dismiss-toast"
+        class="absolute bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+        <div class="space-y-5">
+          <div class="p-4 border-red-500 rounded-xl bg-red-50 border-s-4 dark:bg-red-800/30" role="alert">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <!-- Icon -->
+                <span
+                  class="inline-flex items-center justify-center text-red-800 bg-red-200 border-4 border-red-100 rounded-full size-8 dark:border-red-900 dark:bg-red-800 dark:text-red-400">
+                  <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                </span>
+                <!-- End Icon -->
+              </div>
+              <div class="ms-3">
+                <h3 class="font-semibold text-gray-800 dark:text-white">
+                  Invalid Date!
+                </h3>
+                <p class="text-sm text-gray-700 dark:text-neutral-400">
+                  Please select 22 days input range.
+                </p>
+              </div>
+              <div class="ms-8">
+                <button type="button"
+                  class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                  data-hs-remove-element="#dismiss-toast">
+                  <span class="sr-only">Close</span>
+                  <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endif
+    <!-- End Exceed Days Alert -->
   </div>
 
 </x-app-layout>

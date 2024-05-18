@@ -3,6 +3,7 @@
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\UmrahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\FeedbackController;
@@ -29,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/package/view', [WelcomeController::class, 'getPackage'])->name('welcome.package');
 Route::get('/package/view/details/{id}', [WelcomeController::class, 'getPackageDetails'])->name('welcome.package-details');
+Route::get('/package/umrah-reservation/{id}', [WelcomeController::class, 'getUmrahReservation'])->middleware(['auth', 'verified'])->name('welcome.umrah-reservation');
 
 // Route::get('/dashboard', function () {
 //   return view('dashboard');
@@ -48,6 +50,9 @@ Route::middleware('auth')->group(function () {
   Route::get('/package/travel-date', [PackageController::class, 'getTravelDate'])->name('package.travel-date');
   Route::post('/package/travel-date', [PackageController::class, 'postTravelDate'])->name('package.add-travel-date');
   Route::delete('/package/travel-date/{id}', [PackageController::class, 'deleteTravelDate'])->name('package.delete-travel-date');
+
+  // Umrah
+  Route::get('/umrah/reservation-list', [UmrahController::class, 'getReservationList'])->name('umrah.reservation-list');
 
   // Profile
   Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile.view');

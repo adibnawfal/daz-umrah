@@ -8,7 +8,7 @@
 
 <!-- Grid -->
 <div class="grid gap-6 sm:grid-cols-3 lg:grid-cols-4">
-  @foreach ($packages as $packageData)
+  @foreach ($package as $packageData)
     <a class="group flex p-5 flex-col h-max bg-white border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:hover:border-transparent dark:hover:shadow-black/[.4] dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
       href="{{ route('welcome.package-details', $packageData->id) }}">
       <!-- Image -->

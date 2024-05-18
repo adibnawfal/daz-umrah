@@ -12,7 +12,7 @@ class WelcomeController extends Controller
   /**
    * Display the welcome page.
    */
-  public function index(Request $request): View
+  public function index(): View
   {
     $packages = Package::all();
 
@@ -24,19 +24,19 @@ class WelcomeController extends Controller
   /**
    * Display the package page.
    */
-  public function getPackage(Request $request): View
+  public function getPackage(): View
   {
-    $packages = Package::all();
+    $package = Package::all();
 
     return view('landing.package', [
-      'packages' => $packages,
+      'package' => $package,
     ]);
   }
 
   /**
    * Display the package details page.
    */
-  public function getPackageDetails(Request $request, string $id): View
+  public function getPackageDetails(string $id): View
   {
     $packageData = Package::find($id);
     $travelDate = TravelDate::all();
@@ -44,6 +44,19 @@ class WelcomeController extends Controller
     return view('landing.details', [
       'packageData' => $packageData,
       'travelDate' => $travelDate,
+    ]);
+  }
+
+  /**
+   * Display the Umrah reservation page.
+   */
+  public function getUmrahReservation(Request $request, string $id): View
+  {
+    $packageData = Package::find($id);
+
+    return view('landing.umrah-reservation', [
+      'user' => $request->user(),
+      'packageData' => $packageData,
     ]);
   }
 }

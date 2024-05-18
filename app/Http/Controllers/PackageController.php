@@ -233,6 +233,19 @@ class PackageController extends Controller
       'to_date' => ['required', 'date'],
     ]);
 
+    $fromDate = Carbon::parse($request['from_date']);
+    $toDate = Carbon::parse($request['to_date']);
+
+    if ($request['package'] === '12 Days 10 Nights') {
+      if (($fromDate->diffInDays($toDate) + 1) > 12) {
+        return Redirect::route('package.travel-date')->with('status', 'exceed-12-days');
+      }
+    } else if ($request['package'] === '22 Days 20 Nights') {
+      if (($fromDate->diffInDays($toDate) + 1) > 22) {
+        return Redirect::route('package.travel-date')->with('status', 'exceed-22-days');
+      }
+    }
+
     $travelDates->package = $request['package'];
     $travelDates->from = Carbon::create($request['from_date']);
     $travelDates->to = Carbon::create($request['to_date']);

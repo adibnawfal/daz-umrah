@@ -26,7 +26,6 @@
 
     <!-- Content -->
     @yield('content')
-    {{-- @include('landing.view') --}}
 
     <!-- Footer -->
     @include('layouts.footer')

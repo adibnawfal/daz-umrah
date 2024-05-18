@@ -1,9 +1,7 @@
-@extends('welcome') <!-- Extend the welcome.blade.php file -->
+@extends('welcome')
 
 @section('content')
-  <!-- Start the content section -->
   <main id="scrollspy-1" class="flex flex-col flex-grow dark:bg-gray-800">
-
     <!-- Home -->
     <div
       class="overflow-hidden bg-center bg-[url('https://images.unsplash.com/photo-1633174754673-95dd2842f8fc?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]">
@@ -50,6 +48,5 @@
       @include('landing.partials.faq')
     </div>
     <!-- End FAQ -->
-
   </main>
-@endsection <!-- End the content section -->
+@endsection
