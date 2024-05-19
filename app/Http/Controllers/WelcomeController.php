@@ -51,15 +51,18 @@ class WelcomeController extends Controller
   /**
    * Display the Umrah reservation page.
    */
-  public function getUmrahReservation(Request $request, string $packageId, string $priceId): View
+  public function getUmrahReservation(Request $request, string $packageId, string $priceId, float $roomPrice): View
   {
     $packageData = Package::find($packageId);
+    $travelDate = TravelDate::all();
     $priceData = Price::find($priceId);
 
     return view('landing.umrah-reservation', [
       'user' => $request->user(),
       'packageData' => $packageData,
+      'travelDate' => $travelDate,
       'priceData' => $priceData,
+      'roomPrice' => $roomPrice,
     ]);
   }
 }

@@ -66,9 +66,13 @@
             @php
               if ($is12Days10Nights) {
                   $price_12_10_room_3 = number_format($packageData->package_12_10->room_3, 0, '', '');
+                  $priceRoom3Id = $packageData->package_12_10_id;
+                  $room3Price = $packageData->package_12_10->room_3;
               }
               if ($is22Days20Nights) {
                   $price_22_20_room_3 = number_format($packageData->package_22_20->room_3, 0, '', '');
+                  $priceRoom3Id = $packageData->package_22_20_id;
+                  $room3Price = $packageData->package_22_20->room_3;
               }
             @endphp
             @if ($is12Days10Nights && $is22Days20Nights)
@@ -113,17 +117,9 @@
               </span>
             </li>
           </ul>
-          @php
-            if ($is12Days10Nights) {
-                $price_room_3_id = $packageData->package_12_10_id;
-            }
-            if ($is22Days20Nights) {
-                $price_room_3_id = $packageData->package_22_20_id;
-            }
-          @endphp
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:bg-[#c31e39] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
-            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $price_room_3_id]) }}">
-            Book Now
+            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceRoom3Id, 'roomPrice' => $room3Price]) }}">
+            Reserve Now
           </a>
         </div>
         <!-- End Room for 3 -->
@@ -141,9 +137,13 @@
             @php
               if ($is12Days10Nights) {
                   $price_12_10_room_4_5 = number_format($packageData->package_12_10->room_4_5, 0, '', '');
+                  $priceRoom45Id = $packageData->package_12_10_id;
+                  $room45Price = $packageData->package_12_10->room_4_5;
               }
               if ($is22Days20Nights) {
                   $price_22_20_room_4_5 = number_format($packageData->package_22_20->room_4_5, 0, '', '');
+                  $priceRoom45Id = $packageData->package_22_20_id;
+                  $room45Price = $packageData->package_22_20->room_4_5;
               }
             @endphp
             @if ($is12Days10Nights && $is22Days20Nights)
@@ -188,17 +188,9 @@
               </span>
             </li>
           </ul>
-          @php
-            if ($is12Days10Nights) {
-                $price_room_4_5_id = $packageData->package_12_10_id;
-            }
-            if ($is22Days20Nights) {
-                $price_room_4_5_id = $packageData->package_22_20_id;
-            }
-          @endphp
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold text-white border border-transparent rounded-lg gap-x-2 bg-[#c31e39] hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none"
-            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $price_room_4_5_id]) }}">
-            Book Now
+            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceRoom45Id, 'roomPrice' => $room45Price]) }}">
+            Reserve Now
           </a>
         </div>
         <!-- End Room for 4 or 5 -->
@@ -211,9 +203,13 @@
             @php
               if ($is12Days10Nights) {
                   $price_12_10_room_2 = number_format($packageData->package_12_10->room_2, 0, '', '');
+                  $priceRoom2Id = $packageData->package_12_10_id;
+                  $room2Price = $packageData->package_12_10->room_2;
               }
               if ($is22Days20Nights) {
                   $price_22_20_room_2 = number_format($packageData->package_22_20->room_2, 0, '', '');
+                  $priceRoom2Id = $packageData->package_22_20_id;
+                  $room2Price = $packageData->package_22_20->room_2;
               }
             @endphp
             @if ($is12Days10Nights && $is22Days20Nights)
@@ -258,17 +254,9 @@
               </span>
             </li>
           </ul>
-          @php
-            if ($is12Days10Nights) {
-                $price_room_2_id = $packageData->package_12_10_id;
-            }
-            if ($is22Days20Nights) {
-                $price_room_2_id = $packageData->package_22_20_id;
-            }
-          @endphp
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:bg-[#c31e39] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
-            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $price_room_2_id]) }}">
-            Book Now
+            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceRoom2Id, 'roomPrice' => $room2Price]) }}">
+            Reserve Now
           </a>
         </div>
         <!-- End Room for 2 -->

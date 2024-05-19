@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/package/view', [WelcomeController::class, 'getPackage'])->name('welcome.package');
 Route::get('/package/view/details/{id}', [WelcomeController::class, 'getPackageDetails'])->name('welcome.package-details');
-Route::get('/package/umrah-reservation/{packageId}/{priceId}', [WelcomeController::class, 'getUmrahReservation'])->middleware(['auth', 'verified'])->name('welcome.umrah-reservation');
+Route::get('/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{roomPrice}', [WelcomeController::class, 'getUmrahReservation'])->middleware(['auth', 'verified'])->name('welcome.umrah-reservation');
 
 // Route::get('/dashboard', function () {
 //   return view('dashboard');
