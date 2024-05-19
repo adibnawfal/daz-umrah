@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\Price;
 use App\Models\TravelDate;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -50,13 +51,15 @@ class WelcomeController extends Controller
   /**
    * Display the Umrah reservation page.
    */
-  public function getUmrahReservation(Request $request, string $id): View
+  public function getUmrahReservation(Request $request, string $packageId, string $priceId): View
   {
-    $packageData = Package::find($id);
+    $packageData = Package::find($packageId);
+    $priceData = Price::find($priceId);
 
     return view('landing.umrah-reservation', [
       'user' => $request->user(),
       'packageData' => $packageData,
+      'priceData' => $priceData,
     ]);
   }
 }

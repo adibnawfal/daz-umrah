@@ -48,18 +48,51 @@
         @csrf
 
         <!-- Form -->
-        <div class="flex flex-col dark:bg-slate-900 basis-3/5">
+        <div class="flex flex-col basis-3/5">
           <div class="mb-8">
             <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-              Profile Information
+              Package Information
             </h2>
             <p class="text-sm text-gray-600 dark:text-gray-400">
               Update your account's profile information and email address.
             </p>
           </div>
 
-          <div>
-            <div class="grid gap-y-4">
+          <div class="grid pb-6 gap-y-4">
+            <div class="grid grid-cols-2 gap-x-4">
+              <!-- First Name -->
+              <div>
+                <label for="first_name" class="block mb-2 text-sm dark:text-white">Room</label>
+                <input type="text" id="first_name" name="first_name" placeholder="Enter your first name"
+                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  autocomplete="first-name" value="{{ old('first_name') }}" autofocus>
+                <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+              </div>
+              <!-- End First Name -->
+
+              <!-- Last Name -->
+              <div>
+                <label for="last_name" class="block mb-2 text-sm dark:text-white">Travel Date</label>
+                <input type="text" id="last_name" name="last_name" placeholder="Enter your last name"
+                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  autocomplete="last-name" value="{{ old('last_name') }}">
+                <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+              </div>
+              <!-- End Last Name -->
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-gray-200 dark:border-neutral-700 ">
+            <div class="mb-8">
+              <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+                Profile Information
+              </h2>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Update your account's profile information and email address.
+              </p>
+            </div>
+
+            <div class="grid pb-6 gap-y-4">
               <div class="grid grid-cols-2 gap-x-4">
                 <!-- First Name -->
                 <div>
@@ -92,26 +125,99 @@
               </div>
               <!-- End Email Address -->
 
-              <!-- Password -->
+              <!-- Phone Number -->
               <div>
-                <label for="password" class="block mb-2 text-sm dark:text-white">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password"
+                <label for="email" class="block mb-2 text-sm dark:text-white">Phone Number</label>
+                <input type="email" id="email" name="email" placeholder="Enter your phone number"
                   class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                  autocomplete="new-password">
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                  autocomplete="email" value="{{ old('email') }}">
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
               </div>
-              <!-- End Password -->
+              <!-- End Phone Number -->
+            </div>
+          </div>
 
-              <!-- Confirm Password -->
-              <div>
-                <label for="password_confirmation" class="block mb-2 text-sm dark:text-white">Confirm
-                  Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation"
-                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                  placeholder="Re-type your password" autocomplete="new-password">
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+          <div class="pt-6 border-t border-gray-200 dark:border-neutral-700 ">
+            <div class="mb-8">
+              <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+                Related Documents
+              </h2>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Update your account's profile information and email address.
+              </p>
+            </div>
+
+            <div class="grid pb-6 gap-y-4">
+              <div class="grid grid-cols-2 gap-x-4">
+                <!-- First Name -->
+                <div>
+                  <label for="first_name" class="block mb-2 text-sm dark:text-white">First Name</label>
+                  <input type="text" id="first_name" name="first_name" placeholder="Enter your first name"
+                    class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                    autocomplete="first-name" value="{{ old('first_name') }}" autofocus>
+                  <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+                </div>
+                <!-- End First Name -->
+
+                <!-- Last Name -->
+                <div>
+                  <label for="last_name" class="block mb-2 text-sm dark:text-white">Last Name</label>
+                  <input type="text" id="last_name" name="last_name" placeholder="Enter your last name"
+                    class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                    autocomplete="last-name" value="{{ old('last_name') }}">
+                  <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+                </div>
+                <!-- End Last Name -->
               </div>
-              <!-- End Confirm Password -->
+
+              <!-- Email Address -->
+              <div>
+                <label for="email" class="block mb-2 text-sm dark:text-white">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address"
+                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  autocomplete="email" value="{{ old('email') }}">
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+              </div>
+              <!-- End Email Address -->
+
+              <!-- Phone Number -->
+              <div>
+                <label for="email" class="block mb-2 text-sm dark:text-white">Phone Number</label>
+                <input type="email" id="email" name="email" placeholder="Enter your phone number"
+                  class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                  autocomplete="email" value="{{ old('email') }}">
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+              </div>
+              <!-- End Phone Number -->
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-gray-200 dark:border-neutral-700 ">
+            <div class="mb-8">
+              <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+                Declaration
+              </h2>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Update your account's profile information and email address.
+              </p>
+            </div>
+
+            <div class="grid pb-6 gap-y-4">
+              <p>Test</p>
+
+              <!-- Checkbox -->
+              <div class="flex flex-col justify-center">
+                <div class="flex items-center gap-x-3">
+                  <input type="checkbox" id="terms_and_conditions" name="terms_and_conditions"
+                    class="shrink-0 mt-0.5 border-gray-200 rounded text-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-[#c31e39] dark:checked:border-[#c31e39] dark:focus:ring-offset-gray-800"
+                    @checked(old('terms_and_conditions'))>
+                  <label for="terms_and_conditions" class="text-sm dark:text-white">I accept the <a
+                      class="font-medium text-[#c31e39] decoration-2 hover:underline dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                      href="#">Terms and Conditions</a></label>
+                </div>
+                <x-input-error :messages="$errors->get('terms_and_conditions')" class="mt-2" />
+              </div>
+              <!-- End Checkbox -->
             </div>
           </div>
         </div>
@@ -119,8 +225,10 @@
 
         <!-- Summary -->
         <div
-          class="relative flex flex-col bg-white shadow-lg pointer-events-auto basis-2/5 rounded-xl dark:bg-neutral-800">
-          <div class="relative overflow-hidden text-center bg-gray-900 min-h-32 rounded-t-xl dark:bg-neutral-950">
+          class="relative flex flex-col bg-white border border-gray-200 shadow-lg pointer-events-auto basis-2/5 rounded-xl dark:bg-neutral-800 h-max">
+          <div
+            class="relative overflow-hidden text-center bg-center bg-no-repeat bg-cover saturate-0 min-h-32 rounded-t-xl"
+            style="background-image: url('{{ asset('images/packages/' . $packageData->cover_img) }}')">
             <!-- SVG Background Element -->
             <figure class="absolute inset-x-0 bottom-0 -mb-px">
               <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -130,18 +238,18 @@
               </svg>
             </figure>
             <!-- End SVG Background Element -->
+            <div class="absolute top-0 bg-white size-full opacity-70 -z-[1]"></div>
           </div>
 
           <div class="relative z-10 -mt-12">
             <!-- Icon -->
             <span
               class="mx-auto flex justify-center items-center size-[62px] rounded-full border border-gray-200 bg-white text-gray-700 shadow-sm dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400">
-              <svg class="flex-shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" viewBox="0 0 16 16">
+              <svg class="flex-shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="lucide lucide-plane">
                 <path
-                  d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
-                <path
-                  d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                  d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
               </svg>
             </span>
             <!-- End Icon -->
@@ -151,24 +259,24 @@
           <div class="p-4 overflow-y-auto sm:p-7">
             <div class="text-center">
               <h3 class="text-lg font-semibold text-gray-800 dark:text-neutral-200">
-                Invoice from Preline
+                Package {{ $packageData->name }} {{ $packageData->year }}
               </h3>
               <p class="text-sm text-gray-500 dark:text-neutral-500">
-                Invoice #3682303
+                {{ $priceData->package }}
               </p>
             </div>
 
             <!-- Grid -->
             <div class="grid grid-cols-2 gap-5 mt-5 sm:mt-10 sm:grid-cols-3">
               <div>
-                <span class="block text-xs text-gray-500 uppercase dark:text-neutral-500">Amount paid:</span>
-                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">$316.8</span>
+                <span class="block text-xs text-gray-500 uppercase dark:text-neutral-500">From Date:</span>
+                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">22 April 2020</span>
               </div>
               <!-- End Col -->
 
               <div>
-                <span class="block text-xs text-gray-500 uppercase dark:text-neutral-500">Date paid:</span>
-                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">April 22, 2020</span>
+                <span class="block text-xs text-gray-500 uppercase dark:text-neutral-500">To Date:</span>
+                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">22 April 2020</span>
               </div>
               <!-- End Col -->
 
@@ -206,15 +314,15 @@
                 <li
                   class="inline-flex items-center px-4 py-3 -mt-px text-sm text-gray-800 border gap-x-2 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-neutral-700 dark:text-neutral-200">
                   <div class="flex items-center justify-between w-full">
-                    <span>Payment to Front</span>
-                    <span>$264.00</span>
+                    <span>Package Price</span>
+                    <span>RM {{ number_format($priceData->room_2, 0, ',') }}</span>
                   </div>
                 </li>
                 <li
                   class="inline-flex items-center px-4 py-3 -mt-px text-sm text-gray-800 border gap-x-2 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-neutral-700 dark:text-neutral-200">
                   <div class="flex items-center justify-between w-full">
                     <span>Tax fee</span>
-                    <span>$52.8</span>
+                    <span>RM 0.00</span>
                   </div>
                 </li>
                 <li
@@ -238,28 +346,32 @@
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" x2="12" y1="15" y2="3" />
                 </svg>
-                Invoice PDF
+                Cancel
               </a>
-              <a class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+              <a class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-gray-800 border border-transparent border-gray-200 rounded-lg gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#">
                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <polyline points="6 9 6 2 18 2 18 9" />
-                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-                  <rect width="12" height="8" x="6" y="14" />
+                  stroke-linejoin="round" class="lucide lucide-calendar-check-2">
+                  <path d="M8 2v4" />
+                  <path d="M16 2v4" />
+                  <path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8" />
+                  <path d="M3 10h18" />
+                  <path d="m16 20 2 2 4-4" />
                 </svg>
-                Print
+                Make Reservation
               </a>
             </div>
             <!-- End Buttons -->
 
             <div class="mt-5 sm:mt-10">
               <p class="text-sm text-gray-500 dark:text-neutral-500">If you have any questions, please contact us at
-                <a class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
-                  href="#">example@site.com</a> or call at <a
-                  class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
-                  href="tel:+1898345492">+1 898-34-5492</a>
+                <a class="inline-flex items-center gap-x-1.5 text-gray-800 decoration-2 hover:underline font-medium"
+                  href="#">staff@dazumrah.com
+                </a> or call at
+                <a class="inline-flex items-center gap-x-1.5 text-gray-800 decoration-2 hover:underline font-medium"
+                  href="tel:+1898345492">+60 17-470 1159
+                </a>
               </p>
             </div>
           </div>

@@ -113,8 +113,16 @@
               </span>
             </li>
           </ul>
+          @php
+            if ($is12Days10Nights) {
+                $price_room_3_id = $packageData->package_12_10_id;
+            }
+            if ($is22Days20Nights) {
+                $price_room_3_id = $packageData->package_22_20_id;
+            }
+          @endphp
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:bg-[#c31e39] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
-            href="{{ route('welcome.umrah-reservation', $packageData->id) }}">
+            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $price_room_3_id]) }}">
             Book Now
           </a>
         </div>
@@ -180,8 +188,16 @@
               </span>
             </li>
           </ul>
+          @php
+            if ($is12Days10Nights) {
+                $price_room_4_5_id = $packageData->package_12_10_id;
+            }
+            if ($is22Days20Nights) {
+                $price_room_4_5_id = $packageData->package_22_20_id;
+            }
+          @endphp
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold text-white border border-transparent rounded-lg gap-x-2 bg-[#c31e39] hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none"
-            href="https://github.com/htmlstreamofficial/preline/tree/main/examples/html">
+            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $price_room_4_5_id]) }}">
             Book Now
           </a>
         </div>
@@ -242,8 +258,16 @@
               </span>
             </li>
           </ul>
+          @php
+            if ($is12Days10Nights) {
+                $price_room_2_id = $packageData->package_12_10_id;
+            }
+            if ($is22Days20Nights) {
+                $price_room_2_id = $packageData->package_22_20_id;
+            }
+          @endphp
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:bg-[#c31e39] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
-            href="#">
+            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $price_room_2_id]) }}">
             Book Now
           </a>
         </div>
