@@ -118,7 +118,7 @@
             </li>
           </ul>
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:bg-[#c31e39] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
-            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceRoom3Id, 'roomPrice' => $room3Price]) }}">
+            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceRoom3Id, 'room' => '3 People']) }}">
             Reserve Now
           </a>
         </div>
@@ -189,7 +189,7 @@
             </li>
           </ul>
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold text-white border border-transparent rounded-lg gap-x-2 bg-[#c31e39] hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none"
-            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceRoom45Id, 'roomPrice' => $room45Price]) }}">
+            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceRoom45Id, 'room' => '4 or 5 People']) }}">
             Reserve Now
           </a>
         </div>
@@ -255,7 +255,7 @@
             </li>
           </ul>
           <a class="inline-flex items-center justify-center w-full px-4 py-3 mt-5 text-sm font-semibold border rounded-lg gap-x-2 border-[#c31e39] text-[#c31e39] hover:bg-[#c31e39] hover:text-white disabled:opacity-50 disabled:pointer-events-none"
-            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceRoom2Id, 'roomPrice' => $room2Price]) }}">
+            href="{{ route('welcome.umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceRoom2Id, 'room' => '2 People']) }}">
             Reserve Now
           </a>
         </div>

@@ -53,14 +53,16 @@
               <path d="M16 19h6" />
               <path d="M19 16v6" />
             </svg>
-            Make Reservation
+            Make Umrah Reservation
           </p>
         </li>
       </ol>
       <!-- End Breadcrumb -->
 
       <!-- Content -->
-      <form method="POST" action="#" class="flex w-full mt-14 gap-x-6">
+      <form method="post"
+        action="{{ route('welcome.post-umrah-reservation', ['packageId' => $packageData->id, 'priceId' => $priceData->id, 'room' => $room]) }}"
+        class="flex w-full mt-14 gap-x-6">
         @csrf
 
         <!-- Form -->
@@ -70,7 +72,7 @@
               Package Information
             </h2>
             <p class="text-sm text-gray-600 dark:text-gray-400">
-              Update your account's profile information and email address.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
 
@@ -80,15 +82,12 @@
               <label for="travel_date" class="block mb-2 text-sm dark:text-white">Travel Date</label>
               <select id="travel_date" name="travel_date"
                 class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg pe-9 focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                <option selected="">Select your travel date</option>
-                @php
-                  $count = 1;
-                @endphp
+                <option @selected(old('travel_date') == 0) disabled value=0>Select your travel date</option>
                 @if ($priceData->package == '12 Days 10 Nights')
                   @foreach ($travelDate as $travelDateData)
                     @if ($travelDateData->package == '12 Days 10 Nights')
                       <option @selected(old('travel_date') == $travelDateData->id) value={{ $travelDateData->id }}>
-                        [{{ $count++ }}]. {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
+                        {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
                         {{ Carbon\Carbon::parse($travelDateData->to)->format('d M Y') }}
                       </option>
                     @endif
@@ -97,7 +96,7 @@
                   @foreach ($travelDate as $travelDateData)
                     @if ($travelDateData->package == '22 Days 20 Nights')
                       <option @selected(old('travel_date') == $travelDateData->id) value={{ $travelDateData->id }}>
-                        [{{ $count++ }}]. {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
+                        {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
                         {{ Carbon\Carbon::parse($travelDateData->to)->format('d M Y') }}
                       </option>
                     @endif
@@ -115,7 +114,7 @@
                 Profile Information
               </h2>
               <p class="text-sm text-gray-600 dark:text-gray-400">
-                Update your account's profile information and email address.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </div>
 
@@ -147,7 +146,7 @@
                 <label for="email" class="block mb-2 text-sm dark:text-white">Email Address</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email address"
                   class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                  autocomplete="email" value="{{ old('email', $user->email) }}">
+                  autocomplete="email" value="{{ old('email', $user->email) }}" disabled>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
               </div>
               <!-- End Email Address -->
@@ -173,9 +172,6 @@
               <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
                 Customer Declaration
               </h2>
-              {{-- <p class="text-sm text-gray-600 dark:text-gray-400">
-                Update your account's profile information and email address.
-              </p> --}}
               <div class="text-sm text-gray-600 dark:text-neutral-400">
                 <p class="mt-3">
                   I hereby certify that the information provided is accurate, correct, and complete, and that the
@@ -258,38 +254,18 @@
             <div class="grid grid-cols-2 gap-5 mt-5 sm:mt-10 sm:grid-cols-3">
               <div>
                 <span class="block text-xs text-gray-500 uppercase dark:text-neutral-500">Room:</span>
-                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">2 People</span>
+                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $room }}</span>
               </div>
               <div>
                 <span class="block text-xs text-gray-500 uppercase dark:text-neutral-500">From Date:</span>
-                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">22 April 2020</span>
+                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">17 July 2024</span>
               </div>
               <div>
                 <span class="block text-xs text-gray-500 uppercase dark:text-neutral-500">To Date:</span>
-                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">22 April 2020</span>
+                <span class="block text-sm font-medium text-gray-800 dark:text-neutral-200">07 August 2024</span>
               </div>
             </div>
             <!-- End Grid -->
-
-            <div class="mt-5 sm:mt-10">
-              <h4 class="text-xs font-semibold text-gray-800 uppercase dark:text-neutral-200">Hotel</h4>
-              <ul class="flex flex-col mt-3">
-                <li
-                  class="inline-flex items-center px-4 py-3 -mt-px text-sm text-gray-800 border gap-x-2 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-neutral-700 dark:text-neutral-200">
-                  <div class="flex items-center justify-between w-full">
-                    <span>Makkah</span>
-                    <span>{{ $packageData->hotel_makkah->name }}</span>
-                  </div>
-                </li>
-                <li
-                  class="inline-flex items-center px-4 py-3 -mt-px text-sm text-gray-800 border gap-x-2 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-neutral-700 dark:text-neutral-200">
-                  <div class="flex items-center justify-between w-full">
-                    <span>Madinah</span>
-                    <span>{{ $packageData->hotel_madinah->name }}</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
 
             <div class="mt-5 sm:mt-10">
               <h4 class="text-xs font-semibold text-gray-800 uppercase dark:text-neutral-200">Summary</h4>
@@ -297,29 +273,29 @@
                 <li
                   class="inline-flex items-center px-4 py-3 -mt-px text-sm text-gray-800 border gap-x-2 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-neutral-700 dark:text-neutral-200">
                   <div class="flex items-center justify-between w-full">
-                    <span>Package Price</span>
-                    <span>RM {{ number_format(old('room', $roomPrice), 0, ',') }}</span>
+                    <span>Hotel Makkah</span>
+                    <span>{{ $packageData->hotel_makkah->name }}</span>
                   </div>
                 </li>
                 <li
                   class="inline-flex items-center px-4 py-3 -mt-px text-sm text-gray-800 border gap-x-2 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-neutral-700 dark:text-neutral-200">
                   <div class="flex items-center justify-between w-full">
-                    <span>Deposit Price</span>
-                    <span>RM {{ number_format(500, 0, ',') }}</span>
+                    <span>Hotel Madinah</span>
+                    <span>{{ $packageData->hotel_madinah->name }}</span>
                   </div>
                 </li>
                 <li
                   class="inline-flex items-center px-4 py-3 -mt-px text-sm font-semibold text-gray-800 border gap-x-2 bg-gray-50 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200">
                   <div class="flex items-center justify-between w-full">
-                    <span>Minimum Payment</span>
-                    <span>RM {{ number_format(500, 0, ',') }}</span>
+                    <span>Package Amount</span>
+                    <span>RM {{ number_format($packageAmount, 0, ',') }}</span>
                   </div>
                 </li>
               </ul>
             </div>
 
             <div
-              class="p-4 mt-5 text-sm text-gray-600 border border-gray-200 rounded-lg bg-gray-50 sm:mt-10 dark:bg-white/10 dark:border-white/10 dark:text-neutral-400">
+              class="p-4 mt-5 text-sm text-gray-600 border border-gray-200 rounded-lg bg-gray-50 dark:bg-white/10 dark:border-white/10 dark:text-neutral-400">
               <div class="flex">
                 <div class="flex-shrink-0">
                   <svg class="flex-shrink-0 size-4 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -331,8 +307,7 @@
                   </svg>
                 </div>
                 <p class="flex-1 text-sm ms-2">
-                  The deposit payment is required to secure your reservation for the requested package. The balance
-                  payment will be due after the staff approves your reservation.
+                  The package amount needs to be paid after our staff has accepted your reservation.
                 </p>
               </div>
             </div>
@@ -340,7 +315,7 @@
             <!-- Button -->
             <div class="flex justify-end mt-5 gap-x-2">
               <a class="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 align-middle transition-all bg-white border rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 dark:bg-neutral-800 dark:hover:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                href="#">
+                href="{{ route('welcome.package') }}">
                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" class="lucide lucide-x">
@@ -349,8 +324,8 @@
                 </svg>
                 Cancel
               </a>
-              <a class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-gray-800 border border-transparent border-gray-200 rounded-lg gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="#">
+              <button type="submit"
+                class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-gray-800 border border-transparent border-gray-200 rounded-lg gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" class="lucide lucide-calendar-check-2">
@@ -361,20 +336,9 @@
                   <path d="m16 20 2 2 4-4" />
                 </svg>
                 Confirm Reservation
-              </a>
+              </button>
             </div>
             <!-- End Buttons -->
-
-            {{-- <div class="mt-5 sm:mt-10">
-              <p class="text-sm text-gray-500 dark:text-neutral-500">If you have any questions, please contact us at
-                <a class="inline-flex items-center gap-x-1.5 text-gray-800 decoration-2 hover:underline font-medium"
-                  href="#">staff@dazumrah.com
-                </a> or call at
-                <a class="inline-flex items-center gap-x-1.5 text-gray-800 decoration-2 hover:underline font-medium"
-                  href="tel:+60174701159">+60174701159
-                </a>
-              </p>
-            </div> --}}
           </div>
           <!-- End Body -->
         </div>

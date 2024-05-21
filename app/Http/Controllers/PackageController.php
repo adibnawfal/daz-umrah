@@ -160,7 +160,7 @@ class PackageController extends Controller
     ]);
 
     if (!$request->has('price_12_10_room_4_5') && !$request->has('price_22_20_room_4_5')) {
-      // trows error to view
+      // throws error to view
     }
 
     if ($request->filled('price_12_10_room_4_5')) {

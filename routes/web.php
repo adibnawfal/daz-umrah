@@ -28,9 +28,8 @@ use Illuminate\Support\Facades\Route;
 // })->name('welcome');
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
-Route::get('/package/view', [WelcomeController::class, 'getPackage'])->name('welcome.package');
-Route::get('/package/view/details/{id}', [WelcomeController::class, 'getPackageDetails'])->name('welcome.package-details');
-Route::get('/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{roomPrice}', [WelcomeController::class, 'getUmrahReservation'])->middleware(['auth', 'verified'])->name('welcome.umrah-reservation');
+Route::get('/welcome/package/', [WelcomeController::class, 'getPackage'])->name('welcome.package');
+Route::get('/welcome/package/details/{id}', [WelcomeController::class, 'getPackageDetails'])->name('welcome.package-details');
 
 // Route::get('/dashboard', function () {
 //   return view('dashboard');
@@ -39,6 +38,10 @@ Route::get('/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{r
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+  // Welcome
+  Route::get('/welcome/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{room}', [WelcomeController::class, 'getUmrahReservation'])->name('welcome.umrah-reservation');
+  Route::post('/welcome/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{room}', [WelcomeController::class, 'postUmrahReservation'])->name('welcome.post-umrah-reservation');
+
   // Package
   Route::get('/package', [PackageController::class, 'getPackage'])->name('package.view');
   Route::get('/package/details/{id}', [PackageController::class, 'getPackageDetails'])->name('package.details');
