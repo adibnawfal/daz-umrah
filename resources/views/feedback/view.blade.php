@@ -151,7 +151,7 @@
 
                 <!-- Give Feedback -->
                 <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                  href="{{ route('feedback.give-feedback') }}">
+                  href="{{ route('feedback.get-give-feedback') }}">
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -161,20 +161,6 @@
                   Give Feedback
                 </a>
                 <!-- End Give Feedback -->
-
-                <!-- Give Feedback Modal -->
-                {{-- <button type="button" data-hs-overlay="#hs-feedback-form-modal"
-                  class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                  <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14" />
-                    <path d="M12 5v14" />
-                  </svg>
-                  Give Feedback
-                </button>
-                @include('feedback.partials.modal.hs-feedback-form-modal') --}}
-                <!-- End Give Feedback Modal -->
               </div>
             </div>
             <!-- End Button -->
@@ -360,7 +346,7 @@
                               Actions
                             </span>
                             <a class="flex items-center px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                              href="{{ route('feedback.edit-feedback-form', $feedbackData->id) }}">
+                              href="{{ route('feedback.get-edit-feedback', $feedbackData->id) }}">
                               <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line">

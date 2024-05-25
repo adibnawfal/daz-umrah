@@ -11,7 +11,7 @@
   @csrf
 </form>
 
-<form method="post" action="{{ route('profile.update-address') }}">
+<form method="post" action="{{ route('profile.patch-profile-address') }}">
   @csrf
   @method('patch')
 

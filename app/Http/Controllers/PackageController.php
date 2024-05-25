@@ -16,27 +16,27 @@ use Intervention\Image\Facades\Image;
 class PackageController extends Controller
 {
   /**
-   * Display the package page.
+   * Display manage package page.
    */
-  public function getPackage(Request $request): View
+  public function getManagePackage(Request $request): View
   {
     $package = Package::all();
 
-    return view('package.view', [
+    return view('package.manage-package', [
       'user' => $request->user(),
       'package' => $package,
     ]);
   }
 
   /**
-   * Display the package details page.
+   * Display package details page.
    */
   public function getPackageDetails(Request $request, string $id): View
   {
     $packageData = Package::find($id);
     $travelDate = TravelDate::all();
 
-    return view('package.details', [
+    return view('package.package-details', [
       'user' => $request->user(),
       'packageData' => $packageData,
       'travelDate' => $travelDate,
@@ -44,21 +44,24 @@ class PackageController extends Controller
   }
 
   /**
-   * Display the package details page.
+   * Display update package page.
    */
-  public function getUpdateDetails(Request $request, string $id): View
+  public function getUpdatePackage(Request $request, string $id): View
   {
     $packageData = Package::find($id);
     $hotel = Hotel::all();
 
-    return view('package.update-details', [
+    return view('package.update-package', [
       'user' => $request->user(),
       'packageData' => $packageData,
       'hotel' => $hotel,
     ]);
   }
 
-  public function putUpdateDetails(Request $request, string $id)
+  /**
+   * Submit update package form.
+   */
+  public function putUpdatePackage(Request $request, string $id)
   {
     $package = Package::findOrFail($id);
 
@@ -107,39 +110,39 @@ class PackageController extends Controller
       'room_2' => $request['price_22_20_room_2'],
     ]);
 
-    return Redirect::route('package.details', $id)->with('status', 'package-updated');
+    return Redirect::route('package.package-details', $id)->with('status', 'package-updated');
   }
 
   /**
    * Delete package details.
    */
-  public function deletePackageDetails(string $id)
+  public function deletePackage(string $id)
   {
     $package = Package::find($id);
     $package->package_12_10()->delete();
     $package->package_22_20()->delete();
     $package->delete();
 
-    return Redirect::route('package.view')->with('status', 'package-details-deleted');
+    return Redirect::route('package.manage-package')->with('status', 'package-deleted');
   }
 
   /**
-   * Display the package add page.
+   * Display add package page.
    */
-  public function getPackageAdd(Request $request): View
+  public function getAddPackage(Request $request): View
   {
     $hotel = Hotel::all();
 
-    return view('package.add', [
+    return view('package.add-package', [
       'user' => $request->user(),
       'hotel' => $hotel,
     ]);
   }
 
   /**
-   * Submit the package add form.
+   * Submit add package form.
    */
-  public function postPackageAdd(Request $request)
+  public function postAddPackage(Request $request)
   {
     $price_12_10 = new Price();
     $price_22_20 = new Price();
@@ -202,11 +205,11 @@ class PackageController extends Controller
     $package->hotel_madinah_id = $request['hotel_madinah'];
     $package->save();
 
-    return Redirect::route('package.view')->with('status', 'package-submitted');
+    return Redirect::route('package.manage-package')->with('status', 'package-submitted');
   }
 
   /**
-   * Display the package page.
+   * Display travel date page.
    */
   public function getTravelDate(Request $request): View
   {
@@ -221,7 +224,7 @@ class PackageController extends Controller
   }
 
   /**
-   * Add travel date.
+   * Submit travel date form.
    */
   public function postTravelDate(Request $request)
   {
@@ -238,11 +241,11 @@ class PackageController extends Controller
 
     if ($request['package'] === '12 Days 10 Nights') {
       if (($fromDate->diffInDays($toDate) + 1) > 12) {
-        return Redirect::route('package.travel-date')->with('status', 'exceed-12-days');
+        return Redirect::route('package.get-travel-date')->with('status', 'exceed-12-days');
       }
     } else if ($request['package'] === '22 Days 20 Nights') {
       if (($fromDate->diffInDays($toDate) + 1) > 22) {
-        return Redirect::route('package.travel-date')->with('status', 'exceed-22-days');
+        return Redirect::route('package.get-travel-date')->with('status', 'exceed-22-days');
       }
     }
 
@@ -251,7 +254,7 @@ class PackageController extends Controller
     $travelDates->to = Carbon::create($request['to_date']);
     $travelDates->save();
 
-    return Redirect::route('package.travel-date')->with('status', 'travel-date-submitted');
+    return Redirect::route('package.get-travel-date')->with('status', 'travel-date-submitted');
   }
 
   /**
@@ -262,6 +265,6 @@ class PackageController extends Controller
     $travelDate = TravelDate::find($id);
     $travelDate->delete();
 
-    return Redirect::route('package.travel-date')->with('status', 'travel-date-deleted');
+    return Redirect::route('package.get-travel-date')->with('status', 'travel-date-deleted');
   }
 }

@@ -4,7 +4,7 @@
     class="m-3 mt-0 transition-all ease-out opacity-0 hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 sm:max-w-lg sm:w-full sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
     <div
       class="w-full flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-      <form method="post" action="{{ route('profile.update-picture') }}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('profile.post-profile-picture') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="flex items-center justify-between px-4 py-3 border-b dark:border-gray-700">

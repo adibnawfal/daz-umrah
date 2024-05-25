@@ -27,7 +27,7 @@
     </div>
 
     <div class="flex items-end justify-end mt-5 gap-x-2">
-      <form method="post" action="{{ route('profile.delete-picture') }}">
+      <form method="post" action="{{ route('profile.delete-profile-picture') }}">
         @csrf
         @method('delete')
 

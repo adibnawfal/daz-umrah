@@ -5,7 +5,6 @@
   <div class="w-full bg-[#9c182e] dark:bg-gray-900">
     <div class="max-w-[85rem] mx-auto w-full px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between w-full py-3">
-
         <!-- Top Left -->
         <div class="flex items-center gap-x-5">
           <!-- Follow Us -->
@@ -165,7 +164,7 @@
           class="flex flex-col mt-5 gap-y-4 gap-x-0 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-7 sm:mt-0 sm:ps-7 [--scrollspy-offset:220] md:[--scrollspy-offset:70]">
           <a class="font-bold text-gray-50 sm:py-6 hover:text-gray-300" href="{{ url('/#home') }}">Home</a>
           <a class="font-bold text-gray-50 sm:py-6 hover:text-gray-300"
-            href="{{ route('welcome.package') }}">Package</a>
+            href="{{ route('welcome.all-package') }}">Package</a>
           <a class="font-bold text-gray-50 sm:py-6 hover:text-gray-300" href="{{ url('/#aboutus') }}">About Us</a>
         </div>
       </div>

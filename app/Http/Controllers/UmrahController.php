@@ -9,7 +9,7 @@ use Illuminate\View\View;
 class UmrahController extends Controller
 {
   /**
-   * Display the package page.
+   * Display Umrah reservation list page.
    */
   public function getReservationList(Request $request): View
   {

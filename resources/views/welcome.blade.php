@@ -17,6 +17,7 @@
   <!-- Scripts -->
   <script src="https://kit.fontawesome.com/b1f9711591.js" crossorigin="anonymous"></script>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @livewireStyles
 </head>
 
 <body id="home" class="font-sans antialiased">
@@ -30,6 +31,8 @@
     <!-- Footer -->
     @include('layouts.footer')
   </div>
+
+  @livewireScripts
 </body>
 
 </html>

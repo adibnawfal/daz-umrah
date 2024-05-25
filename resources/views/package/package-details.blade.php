@@ -23,7 +23,7 @@
         </svg>
       </li>
       <li class="inline-flex items-center">
-        <a class="flex items-center text-sm text-gray-500" href="{{ route('package.view') }}">
+        <a class="flex items-center text-sm text-gray-500" href="{{ route('package.manage-package') }}">
           <svg class="flex-shrink-0 me-3 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" class="lucide lucide-clipboard-list">
@@ -61,7 +61,7 @@
 
     <!-- Button -->
     <div class="inline-flex gap-x-2">
-      <form method="post" action="{{ route('package.delete-details', $packageData->id) }}">
+      <form method="post" action="{{ route('package.delete-package', $packageData->id) }}">
         @csrf
         @method('delete')
 
@@ -96,6 +96,6 @@
   </div>
 
   <!-- Package Details -->
-  @include('package.partials.display-package-details')
+  @include('package.partials.view-package-details')
   <!-- End Package Details -->
 </x-app-layout>

@@ -15,7 +15,7 @@ use Intervention\Image\Facades\Image;
 class ProfileController extends Controller
 {
   /**
-   * Display the user's profile form.
+   * Display profile page.
    */
   public function getProfile(Request $request): View
   {
@@ -25,9 +25,9 @@ class ProfileController extends Controller
   }
 
   /**
-   * Update the user's profile picture.
+   * Submit profile picture form.
    */
-  public function updatePicture(Request $request)
+  public function postProfilePicture(Request $request)
   {
     $this->validate($request, [
       'profile_img' => ['nullable', 'mimes:jpeg,jpg,png', 'max:10000'],
@@ -48,51 +48,54 @@ class ProfileController extends Controller
       $request->user()->update(['profile_img' => $filename]);
     }
 
-    return Redirect::route('profile.view')->with('status', 'picture-updated');
+    return Redirect::route('profile')->with('status', 'picture-updated');
   }
 
   /**
-   * Update the user's profile information.
+   * Delete profile picture.
    */
-  public function updateProfile(ProfileUpdateRequest $request): RedirectResponse
-  {
-    $request->user()->fill($request->validated());
-
-    if ($request->user()->isDirty('email')) {
-      $request->user()->email_verified_at = null;
-    }
-
-    $request->user()->save();
-
-    return Redirect::route('profile.view')->with('status', 'profile-updated');
-  }
-
-  /**
-   * Update the user's address information.
-   */
-  public function updateAddress(AddressUpdateRequest $request): RedirectResponse
-  {
-    $request->user()->fill($request->validated());
-
-    if ($request->user()->isDirty('email')) {
-      $request->user()->email_verified_at = null;
-    }
-
-    $request->user()->save();
-
-    return Redirect::route('profile.view')->with('status', 'address-updated');
-  }
-
-  public function deletePicture(Request $request)
+  public function deleteProfilePicture(Request $request)
   {
     $request->user()->update(['profile_img' => null]);
-    return Redirect::route('profile.view')->with('status', 'picture-deleted');
+    return Redirect::route('profile')->with('status', 'picture-deleted');
   }
 
   /**
-   * Delete the user's account.
+   * Submit profile information form.
    */
-  public function destroy(Request $request): RedirectResponse
+  public function patchProfileInformation(ProfileUpdateRequest $request): RedirectResponse
+  {
+    $request->user()->fill($request->validated());
+
+    if ($request->user()->isDirty('email')) {
+      $request->user()->email_verified_at = null;
+    }
+
+    $request->user()->save();
+
+    return Redirect::route('profile')->with('status', 'profile-updated');
+  }
+
+  /**
+   * Submit profile adrrees form.
+   */
+  public function patchProfileAddress(AddressUpdateRequest $request): RedirectResponse
+  {
+    $request->user()->fill($request->validated());
+
+    if ($request->user()->isDirty('email')) {
+      $request->user()->email_verified_at = null;
+    }
+
+    $request->user()->save();
+
+    return Redirect::route('profile')->with('status', 'address-updated');
+  }
+
+  /**
+   * Delete profile.
+   */
+  public function deleteProfile(Request $request): RedirectResponse
   {
     $request->validateWithBag('userDeletion', [
       'password' => ['required', 'current_password'],

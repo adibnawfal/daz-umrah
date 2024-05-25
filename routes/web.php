@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\UmrahController;
@@ -23,73 +24,51 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//   return view('welcome');
-// })->name('welcome');
-
-Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
-Route::get('/welcome/package/', [WelcomeController::class, 'getPackage'])->name('welcome.package');
+Route::get('/', [WelcomeController::class, 'getWelcome'])->name('welcome');
+Route::get('/welcome/package', [WelcomeController::class, 'getAllPackage'])->name('welcome.all-package');
 Route::get('/welcome/package/details/{id}', [WelcomeController::class, 'getPackageDetails'])->name('welcome.package-details');
-
-// Route::get('/dashboard', function () {
-//   return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
   // Welcome
-  Route::get('/welcome/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{room}', [WelcomeController::class, 'getUmrahReservation'])->name('welcome.umrah-reservation');
+  Route::get('/welcome/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{room}', [WelcomeController::class, 'getUmrahReservation'])->name('welcome.get-umrah-reservation');
   Route::post('/welcome/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{room}', [WelcomeController::class, 'postUmrahReservation'])->name('welcome.post-umrah-reservation');
 
+  // Dashboard
+  Route::get('/dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard');
+
   // Package
-  Route::get('/package', [PackageController::class, 'getPackage'])->name('package.view');
-  Route::get('/package/details/{id}', [PackageController::class, 'getPackageDetails'])->name('package.details');
-  Route::get('/package/details/update/{id}', [PackageController::class, 'getUpdateDetails'])->name('package.update-details');
-  Route::put('/package/details/update/{id}', [PackageController::class, 'putUpdateDetails'])->name('package.put-update-details');
-  Route::delete('/package/details/{id}', [PackageController::class, 'deletePackageDetails'])->name('package.delete-details');
-  Route::get('/package/add', [PackageController::class, 'getPackageAdd'])->name('package.add');
-  Route::post('/package/add', [PackageController::class, 'postPackageAdd'])->name('package.add-submit');
-  Route::get('/package/travel-date', [PackageController::class, 'getTravelDate'])->name('package.travel-date');
-  Route::post('/package/travel-date', [PackageController::class, 'postTravelDate'])->name('package.add-travel-date');
+  Route::get('/package/manage', [PackageController::class, 'getManagePackage'])->name('package.manage-package');
+  Route::get('/package/details/{id}', [PackageController::class, 'getPackageDetails'])->name('package.package-details');
+  Route::get('/package/details/update/{id}', [PackageController::class, 'getUpdatePackage'])->name('package.get-update-package');
+  Route::put('/package/details/update/{id}', [PackageController::class, 'putUpdatePackage'])->name('package.put-update-package');
+  Route::delete('/package/details/delete/{id}', [PackageController::class, 'deletePackage'])->name('package.delete-package');
+  Route::get('/package/add', [PackageController::class, 'getAddPackage'])->name('package.get-add-package');
+  Route::post('/package/add', [PackageController::class, 'postAddPackage'])->name('package.post-add-package');
+  Route::get('/package/travel-date', [PackageController::class, 'getTravelDate'])->name('package.get-travel-date');
+  Route::post('/package/travel-date', [PackageController::class, 'postTravelDate'])->name('package.post-travel-date');
   Route::delete('/package/travel-date/{id}', [PackageController::class, 'deleteTravelDate'])->name('package.delete-travel-date');
 
   // Umrah
   Route::get('/umrah/reservation-list', [UmrahController::class, 'getReservationList'])->name('umrah.reservation-list');
 
   // Profile
-  Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile.view');
-  Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.update-picture');
-  Route::patch('/profile/update-profile', [ProfileController::class, 'updateProfile'])->name('profile.update-profile');
-  Route::patch('/profile/update-address', [ProfileController::class, 'updateAddress'])->name('profile.update-address');
-  Route::delete('/profile/delete-picture', [ProfileController::class, 'deletePicture'])->name('profile.delete-picture');
-  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile');
+  Route::post('/profile/picture', [ProfileController::class, 'postProfilePicture'])->name('profile.post-profile-picture');
+  Route::delete('/profile/picture', [ProfileController::class, 'deleteProfilePicture'])->name('profile.delete-profile-picture');
+  Route::patch('/profile/information', [ProfileController::class, 'patchProfileInformation'])->name('profile.patch-profile-information');
+  Route::patch('/profile/address', [ProfileController::class, 'patchProfileAddress'])->name('profile.patch-profile-address');
+  Route::delete('/profile/delete', [ProfileController::class, 'deleteProfile'])->name('profile.delete-profile');
 
   // Report
-  Route::get('/report', [ReportController::class, 'getReport'])->name('report.view');
+  Route::get('/report', [ReportController::class, 'getReport'])->name('report');
 
   // Feedback
-  Route::get('/feedback', [FeedbackController::class, 'getFeedback'])->name('feedback.view');
-  Route::get('/feedback/give-feedback', [FeedbackController::class, 'getGiveFeedback'])->name('feedback.give-feedback');
-  Route::get('/feedback/edit-feedback-form/{id}', [FeedbackController::class, 'getEditFeedbackForm'])->name('feedback.edit-feedback-form');
-  Route::post('/feedback/submit-feedback', [FeedbackController::class, 'postSubmitFeedback'])->name('feedback.submit-feedback');
-  Route::put('/feedback/edit-feedback/{id}', [FeedbackController::class, 'putEditFeedback'])->name('feedback.edit-feedback');
-  Route::delete('/feedback/delete-feedback/{id}', [FeedbackController::class, 'deleteFeedback'])->name('feedback.delete-feedback');
-});
-
-// Admin routes
-Route::middleware(['auth', 'role:admin'])->group(function () {
-  // Route::get('/admin/dashboard', [AdminController::class, 'getDashboard'])->name('admin.dashboard');
-});
-
-// Staff routes
-Route::middleware(['auth', 'role:staff'])->group(function () {
-  // Route::get('/staff/dashboard', [StaffController::class, 'getDashboard'])->name('staff.dashboard');
-});
-
-// Customer routes
-Route::middleware(['auth', 'role:customer'])->group(function () {
-  // Route::get('/customer/dashboard', [CustomerController::class, 'getDashboard'])->name('customer.dashboard');
+  Route::get('/feedback', [FeedbackController::class, 'getFeedback'])->name('feedback');
+  Route::get('/feedback/give', [FeedbackController::class, 'getGiveFeedback'])->name('feedback.get-give-feedback');
+  Route::post('/feedback/give', [FeedbackController::class, 'postGiveFeedback'])->name('feedback.post-give-feedback');
+  Route::get('/feedback/edit/{id}', [FeedbackController::class, 'getEditFeedback'])->name('feedback.get-edit-feedback');
+  Route::put('/feedback/edit/{id}', [FeedbackController::class, 'putEditFeedback'])->name('feedback.put-edit-feedback');
+  Route::delete('/feedback/delete/{id}', [FeedbackController::class, 'deleteFeedback'])->name('feedback.delete-feedback');
 });
 
 require __DIR__ . '/auth.php';

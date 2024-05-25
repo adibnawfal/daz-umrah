@@ -8,7 +8,7 @@ use Illuminate\View\View;
 class ReportController extends Controller
 {
   /**
-   * Display the report page.
+   * Display report page.
    */
   public function getReport(Request $request): View
   {

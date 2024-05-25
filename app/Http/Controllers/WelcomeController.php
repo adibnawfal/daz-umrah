@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Redirect;
 class WelcomeController extends Controller
 {
   /**
-   * Display the welcome page.
+   * Display welcome page.
    */
-  public function index(): View
+  public function getWelcome(): View
   {
     $packages = Package::all();
 
@@ -28,33 +28,33 @@ class WelcomeController extends Controller
   }
 
   /**
-   * Display the package page.
+   * Display all package page.
    */
-  public function getPackage(): View
+  public function getAllPackage(): View
   {
     $package = Package::all();
 
-    return view('welcome.package', [
+    return view('welcome.all-package', [
       'package' => $package,
     ]);
   }
 
   /**
-   * Display the package details page.
+   * Display package details page.
    */
   public function getPackageDetails(int $id): View
   {
     $packageData = Package::find($id);
     $travelDate = TravelDate::all();
 
-    return view('welcome.details', [
+    return view('welcome.package-details', [
       'packageData' => $packageData,
       'travelDate' => $travelDate,
     ]);
   }
 
   /**
-   * Display the Umrah reservation page.
+   * Display Umrah reservation page.
    */
   public function getUmrahReservation(Request $request, int $packageId, int $priceId, string $room): View
   {
@@ -81,7 +81,7 @@ class WelcomeController extends Controller
   }
 
   /**
-   * Submit Umrah reservation.
+   * Submit Umrah reservation form.
    */
   public function postUmrahReservation(Request $request, int $packageId, int $priceId, string $room)
   {

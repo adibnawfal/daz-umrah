@@ -24,6 +24,7 @@
   <!-- Scripts -->
   <script src="https://kit.fontawesome.com/b1f9711591.js" crossorigin="anonymous"></script>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @livewireStyles
 </head>
 
 <body class="font-sans antialiased bg-gray-50 dark:bg-gray-900">
@@ -37,6 +38,8 @@
   <div class="flex flex-col w-full gap-6 px-4 py-10 sm:px-6 md:px-8 lg:ps-72">
     {{ $slot }}
   </div>
+
+  @livewireScripts
 </body>
 
 {{-- <body class="font-sans antialiased">

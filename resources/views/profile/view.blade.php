@@ -37,37 +37,37 @@
 
   <div class="flex gap-x-6">
     <div class="flex flex-col gap-y-6 basis-1/3 max-[1750px]:basis-2/5">
-      <!-- Update Profile Picture -->
+      <!-- Profile Picture -->
       <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-        @include('profile.partials.update-profile-picture')
+        @include('profile.partials.profile-picture')
       </div>
-      <!-- End Update Profile Picture -->
+      <!-- End Profile Picture -->
 
-      <!-- Update Password -->
+      <!-- Change Password -->
       <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-        @include('profile.partials.update-password-form')
+        @include('profile.partials.change-password')
       </div>
-      <!-- End Update Password -->
+      <!-- End Change Password -->
 
-      <!-- Delete User -->
+      <!-- Delete Profile -->
       <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-        @include('profile.partials.delete-user-form')
+        @include('profile.partials.delete-profile')
       </div>
-      <!-- End Delete User -->
+      <!-- End Delete Profile -->
     </div>
 
     <div class="flex flex-col gap-y-6 basis-2/3 max-[1750px]:basis-3/5">
-      <!-- Update Profile -->
+      <!-- Profile Information -->
       <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-        @include('profile.partials.update-profile-information-form')
+        @include('profile.partials.profile-information')
       </div>
-      <!-- End Update Profile -->
+      <!-- End Profile Information -->
 
-      <!-- Update Address -->
+      <!-- Address Information -->
       <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-        @include('profile.partials.update-address-information-form')
+        @include('profile.partials.address-information')
       </div>
-      <!-- End Update Address -->
+      <!-- End Address Information -->
     </div>
   </div>
 </x-app-layout>

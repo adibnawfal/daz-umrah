@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 class FeedbackController extends Controller
 {
   /**
-   * Display the feedback page.
+   * Display feedback page.
    */
   public function getFeedback(Request $request): View
   {
@@ -30,7 +30,7 @@ class FeedbackController extends Controller
   }
 
   /**
-   * Display the give feedback form page.
+   * Display give feedback page.
    */
   public function getGiveFeedback(Request $request): View
   {
@@ -39,20 +39,10 @@ class FeedbackController extends Controller
     ]);
   }
 
-  public function getEditFeedbackForm(Request $request, string $id): View
-  {
-    $feedback = Feedback::find($id);
-
-    return view('feedback.edit-feedback-form', [
-      'user' => $request->user(),
-      'feedback' => $feedback,
-    ]);
-  }
-
   /**
-   * Submit the give feedback form.
+   * Submit give feedback form.
    */
-  public function postSubmitFeedback(Request $request)
+  public function postGiveFeedback(Request $request)
   {
     $feedback = new Feedback();
     $userId = auth()->user()->id;
@@ -69,9 +59,25 @@ class FeedbackController extends Controller
     $feedback->details = $request['details'];
     $feedback->save();
 
-    return Redirect::route('feedback.view')->with('status', 'feedback-submitted');
+    return Redirect::route('feedback')->with('status', 'feedback-submitted');
   }
 
+  /**
+   * Display edit feedback page.
+   */
+  public function getEditFeedback(Request $request, string $id): View
+  {
+    $feedback = Feedback::find($id);
+
+    return view('feedback.edit-feedback', [
+      'user' => $request->user(),
+      'feedback' => $feedback,
+    ]);
+  }
+
+  /**
+   * Submit edit feedback form.
+   */
   public function putEditFeedback(Request $request, string $id)
   {
     $feedback = Feedback::find($id);
@@ -89,14 +95,17 @@ class FeedbackController extends Controller
     $feedback->details = $request['details'];
     $feedback->save();
 
-    return Redirect::route('feedback.view')->with('status', 'feedback-updated');
+    return Redirect::route('feedback')->with('status', 'feedback-updated');
   }
 
+  /**
+   * Delete feedback.
+   */
   public function deleteFeedback(string $id)
   {
     $feedback = Feedback::find($id);
     $feedback->delete();
 
-    return Redirect::route('feedback.view')->with('status', 'feedback-deleted');
+    return Redirect::route('feedback')->with('status', 'feedback-deleted');
   }
 }

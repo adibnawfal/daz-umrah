@@ -21,7 +21,7 @@
         <path d="m9 18 6-6-6-6" />
       </svg>
     </li>
-    <a class="inline-flex items-center" href="{{ route('feedback.view') }}">
+    <a class="inline-flex items-center" href="{{ route('feedback') }}">
       <p class="flex items-center text-sm text-gray-500">
         <svg class="flex-shrink-0 me-3 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -74,7 +74,7 @@
     <!-- End Title -->
 
     <!-- Form -->
-    <form method="post" action="{{ route('feedback.edit-feedback', $feedback->id) }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('feedback.put-edit-feedback', $feedback->id) }}">
       @csrf
       @method('put')
 
@@ -238,7 +238,7 @@
       <!-- Button-->
       <div class="flex justify-end mt-5 gap-x-2">
         <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-          href="{{ route('feedback.view') }}">
+          href="{{ route('feedback') }}">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" class="lucide lucide-x">
