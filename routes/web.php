@@ -2,15 +2,11 @@
 
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\UmrahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\StaffController;
-use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,8 +26,8 @@ Route::get('/welcome/package/details/{id}', [WelcomeController::class, 'getPacka
 
 Route::middleware('auth')->group(function () {
   // Welcome
-  Route::get('/welcome/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{room}', [WelcomeController::class, 'getUmrahReservation'])->name('welcome.get-umrah-reservation');
-  Route::post('/welcome/package/umrah-reservation/{packageId}/price/{priceId}/room-price/{room}', [WelcomeController::class, 'postUmrahReservation'])->name('welcome.post-umrah-reservation');
+  Route::get('/welcome/package/reservation/{packageId}/price/{priceId}/room/{room}', [WelcomeController::class, 'getUmrahReservation'])->name('welcome.get-umrah-reservation');
+  Route::post('/welcome/package/reservation/{packageId}/price/{priceId}/room/{room}', [WelcomeController::class, 'postUmrahReservation'])->name('welcome.post-umrah-reservation');
 
   // Dashboard
   Route::get('/dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard');

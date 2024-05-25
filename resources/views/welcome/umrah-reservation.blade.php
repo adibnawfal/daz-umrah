@@ -22,7 +22,7 @@
           </svg>
         </li>
         <li class="inline-flex items-center">
-          <a class="flex items-center text-sm text-gray-500" href="{{ route('welcome.package') }}">
+          <a class="flex items-center text-sm text-gray-500" href="{{ route('welcome.all-package') }}">
             <svg class="flex-shrink-0 me-3 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" class="lucide lucide-clipboard-list">
@@ -315,7 +315,7 @@
             <!-- Button -->
             <div class="flex justify-end mt-5 gap-x-2">
               <a class="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 align-middle transition-all bg-white border rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 dark:bg-neutral-800 dark:hover:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                href="{{ route('welcome.package') }}">
+                href="{{ route('welcome.all-package') }}">
                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" class="lucide lucide-x">
