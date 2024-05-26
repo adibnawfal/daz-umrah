@@ -45,7 +45,10 @@ Route::middleware('auth')->group(function () {
   Route::delete('/package/travel-date/{id}', [PackageController::class, 'deleteTravelDate'])->name('package.delete-travel-date');
 
   // Umrah
-  Route::get('/umrah/reservation-list', [UmrahController::class, 'getReservationList'])->name('umrah.reservation-list');
+  Route::get('/umrah/reservation', [UmrahController::class, 'getReservationList'])->name('umrah.reservation-list');
+  Route::put('/umrah/reservation/{id}', [UmrahController::class, 'putUpdateStatus'])->name('umrah.put-update-status');
+  Route::get('/umrah/reservation/details/{id}', [UmrahController::class, 'getUpdateDetails'])->name('umrah.get-update-details');
+  Route::put('/umrah/reservation/details/{id}', [UmrahController::class, 'putUpdateDetails'])->name('umrah.put-update-details');
 
   // Profile
   Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile');

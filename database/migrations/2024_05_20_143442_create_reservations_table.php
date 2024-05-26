@@ -21,6 +21,8 @@ return new class extends Migration {
       $table->date('to_date');
       $table->string('status');
       $table->string('remarks');
+      $table->string('identity_card')->nullable();
+      $table->string('passport')->nullable();
       $table->bigInteger('payment_id')->unsigned();
       $table->foreign('payment_id')->references('id')->on('payments')->onDelete('cascade');
       $table->timestamps();

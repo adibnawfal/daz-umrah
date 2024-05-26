@@ -282,10 +282,45 @@
                               class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
                               <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 16v-4"></path>
-                                <path d="M12 8h.01"></path>
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 16v-4" />
+                                <path d="M12 8h.01" />
+                              </svg>
+                              {{ $reservationData->status }}
+                            </span>
+                          @elseif ($reservationData->status === 'Update Details')
+                            <span
+                              class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 border border-yellow-200">
+                              <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 16v-4" />
+                                <path d="M12 8h.01" />
+                              </svg>
+                              {{ $reservationData->status }}
+                            </span>
+                          @elseif ($reservationData->status === 'Make Payment')
+                            <span
+                              class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 border border-yellow-200">
+                              <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 16v-4" />
+                                <path d="M12 8h.01" />
+                              </svg>
+                              {{ $reservationData->status }}
+                            </span>
+                          @elseif ($reservationData->status === 'Approved')
+                            <span
+                              class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-teal-100 text-teal-800 border border-teal-200">
+                              <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="m9 12 2 2 4-4" />
                               </svg>
                               {{ $reservationData->status }}
                             </span>
@@ -328,8 +363,9 @@
                                   class="block px-3 py-2 text-xs font-medium text-gray-400 uppercase dark:text-gray-600">
                                   Actions
                                 </span>
-                                <a class="flex items-center px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                  href="#">
+                                <button
+                                  class="flex items-center px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                  data-hs-overlay="#hs-update-status-{{ $reservationData->id }}-modal">
                                   <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -340,7 +376,7 @@
                                     <path d="M20 17H4" />
                                   </svg>
                                   Update Status
-                                </a>
+                                </button>
                                 <a class="flex items-center px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                                   href="#">
                                   <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -377,6 +413,7 @@
                       </td>
                       <!-- End Actions -->
                     </tr>
+                    @include('umrah.partials.modal.hs-update-status-modal')
                   @endforeach
                 </tbody>
               </table>
@@ -502,7 +539,7 @@
 
                     <!-- Give Feedback -->
                     <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                      href="{{ route('welcome.package') }}">
+                      href="{{ route('welcome.all-package') }}">
                       <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-plus">
@@ -573,9 +610,11 @@
                       </span>
                     </th>
 
-                    <!-- Actions Header -->
-                    <th scope="col" class="px-6 py-3 text-end"></th>
-                    <!-- End Actions Header -->
+                    <th scope="col" class="px-6 py-3 text-start">
+                      <span class="text-xs font-semibold tracking-wide text-gray-800 uppercase dark:text-gray-200">
+                        Actions
+                      </span>
+                    </th>
                   </tr>
                 </thead>
 
@@ -642,10 +681,45 @@
                               class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
                               <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 16v-4"></path>
-                                <path d="M12 8h.01"></path>
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 16v-4" />
+                                <path d="M12 8h.01" />
+                              </svg>
+                              {{ $reservationData->status }}
+                            </span>
+                          @elseif ($reservationData->status === 'Update Details')
+                            <span
+                              class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 border border-yellow-200">
+                              <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 16v-4" />
+                                <path d="M12 8h.01" />
+                              </svg>
+                              {{ $reservationData->status }}
+                            </span>
+                          @elseif ($reservationData->status === 'Make Payment')
+                            <span
+                              class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 border border-yellow-200">
+                              <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 16v-4" />
+                                <path d="M12 8h.01" />
+                              </svg>
+                              {{ $reservationData->status }}
+                            </span>
+                          @elseif ($reservationData->status === 'Approved')
+                            <span
+                              class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-teal-100 text-teal-800 border border-teal-200">
+                              <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="m9 12 2 2 4-4" />
                               </svg>
                               {{ $reservationData->status }}
                             </span>
@@ -659,12 +733,45 @@
                         <div class="p-6">
                           @if ($reservationData->status === 'Under Review')
                             <div class="flex items-center gap-x-3">
-                              <span class="text-xs text-gray-500 dark:text-neutral-500">1/5</span>
+                              <span class="text-xs text-gray-500 dark:text-neutral-500">1/4</span>
                               <div
                                 class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700">
                                 <div
                                   class="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-neutral-200"
                                   role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+                                  aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          @elseif ($reservationData->status === 'Update Details')
+                            <div class="flex items-center gap-x-3">
+                              <span class="text-xs text-gray-500 dark:text-neutral-500">2/4</span>
+                              <div
+                                class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700">
+                                <div
+                                  class="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-neutral-200"
+                                  role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                  aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          @elseif ($reservationData->status === 'Make Payment')
+                            <div class="flex items-center gap-x-3">
+                              <span class="text-xs text-gray-500 dark:text-neutral-500">3/4</span>
+                              <div
+                                class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700">
+                                <div
+                                  class="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-neutral-200"
+                                  role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+                                  aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          @elseif ($reservationData->status === 'Approved')
+                            <div class="flex items-center gap-x-3">
+                              <span class="text-xs text-gray-500 dark:text-neutral-500">4/4</span>
+                              <div
+                                class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700">
+                                <div
+                                  class="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-neutral-200"
+                                  role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
                                   aria-valuemax="100"></div>
                               </div>
                             </div>
@@ -708,7 +815,7 @@
                                   Actions
                                 </span>
                                 <a class="flex items-center px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                  href="#">
+                                  href="{{ route('umrah.get-update-details', $reservationData->id) }}">
                                   <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
