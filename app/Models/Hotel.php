@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Hotel extends Model
 {
   use HasFactory;
+
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
+  protected $fillable = [
+    'category',
+    'name',
+    'rating',
+    'location',
+    'distance',
+  ];
 }

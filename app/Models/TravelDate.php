@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class TravelDate extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
+  protected $fillable = [
+    'package',
+    'from',
+    'to',
+  ];
 }

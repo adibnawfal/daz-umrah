@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Package;
 use App\Models\Price;
 use App\Models\TravelDate;
 use App\Models\Payment;
 use App\Models\Reservation;
-use Brick\Math\BigInteger;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Redirect;

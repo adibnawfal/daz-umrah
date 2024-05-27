@@ -47,8 +47,14 @@ Route::middleware('auth')->group(function () {
   // Umrah
   Route::get('/umrah/reservation', [UmrahController::class, 'getReservationList'])->name('umrah.reservation-list');
   Route::put('/umrah/reservation/{id}', [UmrahController::class, 'putUpdateStatus'])->name('umrah.put-update-status');
+  Route::patch('/umrah/reservation/remarks/{id}', [UmrahController::class, 'patchWriteRemarks'])->name('umrah.patch-write-remarks');
   Route::get('/umrah/reservation/details/{id}', [UmrahController::class, 'getUpdateDetails'])->name('umrah.get-update-details');
   Route::put('/umrah/reservation/details/{id}', [UmrahController::class, 'putUpdateDetails'])->name('umrah.put-update-details');
+  Route::get('/umrah/reservation/payment/{id}', [UmrahController::class, 'getMakePayment'])->name('umrah.get-make-payment');
+  Route::patch('/umrah/reservation/payment/{id}', [UmrahController::class, 'patchMakePayment'])->name('umrah.patch-make-payment');
+  Route::get('/umrah/reservation/payment/success/{id}', [UmrahController::class, 'paymentSuccess'])->name('umrah.payment-success');
+  Route::get('/umrah/reservation/payment/failure', [UmrahController::class, 'paymentFailure'])->name('umrah.payment-failure');
+  Route::patch('/umrah/reservation/cancel/{id}', [UmrahController::class, 'patchCancelReservation'])->name('umrah.patch-cancel-reservation');
 
   // Profile
   Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile');

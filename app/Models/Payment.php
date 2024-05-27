@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
+  protected $fillable = [
+    'package',
+    'total_amount',
+    'status',
+    'method',
+    'date_paid',
+  ];
 }

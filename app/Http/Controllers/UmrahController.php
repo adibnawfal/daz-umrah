@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Http\File as NewFile;
@@ -34,7 +37,7 @@ class UmrahController extends Controller
    */
   public function putUpdateStatus(Request $request, string $id)
   {
-    $reservation = Reservation::findOrFail($id);
+    $reservationData = Reservation::findOrFail($id);
 
     $this->validate($request, [
       'status' => ['required', 'string', 'max:255'],
@@ -62,11 +65,27 @@ class UmrahController extends Controller
         break;
     }
 
-    $reservation->status = $request['status'];
-    $reservation->remarks = $remarks;
-    $reservation->save();
+    $reservationData->status = $request['status'];
+    $reservationData->remarks = $remarks;
+    $reservationData->save();
 
     return Redirect::route('umrah.reservation-list')->with('status', 'status-updated');
+  }
+
+  /**
+   * Submit write remarks form.
+   */
+  public function patchWriteRemarks(Request $request, string $id)
+  {
+    $reservationData = Reservation::findOrFail($id);
+
+    $this->validate($request, [
+      'remarks' => ['required', 'string', 'max:255'],
+    ]);
+
+    $reservationData->update(['remarks' => $request['remarks']]);
+
+    return Redirect::route('umrah.reservation-list')->with('status', 'remarks-updated');
   }
 
   /**
@@ -87,7 +106,7 @@ class UmrahController extends Controller
    */
   public function putUpdateDetails(Request $request, string $id)
   {
-    $reservation = Reservation::findOrFail($id);
+    $reservationData = Reservation::findOrFail($id);
 
     $this->validate($request, [
       'identity_card' => ['required', 'mimes:pdf,zip', 'max:10000'],
@@ -110,13 +129,108 @@ class UmrahController extends Controller
       Storage::putFileAs('files/umrah', new NewFile($identityCard), $fileNameIdentityCard);
       Storage::putFileAs('files/umrah', new NewFile($passport), $fileNamePassport);
 
-      // $reservation->status = 'Make Payment';
-      // $reservation->remarks = 'Please complete your payment by clicking the \'Make Payment\' button under the Actions column.';
-      $reservation->identity_card = $fileNameIdentityCard;
-      $reservation->passport = $fileNamePassport;
-      $reservation->save();
+      $reservationData->identity_card = $fileNameIdentityCard;
+      $reservationData->passport = $fileNamePassport;
+      $reservationData->save();
     }
 
     return Redirect::route('umrah.reservation-list')->with('status', 'details-updated');
+  }
+
+  /**
+   * Display make payment page.
+   */
+  public function getMakePayment(Request $request, string $id): View
+  {
+    $reservationData = Reservation::findOrFail($id);
+
+    return view('umrah.make-payment', [
+      'user' => $request->user(),
+      'reservationData' => $reservationData,
+    ]);
+  }
+
+  /**
+   * Submit make payment form.
+   */
+  public function patchMakePayment(Request $request, string $id)
+  {
+    $reservationData = Reservation::findOrFail($id);
+
+    $this->validate($request, [
+      'payment_method' => ['required', 'string', 'max:255'],
+    ]);
+
+    switch ($request['payment_method']) {
+      case 'Cash':
+        $reservationData->payment()->update([
+          'status' => 'Pending',
+          'method' => $request['payment_method'],
+          'date_paid' => null,
+        ]);
+        return Redirect::route('umrah.reservation-list')->with('status', 'payment-cash');
+
+      case 'Stripe':
+        $reservationData = Reservation::findOrFail($id);
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+        $session = Session::create([
+          'line_items' => [
+            [
+              'price_data' => [
+                'currency' => 'myr',
+                'product_data' => [
+                  'name' => 'Package ' . $reservationData->package->name . ' ' . $reservationData->package->year,
+                ],
+                'unit_amount' => $reservationData->payment->total_amount * 100,
+              ],
+              'quantity' => 1,
+            ],
+          ],
+          'mode' => 'payment',
+          'success_url' => route('umrah.payment-success', $id),
+          'cancel_url' => route('umrah.payment-failure'),
+        ]);
+        return redirect()->away($session->url);
+
+      default:
+        return Redirect::route('umrah.reservation-list')->with('status', 'payment-failure');
+    }
+  }
+
+  /**
+   * Handle stripe payment success.
+   */
+  public function paymentSuccess(string $id)
+  {
+    $reservationData = Reservation::findOrFail($id);
+    $reservationData->payment()->update([
+      'status' => 'Paid',
+      'method' => 'Stripe',
+      'date_paid' => Carbon::now()->toDateTimeString(),
+    ]);
+
+    return Redirect::route('umrah.reservation-list')->with('status', 'payment-success');
+  }
+
+  /**
+   * Handle stripe payment failure.
+   */
+  public function paymentFailure()
+  {
+    return Redirect::route('umrah.reservation-list')->with('status', 'payment-failure');
+  }
+
+  /**
+   * Submit cancel reservation form.
+   */
+  public function patchCancelReservation(string $id)
+  {
+    $reservationData = Reservation::findOrFail($id);
+    $reservationData->update([
+      'status' => 'Canceled',
+      'remarks' => 'Your reservation has been canceled.'
+    ]);
+
+    return Redirect::route('umrah.reservation-list')->with('status', 'reservation-canceled');
   }
 }

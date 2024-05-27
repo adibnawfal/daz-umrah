@@ -1,6 +1,6 @@
 <x-app-layout>
   <x-slot:title>
-    Reservation List
+    Update Details
   </x-slot>
 
   <!-- Breadcrumb -->
@@ -59,7 +59,7 @@
         Update Umrah Details
       </h2>
       <p class="text-sm text-gray-600 dark:text-gray-400">
-        Update existing Umrah package.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </p>
     </div>
 
