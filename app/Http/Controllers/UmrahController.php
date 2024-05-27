@@ -90,8 +90,8 @@ class UmrahController extends Controller
     $reservation = Reservation::findOrFail($id);
 
     $this->validate($request, [
-      'identity_card' => ['required', 'mimes:jpeg,jpg,png', 'max:10000'],
-      'passport' => ['required', 'mimes:jpeg,jpg,png', 'max:10000'],
+      'identity_card' => ['required', 'mimes:pdf,zip', 'max:10000'],
+      'passport' => ['required', 'mimes:pdf,zip', 'max:10000'],
     ]);
 
     if ($request->hasFile('identity_card') && $request->hasFile('passport')) {
@@ -102,16 +102,16 @@ class UmrahController extends Controller
       $fileNamePassport = 'passport_' . $request->user()->id . '_' . time() . '.' . $passport->getClientOriginalExtension();
 
       // Ensure the directory exists
-      $path = storage_path('app/images/umrah');
+      $path = storage_path('app/files/umrah');
       if (!File::isDirectory($path)) {
         File::makeDirectory($path, 0777, true, true);
       }
 
-      Storage::putFileAs('images/umrah', new NewFile($identityCard), $fileNameIdentityCard);
-      Storage::putFileAs('images/umrah', new NewFile($passport), $fileNamePassport);
+      Storage::putFileAs('files/umrah', new NewFile($identityCard), $fileNameIdentityCard);
+      Storage::putFileAs('files/umrah', new NewFile($passport), $fileNamePassport);
 
-      $reservation->status = 'Make Payment';
-      $reservation->remarks = 'Please complete your payment by clicking the \'Make Payment\' button under the Actions column.';
+      // $reservation->status = 'Make Payment';
+      // $reservation->remarks = 'Please complete your payment by clicking the \'Make Payment\' button under the Actions column.';
       $reservation->identity_card = $fileNameIdentityCard;
       $reservation->passport = $fileNamePassport;
       $reservation->save();
