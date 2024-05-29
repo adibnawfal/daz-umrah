@@ -38,6 +38,253 @@
   </ol>
   <!-- End Breadcrumb -->
 
-  @include('report.partials.users-list')
+  <!-- User -->
+  <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+    <div class="mb-4 sm:mb-7">
+      <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+        Users
+      </h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- All User -->
+      <a class="flex flex-col h-full p-5 transition-all duration-300 bg-white border border-gray-200 group hover:border-transparent hover:shadow-lg rounded-xl dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40"
+        href="{{ route('report.all-user') }}">
+        <div class="mb-5">
+          <h3 class="font-semibold text-gray-800 dark:text-neutral-300 dark:group-hover:text-white">
+            All User
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm text-gray-800 dark:text-neutral-200">Updated 1 hour ago</h5>
+          <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-move-right">
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </div>
+      </a>
+      <!-- End All User -->
+
+      <!-- Staff -->
+      <a class="flex flex-col h-full p-5 transition-all duration-300 bg-white border border-gray-200 group hover:border-transparent hover:shadow-lg rounded-xl dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40"
+        href="{{ route('report.staff') }}">
+        <div class="mb-5">
+          <h3 class="font-semibold text-gray-800 dark:text-neutral-300 dark:group-hover:text-white">
+            Staff
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm text-gray-800 dark:text-neutral-200">Updated 1 hour ago</h5>
+          <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-move-right">
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </div>
+      </a>
+      <!-- End Staff -->
+
+      <!-- Customer -->
+      <a class="flex flex-col h-full p-5 transition-all duration-300 bg-white border border-gray-200 group hover:border-transparent hover:shadow-lg rounded-xl dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40"
+        href="{{ route('report.customer') }}">
+        <div class="mb-5">
+          <h3 class="font-semibold text-gray-800 dark:text-neutral-300 dark:group-hover:text-white">
+            Customer
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm text-gray-800 dark:text-neutral-200">Updated 1 hour ago</h5>
+          <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-move-right">
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </div>
+      </a>
+      <!-- End Customer -->
+    </div>
+  </div>
+  <!-- End User -->
+
+  <!-- Package -->
+  <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+    <div class="mb-4 sm:mb-7">
+      <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+        Umrah Packages
+      </h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- All Package -->
+      <a class="flex flex-col h-full p-5 transition-all duration-300 bg-white border border-gray-200 group hover:border-transparent hover:shadow-lg rounded-xl dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40"
+        href="{{ route('report.all-package') }}">
+        <div class="mb-5">
+          <h3 class="font-semibold text-gray-800 dark:text-neutral-300 dark:group-hover:text-white">
+            All Package
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm text-gray-800 dark:text-neutral-200">Updated 1 hour ago</h5>
+          <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-move-right">
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </div>
+      </a>
+      <!-- End All Package -->
+
+      <!-- 12 Days 10 Nights -->
+      <a class="flex flex-col h-full p-5 transition-all duration-300 bg-white border border-gray-200 group hover:border-transparent hover:shadow-lg rounded-xl dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40"
+        href="{{ route('report.12-days-10-nights') }}">
+        <div class="mb-5">
+          <h3 class="font-semibold text-gray-800 dark:text-neutral-300 dark:group-hover:text-white">
+            12 Days 10 Nights
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm text-gray-800 dark:text-neutral-200">Updated 1 hour ago</h5>
+          <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-move-right">
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </div>
+      </a>
+      <!-- End 12 Days 10 Nights -->
+
+      <!-- 22 Days 20 Nights -->
+      <a class="flex flex-col h-full p-5 transition-all duration-300 bg-white border border-gray-200 group hover:border-transparent hover:shadow-lg rounded-xl dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40"
+        href="{{ route('report.22-days-20-nights') }}">
+        <div class="mb-5">
+          <h3 class="font-semibold text-gray-800 dark:text-neutral-300 dark:group-hover:text-white">
+            22 Days 20 Nights
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm text-gray-800 dark:text-neutral-200">Updated 1 hour ago</h5>
+          <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-move-right">
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </div>
+      </a>
+      <!-- End 22 Days 20 Nights -->
+    </div>
+  </div>
+  <!-- End Package -->
+
+  <!-- Hotels -->
+  <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+    <div class="mb-4 sm:mb-7">
+      <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+        Hotels
+      </h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- All Hotel -->
+      <a class="flex flex-col h-full p-5 transition-all duration-300 bg-white border border-gray-200 group hover:border-transparent hover:shadow-lg rounded-xl dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40"
+        href="{{ route('report.all-hotel') }}">
+        <div class="mb-5">
+          <h3 class="font-semibold text-gray-800 dark:text-neutral-300 dark:group-hover:text-white">
+            All Hotel
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm text-gray-800 dark:text-neutral-200">Updated 1 hour ago</h5>
+          <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-move-right">
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </div>
+      </a>
+      <!-- End All Hotel -->
+
+      <!-- Hotel Makkah -->
+      <a class="flex flex-col h-full p-5 transition-all duration-300 bg-white border border-gray-200 group hover:border-transparent hover:shadow-lg rounded-xl dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40"
+        href="{{ route('report.hotel-makkah') }}">
+        <div class="mb-5">
+          <h3 class="font-semibold text-gray-800 dark:text-neutral-300 dark:group-hover:text-white">
+            Hotel Makkah
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm text-gray-800 dark:text-neutral-200">Updated 1 hour ago</h5>
+          <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-move-right">
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </div>
+      </a>
+      <!-- End Hotel Makkah -->
+
+      <!-- Hotel Madinah -->
+      <a class="flex flex-col h-full p-5 transition-all duration-300 bg-white border border-gray-200 group hover:border-transparent hover:shadow-lg rounded-xl dark:border-neutral-700 dark:hover:border-transparent dark:hover:shadow-black/40"
+        href="{{ route('report.hotel-madinah') }}">
+        <div class="mb-5">
+          <h3 class="font-semibold text-gray-800 dark:text-neutral-300 dark:group-hover:text-white">
+            Hotel Madinah
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-neutral-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm text-gray-800 dark:text-neutral-200">Updated 1 hour ago</h5>
+          <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-move-right">
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+          </svg>
+        </div>
+      </a>
+      <!-- End Hotel Madinah -->
+    </div>
+  </div>
+  <!-- End Hotels -->
 
 </x-app-layout>

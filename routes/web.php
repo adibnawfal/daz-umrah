@@ -66,6 +66,24 @@ Route::middleware('auth')->group(function () {
 
   // Report
   Route::get('/report', [ReportController::class, 'getReport'])->name('report');
+  Route::get('/report/users/all', [ReportController::class, 'getAllUser'])->name('report.all-user');
+  Route::get('/report/users/all/export', [ReportController::class, 'exportAllUser'])->name('report.export-all-user');
+  Route::get('/report/users/staff', [ReportController::class, 'getStaff'])->name('report.staff');
+  Route::get('/report/users/staff/export', [ReportController::class, 'exportStaff'])->name('report.export-staff');
+  Route::get('/report/users/customer', [ReportController::class, 'getCustomer'])->name('report.customer');
+  Route::get('/report/users/customer/export', [ReportController::class, 'exportCustomer'])->name('report.export-customer');
+  Route::get('/report/packages/all', [ReportController::class, 'getAllPackage'])->name('report.all-package');
+  Route::get('/report/packages/all/export', [ReportController::class, 'exportAllPackage'])->name('report.export-all-package');
+  Route::get('/report/packages/12-days-10-nights', [ReportController::class, 'get12Days10Nights'])->name('report.12-days-10-nights');
+  Route::get('/report/packages/12-days-10-nights/export', [ReportController::class, 'export12Days10Nights'])->name('report.export-12-days-10-nights');
+  Route::get('/report/packages/22-days-20-nights', [ReportController::class, 'get22Days20Nights'])->name('report.22-days-20-nights');
+  Route::get('/report/packages/22-days-20-nights/export', [ReportController::class, 'export22Days20Nights'])->name('report.export-22-days-20-nights');
+  Route::get('/report/hotels/all', [ReportController::class, 'getAllHotel'])->name('report.all-hotel');
+  Route::get('/report/hotels/all/export', [ReportController::class, 'exportAllHotel'])->name('report.export-all-hotel');
+  Route::get('/report/hotels/makkah', [ReportController::class, 'getHotelMakkah'])->name('report.hotel-makkah');
+  Route::get('/report/hotels/makkah/export', [ReportController::class, 'exportHotelMakkah'])->name('report.export-hotel-makkah');
+  Route::get('/report/hotels/madinah', [ReportController::class, 'getHotelMadinah'])->name('report.hotel-madinah');
+  Route::get('/report/hotels/madinah/export', [ReportController::class, 'exportHotelMadinah'])->name('report.export-hotel-madinah');
 
   // Feedback
   Route::get('/feedback', [FeedbackController::class, 'getFeedback'])->name('feedback');

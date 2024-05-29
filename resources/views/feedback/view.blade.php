@@ -56,42 +56,6 @@
             <!-- Button -->
             <div>
               <div class="inline-flex gap-x-2">
-                <!-- Delete -->
-                {{-- <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-red-500 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                  href="#">
-                  <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M3 6h18" />
-                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                    <line x1="10" x2="10" y1="11" y2="17" />
-                    <line x1="14" x2="14" y1="11" y2="17" />
-                  </svg>
-                  Delete
-                  <span class="text-xs font-semibold border-gray-200 ps-2 border-s dark:border-gray-700">
-                    0
-                  </span>
-                </a> --}}
-
-                <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                  href="#">
-                  <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M3 6h18" />
-                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                    <line x1="10" x2="10" y1="11" y2="17" />
-                    <line x1="14" x2="14" y1="11" y2="17" />
-                  </svg>
-                  Delete
-                  <span class="text-xs font-semibold border-gray-200 ps-2 border-s dark:border-gray-700">
-                    0
-                  </span>
-                </a>
-                <!-- End Delete -->
-
                 <!-- Filter -->
                 <div class="hs-dropdown relative inline-block [--placement:bottom-right]"
                   data-hs-dropdown-auto-close="inside">
@@ -172,137 +136,124 @@
             <!-- Header -->
             <thead class="bg-gray-50 dark:bg-gray-900">
               <tr>
-                <!-- Checkbox Header -->
                 <th scope="col" class="py-3 ps-6 text-start">
-                  <label for="hs-at-with-checkboxes-main" class="flex">
-                    <input type="checkbox"
-                      class="text-blue-600 border-gray-300 rounded shrink-0 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                      id="hs-at-with-checkboxes-main">
-                    <span class="sr-only">Checkbox</span>
-                  </label>
+                  <span class="text-xs font-semibold tracking-wide text-gray-800 uppercase dark:text-gray-200">
+                    No.
+                  </span>
                 </th>
-                <!-- End Checkbox Header -->
 
-                <!-- Customer Header -->
-                <th scope="col" class="px-6 py-3 text-start">
+                <th scope="col" class="py-3 ps-6 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold tracking-wide text-gray-800 uppercase dark:text-gray-200">
                       Customer
                     </span>
                   </div>
                 </th>
-                <!-- End Customer Header -->
 
-                <!-- Details Header -->
-                <th scope="col" class="px-6 py-3 text-start">
+                <th scope="col" class="py-3 ps-6 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold tracking-wide text-gray-800 uppercase dark:text-gray-200">
                       Feedback
                     </span>
                   </div>
                 </th>
-                <!-- End Details Header -->
 
-                <!-- Rating Header -->
-                <th scope="col" class="px-6 py-3 text-start">
+                <th scope="col" class="py-3 ps-6 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold tracking-wide text-gray-800 uppercase dark:text-gray-200">
                       Rated
                     </span>
                   </div>
                 </th>
-                <!-- End Rating Header -->
 
-                <!-- Date Header -->
-                <th scope="col" class="px-6 py-3 text-start">
+                <th scope="col" class="py-3 ps-6 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold tracking-wide text-gray-800 uppercase dark:text-gray-200">
                       Date
                     </span>
                   </div>
                 </th>
-                <!-- End Date Header -->
 
-                <!-- Actions Header -->
-                <th scope="col" class="px-6 py-3 text-end"></th>
-                <!-- End Actions Header -->
+                <th scope="col" class="py-3 ps-6 text-start">
+                  <span class="text-xs font-semibold tracking-wide text-gray-800 uppercase dark:text-gray-200">
+                    Actions
+                  </span>
+                </th>
               </tr>
             </thead>
             <!-- End Header -->
 
             <!-- Body -->
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-              <!-- Feedback -->
+              @php
+                $count = 1;
+              @endphp
               @foreach ($feedback as $feedbackData)
-                @php
-                  $nameLetter =
-                      substr($feedbackData->user->first_name, 0, 1) . substr($feedbackData->user->last_name, 0, 1);
-                  $fullName = $feedbackData->user->first_name . ' ' . $feedbackData->user->last_name;
-                  $date = $feedbackData->created_at->format('d F Y');
-                @endphp
                 <tr>
-                  <!-- Checkbox -->
+                  <!-- No. -->
                   <td class="align-top size-px whitespace-nowrap">
-                    <div class="block p-6">
-                      <label for="hs-at-with-checkboxes-1" class="flex">
-                        <input type="checkbox"
-                          class="text-blue-600 border-gray-300 rounded shrink-0 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                          id="hs-at-with-checkboxes-1">
-                        <span class="sr-only">Checkbox</span>
-                      </label>
+                    <div class="py-3 ps-6">
+                      <span class="text-sm text-gray-800 dark:text-gray-200">{{ $count++ }}.</span>
                     </div>
                   </td>
-                  <!-- End Checkbox -->
+                  <!-- End No. -->
 
                   <!-- Customer -->
                   <td class="align-top size-px whitespace-nowrap">
-                    <div class="block p-6">
+                    <div class="py-3 ps-6">
                       <div class="flex items-center gap-x-3">
                         @if ($feedbackData->user->profile_img)
-                          <img class="inline-block size-[38px] rounded-full"
+                          <img class="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-gray-800"
                             src="{{ asset('images/users/' . $feedbackData->user->profile_img) }}"
                             alt="Profile Picture">
                         @else
-                          <span
-                            class="inline-flex items-center justify-center size-[38px] rounded-full bg-gray-300 dark:bg-gray-700">
+                          <div>
                             <span
-                              class="font-medium leading-none text-gray-800 dark:text-gray-200">{{ $nameLetter }}</span>
-                          </span>
+                              class="inline-flex items-center justify-center size-[38px] rounded-full bg-gray-300 dark:bg-gray-700 ring-2 ring-white dark:ring-gray-800">
+                              <span class="text-xs font-medium leading-none text-gray-800 dark:text-gray-200">
+                                {{ substr($feedbackData->user->first_name, 0, 1) . substr($feedbackData->user->last_name, 0, 1) }}
+                              </span>
+                            </span>
+                          </div>
                         @endif
                         <div class="grow">
+                          <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+                            {{ $feedbackData->user->first_name }} {{ $feedbackData->user->last_name }}
+                          </span>
                           <span
-                            class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $fullName }}</span>
-                          <span class="block text-sm text-gray-500">{{ $feedbackData->user->email }}</span>
+                            class="block text-sm text-gray-600 dark:text-neutral-400">{{ $feedbackData->user->email }}</span>
                         </div>
                       </div>
                     </div>
                   </td>
                   <!-- End Customer -->
 
-                  <!-- Details -->
+                  <!-- Feedback -->
                   <td class="h-px align-top w-72 min-w-72">
-                    <div class="block p-6">
+                    <div class="py-3 ps-6">
+                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">
+                        {{ $feedbackData->title }}
+                      </span>
                       <span
-                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $feedbackData->title }}</span>
-                      <span class="block text-sm text-gray-500">{{ $feedbackData->details }}</span>
+                        class="block text-sm text-gray-600 dark:text-neutral-400">{{ $feedbackData->details }}</span>
                     </div>
                   </td>
-                  <!-- End Details -->
+                  <!-- End Feedback -->
 
-                  <!-- Rating -->
+                  <!-- Rated -->
                   <td class="align-top size-px whitespace-nowrap">
-                    <div class="block p-6">
+                    <div class="py-3 ps-6">
                       <div class="flex gap-x-1">
                         @for ($i = 1; $i <= 5; $i++)
                           @if ($feedbackData->rating >= $i)
-                            <svg class="flex-shrink-0 text-gray-800 size-3 dark:text-gray-200"
+                            <svg class="flex-shrink-0 text-yellow-400 size-3 dark:text-yellow-500"
                               xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                               viewBox="0 0 16 16">
                               <path
                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                             </svg>
                           @else
-                            <svg class="flex-shrink-0 text-gray-400 size-3 dark:text-gray-600"
+                            <svg class="flex-shrink-0 text-gray-300 size-3 dark:text-neutral-600"
                               xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                               viewBox="0 0 16 16">
                               <path
@@ -313,19 +264,20 @@
                       </div>
                     </div>
                   </td>
-                  <!-- End Rating -->
+                  <!-- End Rated -->
 
                   <!-- Date -->
                   <td class="align-top size-px whitespace-nowrap">
-                    <div class="block p-6">
-                      <span class="text-sm text-gray-600 dark:text-gray-400">{{ $date }}</span>
+                    <div class="py-3 ps-6">
+                      <span
+                        class="text-sm text-gray-600 dark:text-gray-400">{{ $feedbackData->created_at->format('d F Y') }}</span>
                     </div>
                   </td>
                   <!-- End Date -->
 
                   <!-- Actions -->
                   <td class="align-top size-px whitespace-nowrap">
-                    <div class="block p-6">
+                    <div class="py-3 ps-6">
                       <div class="hs-dropdown relative inline-block [--placement:bottom-right]">
                         <button id="hs-table-dropdown-1" type="button"
                           class="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-lg text-gray-700 align-middle disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
@@ -345,7 +297,7 @@
                               class="block px-3 py-2 text-xs font-medium text-gray-400 uppercase dark:text-gray-600">
                               Actions
                             </span>
-                            <a class="flex items-center px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                            <a class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                               href="{{ route('feedback.get-edit-feedback', $feedbackData->id) }}">
                               <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -356,7 +308,7 @@
                               </svg>
                               Edit Feedback
                             </a>
-                            <a class="flex items-center px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                            <a class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                               href="#">
                               <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -373,7 +325,7 @@
                               @method('delete')
 
                               <button type="submit"
-                                class="flex items-center px-3 py-2 text-sm text-red-600 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+                                class="flex items-center w-full px-3 py-2 text-sm text-red-600 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                                 <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                   stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
@@ -394,7 +346,6 @@
                   <!-- End Actions -->
                 </tr>
               @endforeach
-              <!-- End Feedback -->
             </tbody>
             <!-- End Body -->
           </table>
@@ -406,42 +357,12 @@
             <!-- Results -->
             <div>
               <p class="text-sm text-gray-600 dark:text-gray-400">
-                <span class="font-semibold text-gray-800 dark:text-gray-200">
-                  {{ count($feedback) }}
-                </span> results
+                <span class="font-semibold text-gray-800 dark:text-gray-200">{{ $feedback->count() }}</span> results
               </p>
             </div>
             <!-- End Results -->
 
             <!-- Pagination -->
-            {{-- <div class="flex items-center -space-x-px">
-              <button type="button"
-                class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm first:rounded-s-lg last:rounded-e-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
-                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="m15 18-6-6 6-6" />
-                </svg>
-                <span class="hidden sm:block">Previous</span>
-              </button>
-              <button type="button"
-                class="min-h-[38px] min-w-[38px] flex justify-center items-center bg-gray-200 text-gray-800 border border-gray-200 py-2 px-3 text-sm first:rounded-s-lg last:rounded-e-lg focus:outline-none focus:bg-gray-300 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-600 dark:border-gray-700 dark:text-white dark:focus:bg-gray-500"
-                aria-current="page">1</button>
-              <button type="button"
-                class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-gray-200 text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm first:rounded-s-lg last:rounded-e-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">2</button>
-              <button type="button"
-                class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-gray-200 text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm first:rounded-s-lg last:rounded-e-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">3</button>
-              <button type="button"
-                class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm first:rounded-s-lg last:rounded-e-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
-                <span class="hidden sm:block">Next</span>
-                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </button>
-            </div> --}}
-
             <div>
               <div class="inline-flex gap-x-2">
                 <button type="button"
