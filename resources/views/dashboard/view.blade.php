@@ -218,20 +218,64 @@
   </div>
   <!-- End Stats -->
 
-  <!-- Charts -->
-  <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-    <div class="mb-8">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-        Total Users
-      </h2>
-      <p class="text-sm text-gray-600 dark:text-gray-400">
-        Total users by year and month.
-      </p>
-    </div>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+    <!-- Charts -->
+    <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+      <div class="mb-8">
+        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+          Total Users
+        </h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Total users by year and month.
+        </p>
+      </div>
 
-    {!! $chart->container() !!}
+      {!! $chart->container() !!}
+    </div>
+    <!-- End Charts -->
+
+    <!-- Location -->
+    <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+      <div class="mb-8">
+        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+          Location
+        </h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-y-2">
+        <!-- Johor -->
+        <div class="flex items-center justify-between gap-x-4">
+          <span class="text-sm text-gray-800 dark:text-gray-200">Johor</span>
+          <div class="flex justify-end w-full h-1.5 rounded-full overflow-hidden" role="progressbar"
+            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div
+              class="flex flex-col justify-center overflow-hidden text-xs text-center text-white transition duration-500 bg-blue-600 rounded-full whitespace-nowrap dark:bg-blue-500"
+              style="width: 25%">
+            </div>
+          </div>
+          <span class="text-sm text-gray-600 dark:text-neutral-400">39.8%</span>
+        </div>
+        <!-- End Johor -->
+
+        <!-- Johor -->
+        <div class="flex items-center justify-between gap-x-4">
+          <span class="text-sm text-gray-800 dark:text-gray-200">Johor</span>
+          <div class="flex justify-end w-full h-1.5 rounded-full overflow-hidden" role="progressbar"
+            aria-valuenow="36" aria-valuemin="0" aria-valuemax="100">
+            <div
+              class="flex flex-col justify-center overflow-hidden text-xs text-center text-white transition duration-500 bg-blue-600 rounded-full whitespace-nowrap dark:bg-blue-500"
+              style="width: 36%">
+            </div>
+          </div>
+          <span class="text-sm text-gray-600 dark:text-neutral-400">39.8%</span>
+        </div>
+        <!-- End Johor -->
+      </div>
+    </div>
   </div>
-  <!-- End Charts -->
 
   <script src="{{ $chart->cdn() }}"></script>
 
