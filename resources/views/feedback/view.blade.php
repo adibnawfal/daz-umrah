@@ -320,24 +320,20 @@
                             </a>
                           </div>
                           <div class="py-2 first:pt-0 last:pb-0">
-                            <form method="post" action="{{ route('feedback.delete-feedback', $feedbackData->id) }}">
-                              @csrf
-                              @method('delete')
-
-                              <button type="submit"
-                                class="flex items-center w-full px-3 py-2 text-sm text-red-600 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                  stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
-                                  <path d="M3 6h18" />
-                                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                                  <line x1="10" x2="10" y1="11" y2="17" />
-                                  <line x1="14" x2="14" y1="11" y2="17" />
-                                </svg>
-                                Delete
-                              </button>
-                            </form>
+                            <button
+                              class="flex items-center w-full px-3 py-2 text-sm text-red-600 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                              data-hs-overlay="#hs-delete-feedback-{{ $feedbackData->id }}-modal">
+                              <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
+                                <path d="M3 6h18" />
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                <line x1="10" x2="10" y1="11" y2="17" />
+                                <line x1="14" x2="14" y1="11" y2="17" />
+                              </svg>
+                              Delete
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -345,6 +341,7 @@
                   </td>
                   <!-- End Actions -->
                 </tr>
+                @include('feedback.partials.modal.hs-delete-feedback-modal')
               @endforeach
             </tbody>
             <!-- End Body -->
