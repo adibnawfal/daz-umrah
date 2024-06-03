@@ -61,7 +61,7 @@ class PackageController extends Controller
   /**
    * Submit update package form.
    */
-  public function putUpdatePackage(Request $request, string $id)
+  public function patchUpdatePackage(Request $request, string $id)
   {
     $package = Package::findOrFail($id);
 

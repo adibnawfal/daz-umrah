@@ -69,7 +69,7 @@
       </p>
     </div>
 
-    <form method="post" action="{{ route('package.post-add-package') }}">
+    <form method="post" action="{{ route('package.post-add-package') }}" enctype="multipart/form-data">
       @csrf
 
       <div class="grid gap-2 sm:grid-cols-12 sm:gap-6">

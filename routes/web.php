@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/package/manage', [PackageController::class, 'getManagePackage'])->name('package.manage-package');
   Route::get('/package/details/{id}', [PackageController::class, 'getPackageDetails'])->name('package.package-details');
   Route::get('/package/details/update/{id}', [PackageController::class, 'getUpdatePackage'])->name('package.get-update-package');
-  Route::put('/package/details/update/{id}', [PackageController::class, 'putUpdatePackage'])->name('package.put-update-package');
+  Route::patch('/package/details/update/{id}', [PackageController::class, 'patchUpdatePackage'])->name('package.patch-update-package');
   Route::delete('/package/details/delete/{id}', [PackageController::class, 'deletePackage'])->name('package.delete-package');
   Route::get('/package/add', [PackageController::class, 'getAddPackage'])->name('package.get-add-package');
   Route::post('/package/add', [PackageController::class, 'postAddPackage'])->name('package.post-add-package');
