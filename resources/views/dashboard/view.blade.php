@@ -218,6 +218,20 @@
   </div>
   <!-- End Stats -->
 
+  <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
+    <div class="flex flex-col w-full">
+      <h1 class="text-xl font-bold">Live Location</h1>
+      <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <div class="relative w-full h-[30rem] shadow sm:rounded">
+      <div class="absolute inset-0">
+        <iframe id="map" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0"
+          marginwidth="0">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
     <!-- Charts -->
     <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
@@ -276,6 +290,22 @@
       </div>
     </div>
   </div>
+
+  <script>
+    // Fetch GPS data from the server and update the map
+    setInterval(function() {
+      fetch('/dashboard/latest/gps') // Define a route to fetch the latest GPS data
+        .then(response => response.json())
+        .then(data => {
+          const {
+            latitude,
+            longitude
+          } = data;
+          document.getElementById('map').src =
+            `https://maps.google.com/maps?q=${latitude},${longitude}&z=15&output=embed`;
+        });
+    }, 10000); // Update map every 10 seconds
+  </script>
 
   <script src="{{ $chart->cdn() }}"></script>
 

@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
 
   // Dashboard
   Route::get('/dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard');
+  Route::get('/dashboard/store/gps', [DashboardController::class, 'storeGPS']);
+  Route::get('/dashboard/latest/gps', [DashboardController::class, 'getLatestGPS']);
 
   // Package
   Route::get('/package/manage', [PackageController::class, 'getManagePackage'])->name('package.manage-package');
