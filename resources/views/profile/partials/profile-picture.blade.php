@@ -1,7 +1,3 @@
-@php
-  $nameLetter = substr($user->first_name, 0, 1) . substr($user->last_name, 0, 1);
-@endphp
-
 <div class="flex gap-x-6">
   @if ($user->profile_img)
     <img class="inline-block size-[100px] rounded-lg mb-3" src="{{ asset('images/users/' . $user->profile_img) }}"
@@ -10,7 +6,7 @@
     <div>
       <span class="inline-flex items-center justify-center size-[100px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-3">
         <span class="text-xl font-medium leading-none text-gray-800 dark:text-gray-200">
-          {{ $nameLetter }}
+          {{ substr($user->first_name, 0, 1) }} {{ substr($user->last_name, 0, 1) }}
         </span>
       </span>
     </div>
