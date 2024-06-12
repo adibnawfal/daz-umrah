@@ -18,8 +18,8 @@
             Monitor Umrah using GPS to ensure the safety of pilgrims
           </h1>
           <p class="text-gray-600 dark:text-gray-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae enim a eros elementum rhoncus
-            lacinia eu justo.
+            By integrating advanced technology, we aim to enhance the overall experience and safety of pilgrims during
+            Umrah.
           </p>
         </div>
         <!-- End Title -->
@@ -50,7 +50,7 @@
               </div>
               <div class="grow ms-4">
                 <div class="font-semibold text-gray-800 dark:text-gray-200">Adib Nawfal</div>
-                <div class="text-xs text-gray-500">Student University Tun Hussein Onn</div>
+                <div class="text-xs text-gray-500">Universiti Tun Hussein Onn Student</div>
               </div>
             </div>
           </footer>
