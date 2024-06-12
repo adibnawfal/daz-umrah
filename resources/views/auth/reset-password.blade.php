@@ -3,7 +3,7 @@
     Reset Password
   </x-slot>
 
-  <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8  mx-auto">
+  <div class="flex max-w-[85rem] px-4 sm:px-6 lg:px-8  mx-auto">
     <!-- Grid -->
     <div class="grid items-center gap-8 md:grid-cols-2 lg:gap-12">
       <div class="py-10 lg:py-32">
@@ -18,8 +18,8 @@
             Monitor Umrah using GPS to ensure the safety of pilgrims
           </h1>
           <p class="text-gray-600 dark:text-gray-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae enim a eros elementum rhoncus
-            lacinia eu justo.
+            By integrating advanced technology, we aim to enhance the overall experience and safety of pilgrims during
+            Umrah.
           </p>
         </div>
         <!-- End Title -->

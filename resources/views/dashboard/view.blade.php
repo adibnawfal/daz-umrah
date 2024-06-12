@@ -218,78 +218,85 @@
   </div>
   <!-- End Stats -->
 
-  <div class="flex flex-col p-4 bg-white shadow sm:p-8 sm:rounded gap-y-4">
-    <div class="flex flex-col w-full">
-      <h1 class="text-xl font-bold">Live Location</h1>
-      <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-    <div class="relative w-full h-[30rem] shadow sm:rounded">
-      <div class="absolute inset-0">
-        <iframe id="map" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0"
-          marginwidth="0">
-        </iframe>
+  <div class="flex w-full gap-6">
+    <div
+      class="w-full p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700 basis-3/5">
+      <div class="flex flex-col w-full">
+        <h1 class="text-xl font-bold">Live Location</h1>
+        <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="relative w-full shadow h-[30rem] sm:rounded">
+        <div class="absolute inset-0">
+          <iframe id="map" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0"
+            marginwidth="0">
+          </iframe>
+        </div>
       </div>
     </div>
+
+    <div class="flex flex-col gap-6 basis-2/5">
+      <!-- Location -->
+      <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+        <div class="mb-8">
+          <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+            Location
+          </h2>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-y-2">
+          <!-- Johor -->
+          <div class="flex items-center justify-between gap-x-4">
+            <span class="text-sm text-gray-800 dark:text-gray-200">Johor</span>
+            <div class="flex justify-end w-full h-1.5 rounded-full overflow-hidden" role="progressbar"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div
+                class="flex flex-col justify-center overflow-hidden text-xs text-center text-white transition duration-500 bg-blue-600 rounded-full whitespace-nowrap dark:bg-blue-500"
+                style="width: 25%">
+              </div>
+            </div>
+            <span class="text-sm text-gray-600 dark:text-neutral-400">39.8%</span>
+          </div>
+          <!-- End Johor -->
+
+          <!-- Johor -->
+          <div class="flex items-center justify-between gap-x-4">
+            <span class="text-sm text-gray-800 dark:text-gray-200">Johor</span>
+            <div class="flex justify-end w-full h-1.5 rounded-full overflow-hidden" role="progressbar"
+              aria-valuenow="36" aria-valuemin="0" aria-valuemax="100">
+              <div
+                class="flex flex-col justify-center overflow-hidden text-xs text-center text-white transition duration-500 bg-blue-600 rounded-full whitespace-nowrap dark:bg-blue-500"
+                style="width: 36%">
+              </div>
+            </div>
+            <span class="text-sm text-gray-600 dark:text-neutral-400">39.8%</span>
+          </div>
+          <!-- End Johor -->
+        </div>
+      </div>
+      <!-- End Location -->
+
+      <!-- Charts -->
+      <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+        <div class="mb-8">
+          <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
+            Total Users
+          </h2>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Total users by year and month.
+          </p>
+        </div>
+
+        {!! $chart->container() !!}
+      </div>
+      <!-- End Charts -->
+    </div>
+    {{-- <div class="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 ">
+    </div> --}}
   </div>
 
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
-    <!-- Charts -->
-    <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-      <div class="mb-8">
-        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-          Total Users
-        </h2>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          Total users by year and month.
-        </p>
-      </div>
-
-      {!! $chart->container() !!}
-    </div>
-    <!-- End Charts -->
-
-    <!-- Location -->
-    <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
-      <div class="mb-8">
-        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-          Location
-        </h2>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-      </div>
-
-      <div class="flex flex-col gap-y-2">
-        <!-- Johor -->
-        <div class="flex items-center justify-between gap-x-4">
-          <span class="text-sm text-gray-800 dark:text-gray-200">Johor</span>
-          <div class="flex justify-end w-full h-1.5 rounded-full overflow-hidden" role="progressbar"
-            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-            <div
-              class="flex flex-col justify-center overflow-hidden text-xs text-center text-white transition duration-500 bg-blue-600 rounded-full whitespace-nowrap dark:bg-blue-500"
-              style="width: 25%">
-            </div>
-          </div>
-          <span class="text-sm text-gray-600 dark:text-neutral-400">39.8%</span>
-        </div>
-        <!-- End Johor -->
-
-        <!-- Johor -->
-        <div class="flex items-center justify-between gap-x-4">
-          <span class="text-sm text-gray-800 dark:text-gray-200">Johor</span>
-          <div class="flex justify-end w-full h-1.5 rounded-full overflow-hidden" role="progressbar"
-            aria-valuenow="36" aria-valuemin="0" aria-valuemax="100">
-            <div
-              class="flex flex-col justify-center overflow-hidden text-xs text-center text-white transition duration-500 bg-blue-600 rounded-full whitespace-nowrap dark:bg-blue-500"
-              style="width: 36%">
-            </div>
-          </div>
-          <span class="text-sm text-gray-600 dark:text-neutral-400">39.8%</span>
-        </div>
-        <!-- End Johor -->
-      </div>
-    </div>
-  </div>
 
   <script>
     // Fetch GPS data from the server and update the map

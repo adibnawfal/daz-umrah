@@ -40,6 +40,16 @@ class PricesTableSeeder extends Seeder
 
       // Price 3 - Package 2
       [
+        'package' => '12 Days 10 Nights',
+        'room_4_5' => null,
+        'room_3' => null,
+        'room_2' => null,
+        'created_at' => $datetime,
+        'updated_at' => $datetime,
+      ],
+
+      // Price 4 - Package 2
+      [
         'package' => '22 Days 20 Nights',
         'room_4_5' => 12990,
         'room_3' => 13990,
@@ -48,7 +58,17 @@ class PricesTableSeeder extends Seeder
         'updated_at' => $datetime,
       ],
 
-      // Price 4 - Package 3
+      // Price 5 - Package 3
+      [
+        'package' => '12 Days 10 Nights',
+        'room_4_5' => null,
+        'room_3' => null,
+        'room_2' => null,
+        'created_at' => $datetime,
+        'updated_at' => $datetime,
+      ],
+
+      // Price 6 - Package 3
       [
         'package' => '22 Days 20 Nights',
         'room_4_5' => 11990,
@@ -58,7 +78,7 @@ class PricesTableSeeder extends Seeder
         'updated_at' => $datetime,
       ],
 
-      // Price 5 - Package 4
+      // Price 7 - Package 4
       [
         'package' => '12 Days 10 Nights',
         'room_4_5' => 8990,
@@ -68,7 +88,7 @@ class PricesTableSeeder extends Seeder
         'updated_at' => $datetime,
       ],
 
-      // Price 6 - Package 4
+      // Price 8 - Package 4
       [
         'package' => '22 Days 20 Nights',
         'room_4_5' => 10990,

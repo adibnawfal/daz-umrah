@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
   Route::post('/package/add', [PackageController::class, 'postAddPackage'])->name('package.post-add-package');
   Route::get('/package/travel-date', [PackageController::class, 'getTravelDate'])->name('package.get-travel-date');
   Route::post('/package/travel-date', [PackageController::class, 'postTravelDate'])->name('package.post-travel-date');
+  Route::patch('/package/travel-date/{id}', [PackageController::class, 'patchTravelDate'])->name('package.patch-travel-date');
   Route::delete('/package/travel-date/{id}', [PackageController::class, 'deleteTravelDate'])->name('package.delete-travel-date');
 
   // Umrah

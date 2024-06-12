@@ -13,9 +13,9 @@ return new class extends Migration {
     Schema::create('prices', function (Blueprint $table) {
       $table->id();
       $table->string('package');
-      $table->decimal('room_4_5', 9, 2);
-      $table->decimal('room_3', 9, 2);
-      $table->decimal('room_2', 9, 2);
+      $table->decimal('room_4_5', 9, 2)->nullable();
+      $table->decimal('room_3', 9, 2)->nullable();
+      $table->decimal('room_2', 9, 2)->nullable();
       $table->timestamps();
     });
   }

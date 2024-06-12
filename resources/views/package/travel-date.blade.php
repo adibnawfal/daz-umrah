@@ -75,37 +75,31 @@
       <!-- List -->
       <ul class="grid grid-cols-2 text-sm gap-y-2 sm:text-base">
         @foreach ($travelDate as $travelDateData)
-          @if ($travelDateData->package == '12 Days 10 Nights')
-            <form method="post" action="{{ route('package.delete-travel-date', $travelDateData->id) }}">
-              @csrf
-              @method('delete')
-
-              <button type="submit">
-                <li class="flex space-x-3 tracking-tight group/item">
-                  <span
-                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-[#c31e39]/10 text-[#c31e39]">
-                    <svg class="flex-shrink-0 size-3.5 group-hover/item:hidden" xmlns="http://www.w3.org/2000/svg"
-                      width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    <svg class="flex-shrink-0 hidden size-3 group-hover/item:block" xmlns="http://www.w3.org/2000/svg"
-                      width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
-                      <path d="M3 6h18" />
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                      <line x1="10" x2="10" y1="11" y2="17" />
-                      <line x1="14" x2="14" y1="11" y2="17" />
-                    </svg>
-                  </span>
-                  <span class="text-gray-800 dark:text-neutral-200">
-                    {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
-                    {{ Carbon\Carbon::parse($travelDateData->to)->format('d M Y') }}
-                  </span>
-                </li>
-              </button>
-            </form>
+          @if ($travelDateData->package === '22 Days 20 Nights')
+            <button data-hs-overlay="#hs-update-travel-date-{{ $travelDateData->id }}-modal">
+              <li class="flex space-x-3 tracking-tight group/item">
+                <span
+                  class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-[#c31e39]/10 text-[#c31e39]">
+                  <svg class="flex-shrink-0 size-3.5 group-hover/item:hidden" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <svg class="flex-shrink-0 hidden size-3 group-hover/item:block" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil">
+                    <path
+                      d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                    <path d="m15 5 4 4" />
+                  </svg>
+                </span>
+                <span class="text-gray-800 dark:text-neutral-200">
+                  {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
+                  {{ Carbon\Carbon::parse($travelDateData->to)->format('d M Y') }}
+                </span>
+              </li>
+            </button>
+            @include('package.partials.modal.hs-update-travel-date-modal')
           @endif
         @endforeach
       </ul>
@@ -132,37 +126,31 @@
       <!-- List -->
       <ul class="grid grid-cols-2 text-sm gap-y-2 sm:text-base">
         @foreach ($travelDate as $travelDateData)
-          @if ($travelDateData->package == '22 Days 20 Nights')
-            <form method="post" action="{{ route('package.delete-travel-date', $travelDateData->id) }}">
-              @csrf
-              @method('delete')
-
-              <button data-hs-overlay="#hs-update-travel-date-modal">
-                <li class="flex space-x-3 tracking-tight group/item">
-                  <span
-                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-[#c31e39]/10 text-[#c31e39]">
-                    <svg class="flex-shrink-0 size-3.5 group-hover/item:hidden" xmlns="http://www.w3.org/2000/svg"
-                      width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    <svg class="flex-shrink-0 hidden size-3 group-hover/item:block" xmlns="http://www.w3.org/2000/svg"
-                      width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
-                      <path d="M3 6h18" />
-                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                      <line x1="10" x2="10" y1="11" y2="17" />
-                      <line x1="14" x2="14" y1="11" y2="17" />
-                    </svg>
-                  </span>
-                  <span class="text-gray-800 dark:text-neutral-200">
-                    {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
-                    {{ Carbon\Carbon::parse($travelDateData->to)->format('d M Y') }}
-                  </span>
-                </li>
-              </button>
-            </form>
+          @if ($travelDateData->package === '22 Days 20 Nights')
+            <button data-hs-overlay="#hs-update-travel-date-{{ $travelDateData->id }}-modal">
+              <li class="flex space-x-3 tracking-tight group/item">
+                <span
+                  class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-[#c31e39]/10 text-[#c31e39]">
+                  <svg class="flex-shrink-0 size-3.5 group-hover/item:hidden" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <svg class="flex-shrink-0 hidden size-3 group-hover/item:block" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil">
+                    <path
+                      d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                    <path d="m15 5 4 4" />
+                  </svg>
+                </span>
+                <span class="text-gray-800 dark:text-neutral-200">
+                  {{ Carbon\Carbon::parse($travelDateData->from)->format('d M Y') }} -
+                  {{ Carbon\Carbon::parse($travelDateData->to)->format('d M Y') }}
+                </span>
+              </li>
+            </button>
+            @include('package.partials.modal.hs-update-travel-date-modal')
           @endif
         @endforeach
       </ul>
@@ -171,6 +159,7 @@
       <!-- Information -->
       <p class="mt-8 text-sm text-gray-500 dark:text-neutral-500">Select any date to delete.</p>
       <!-- End Information -->
+
     </div>
     <!-- End 22 Days 20 Nights -->
 

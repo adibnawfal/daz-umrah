@@ -94,6 +94,6 @@
   </div>
 
   <!-- Package Details -->
-  @include('package.partials.view-package-details')
+  <livewire:packagedetails :packageData="$packageData" :travelDate="$travelDate" />
   <!-- End Package Details -->
 </x-app-layout>

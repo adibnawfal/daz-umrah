@@ -15,9 +15,9 @@ return new class extends Migration {
       $table->string('cover_img');
       $table->string('name');
       $table->year('year');
-      $table->bigInteger('package_12_10_id')->unsigned()->nullable();
+      $table->bigInteger('package_12_10_id')->unsigned();
       $table->foreign('package_12_10_id')->references('id')->on('prices')->onDelete('cascade');
-      $table->bigInteger('package_22_20_id')->unsigned()->nullable();
+      $table->bigInteger('package_22_20_id')->unsigned();
       $table->foreign('package_22_20_id')->references('id')->on('prices')->onDelete('cascade');
       $table->bigInteger('hotel_makkah_id')->unsigned();
       $table->foreign('hotel_makkah_id')->references('id')->on('hotels');

@@ -63,54 +63,68 @@ class PackageController extends Controller
    */
   public function patchUpdatePackage(Request $request, string $id)
   {
-    $package = Package::findOrFail($id);
+    $packageData = Package::findOrFail($id);
 
-    // Save profile picture
-    if ($request->hasFile('cover_img')) {
-      $image = $request->file('cover_img');
-      $filename = 'package_' . time() . '.' . $image->getClientOriginalExtension();
-
-      // Ensure the directory exists
-      $path = public_path('images/packages');
-      if (!File::isDirectory($path)) {
-        File::makeDirectory($path, 0777, true, true);
-      }
-
-      Image::make($image)->save($path . '/' . $filename);
-      $package->update(['cover_img' => $filename]);
-    }
-
-    $packageData = $request->validate([
+    $this->validate($request, [
+      'cover_img' => ['nullable', 'mimes:jpeg,jpg,png', 'max:10000'],
       'name' => ['required', 'string', 'max:255'],
       'year' => ['required', 'integer', 'min:1900'],
       'hotel_makkah' => ['required', 'exists:hotels,id'],
       'hotel_madinah' => ['required', 'exists:hotels,id'],
+      'price_12_10_room_4_5' => ['required_without:price_22_20_room_4_5'],
+      'price_12_10_room_3' => ['required_with:price_12_10_room_4_5'],
+      'price_12_10_room_2' => ['required_with:price_12_10_room_4_5'],
+      'price_22_20_room_4_5' => ['required_without:price_12_10_room_4_5'],
+      'price_22_20_room_3' => ['required_with:price_22_20_room_4_5'],
+      'price_22_20_room_2' => ['required_with:price_22_20_room_4_5'],
     ]);
 
-    $package->update($packageData);
+    if (
+      !$request->filled('price_12_10_room_4_5')
+      && !$request->filled('price_12_10_room_3')
+      && !$request->filled('price_12_10_room_2')
+      && !$request->filled('price_22_20_room_4_5')
+      && !$request->filled('price_22_20_room_3')
+      && !$request->filled('price_22_20_room_2')
+    ) {
+      return Redirect::route('package.package-details', $id)->with('status', 'package-update-failure');
+    } else {
+      $packageData->package_12_10()->update([
+        'room_4_5' => $request['price_12_10_room_4_5'],
+        'room_3' => $request['price_12_10_room_3'],
+        'room_2' => $request['price_12_10_room_2'],
+      ]);
 
-    $this->validate($request, [
-      'price_12_10_room_4_5' => ['nullable', 'numeric', 'min:1'],
-      'price_12_10_room_3' => ['nullable', 'numeric', 'min:1'],
-      'price_12_10_room_2' => ['nullable', 'numeric', 'min:1'],
-      'price_22_20_room_4_5' => ['nullable', 'numeric', 'min:1'],
-      'price_22_20_room_3' => ['nullable', 'numeric', 'min:1'],
-      'price_22_20_room_2' => ['nullable', 'numeric', 'min:1'],
-    ]);
+      $packageData->package_22_20()->update([
+        'room_4_5' => $request['price_22_20_room_4_5'],
+        'room_3' => $request['price_22_20_room_3'],
+        'room_2' => $request['price_22_20_room_2'],
+      ]);
 
-    $package->package_12_10()->update([
-      'room_4_5' => $request['price_12_10_room_4_5'],
-      'room_3' => $request['price_12_10_room_3'],
-      'room_2' => $request['price_12_10_room_2'],
-    ]);
+      // Save profile picture
+      if ($request->hasFile('cover_img')) {
+        $image = $request->file('cover_img');
+        $filename = 'package_' . time() . '.' . $image->getClientOriginalExtension();
 
-    $package->package_22_20()->update([
-      'room_4_5' => $request['price_22_20_room_4_5'],
-      'room_3' => $request['price_22_20_room_3'],
-      'room_2' => $request['price_22_20_room_2'],
-    ]);
+        // Ensure the directory exists
+        $path = public_path('images/packages');
+        if (!File::isDirectory($path)) {
+          File::makeDirectory($path, 0777, true, true);
+        }
 
-    return Redirect::route('package.package-details', $id)->with('status', 'package-updated');
+        Image::make($image)->save($path . '/' . $filename);
+        $packageData->update(['cover_img' => $filename]);
+      }
+
+      $packageData->update([
+        'name' => $request['name'],
+        'year' => $request['year'],
+        'hotel_makkah_id' => $request['hotel_makkah'],
+        'hotel_madinah_id' => $request['hotel_madinah'],
+      ]);
+
+      return Redirect::route('package.package-details', $id)->with('status', 'package-updated');
+    }
   }
 
   /**
@@ -154,58 +168,61 @@ class PackageController extends Controller
       'year' => ['required', 'integer', 'min:1900'],
       'hotel_makkah' => ['required', 'exists:hotels,id'],
       'hotel_madinah' => ['required', 'exists:hotels,id'],
-      'price_12_10_room_4_5' => ['nullable', 'numeric', 'min:1'],
-      'price_12_10_room_3' => ['nullable', 'numeric', 'min:1'],
-      'price_12_10_room_2' => ['nullable', 'numeric', 'min:1'],
-      'price_22_20_room_4_5' => ['nullable', 'numeric', 'min:1'],
-      'price_22_20_room_3' => ['nullable', 'numeric', 'min:1'],
-      'price_22_20_room_2' => ['nullable', 'numeric', 'min:1'],
+      'price_12_10_room_4_5' => ['required_without:price_22_20_room_4_5'],
+      'price_12_10_room_3' => ['required_with:price_12_10_room_4_5'],
+      'price_12_10_room_2' => ['required_with:price_12_10_room_4_5'],
+      'price_22_20_room_4_5' => ['required_without:price_12_10_room_4_5'],
+      'price_22_20_room_3' => ['required_with:price_22_20_room_4_5'],
+      'price_22_20_room_2' => ['required_with:price_22_20_room_4_5'],
     ]);
 
-    if (!$request->has('price_12_10_room_4_5') && !$request->has('price_22_20_room_4_5')) {
-      // throws error to view
-    }
-
-    if ($request->filled('price_12_10_room_4_5')) {
+    if (
+      !$request->filled('price_12_10_room_4_5')
+      && !$request->filled('price_12_10_room_3')
+      && !$request->filled('price_12_10_room_2')
+      && !$request->filled('price_22_20_room_4_5')
+      && !$request->filled('price_22_20_room_3')
+      && !$request->filled('price_22_20_room_2')
+    ) {
+      return Redirect::route('package.manage-package')->with('status', 'package-submit-failure');
+    } else {
       $price_12_10->package = '12 Days 10 Nights';
       $price_12_10->room_4_5 = $request['price_12_10_room_4_5'];
       $price_12_10->room_3 = $request['price_12_10_room_3'];
       $price_12_10->room_2 = $request['price_12_10_room_2'];
       $price_12_10->save();
-      $package->package_12_10_id = $price_12_10->id;
-    }
 
-    if ($request->filled('price_22_20_room_4_5')) {
       $price_22_20->package = '22 Days 20 Nights';
       $price_22_20->room_4_5 = $request['price_22_20_room_4_5'];
       $price_22_20->room_3 = $request['price_22_20_room_3'];
       $price_22_20->room_2 = $request['price_22_20_room_2'];
       $price_22_20->save();
-      $package->package_22_20_id = $price_22_20->id;
-    }
 
-    // Save profile picture
-    if ($request->hasFile('cover_img')) {
-      $image = $request->file('cover_img');
-      $filename = 'package_' . time() . '.' . $image->getClientOriginalExtension();
+      // Save profile picture
+      if ($request->hasFile('cover_img')) {
+        $image = $request->file('cover_img');
+        $filename = 'package_' . time() . '.' . $image->getClientOriginalExtension();
 
-      // Ensure the directory exists
-      $path = public_path('images/packages');
-      if (!File::isDirectory($path)) {
-        File::makeDirectory($path, 0777, true, true);
+        // Ensure the directory exists
+        $path = public_path('images/packages');
+        if (!File::isDirectory($path)) {
+          File::makeDirectory($path, 0777, true, true);
+        }
+
+        Image::make($image)->save($path . '/' . $filename);
+        $package->cover_img = $filename;
       }
 
-      Image::make($image)->save($path . '/' . $filename);
-      $package->cover_img = $filename;
+      $package->name = $request['name'];
+      $package->year = $request['year'];
+      $package->package_12_10_id = $price_12_10->id;
+      $package->package_22_20_id = $price_22_20->id;
+      $package->hotel_makkah_id = $request['hotel_makkah'];
+      $package->hotel_madinah_id = $request['hotel_madinah'];
+      $package->save();
+
+      return Redirect::route('package.manage-package')->with('status', 'package-submitted');
     }
-
-    $package->name = $request['name'];
-    $package->year = $request['year'];
-    $package->hotel_makkah_id = $request['hotel_makkah'];
-    $package->hotel_madinah_id = $request['hotel_madinah'];
-    $package->save();
-
-    return Redirect::route('package.manage-package')->with('status', 'package-submitted');
   }
 
   /**

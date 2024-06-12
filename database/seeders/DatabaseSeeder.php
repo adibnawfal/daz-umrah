@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
       TravelDatesTableSeeder::class,
       PackagesTableSeeder::class,
       FeedbackTableSeeder::class,
+      GPSTableSeeder::class,
     ]);
   }
 }
