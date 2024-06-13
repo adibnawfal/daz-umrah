@@ -122,7 +122,7 @@ class UmrahController extends Controller
       $fileNamePassport = 'passport_' . $request->user()->id . '_' . time() . '.' . $passport->getClientOriginalExtension();
 
       // Ensure the directory exists
-      $path = storage_path('app/files/umrah');
+      $path = storage_path('app/public/files/umrah');
       if (!File::isDirectory($path)) {
         File::makeDirectory($path, 0777, true, true);
       }
@@ -148,10 +148,10 @@ class UmrahController extends Controller
     $zip = new ZipArchive;
     $zipFileName = 'reservation_' . $reservationData->id . '.zip';
 
-    if ($zip->open(storage_path('app/files/umrah/' . $zipFileName), ZipArchive::CREATE) === TRUE) {
+    if ($zip->open(storage_path('app/public/files/umrah/' . $zipFileName), ZipArchive::CREATE) === TRUE) {
       $filesToZip = [
-        storage_path('app/files/umrah/' . $reservationData->identity_card),
-        storage_path('app/files/umrah/' . $reservationData->passport),
+        storage_path('app/public/files/umrah/' . $reservationData->identity_card),
+        storage_path('app/public/files/umrah/' . $reservationData->passport),
       ];
 
       foreach ($filesToZip as $file) {
@@ -160,7 +160,7 @@ class UmrahController extends Controller
 
       $zip->close();
 
-      return response()->download(storage_path('app/files/umrah/' . $zipFileName))->deleteFileAfterSend(true);
+      return response()->download(storage_path('app/public/files/umrah/' . $zipFileName))->deleteFileAfterSend(true);
     } else {
       return Redirect::route('umrah.reservation-list')->with('status', 'download-failure');
     }
