@@ -1,4 +1,5 @@
 *
+!.gitignore
 !package_1_0000.jpg
 !package_2_0000.jpg
 !package_3_0000.jpg
@@ -6,4 +7,3 @@
 !package_5_0000.jpg
 !package_6_0000.jpg
 !package_7_0000.jpg
-!.gitignore
