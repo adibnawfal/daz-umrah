@@ -245,7 +245,7 @@ class PackageController extends Controller
    */
   public function postTravelDate(Request $request)
   {
-    $travelDates = new TravelDate();
+    $travelDate = new TravelDate();
 
     $this->validate($request, [
       'package' => ['required', 'string', 'max:255'],
@@ -266,12 +266,47 @@ class PackageController extends Controller
       }
     }
 
-    $travelDates->package = $request['package'];
-    $travelDates->from = Carbon::create($request['from_date']);
-    $travelDates->to = Carbon::create($request['to_date']);
-    $travelDates->save();
+    $travelDate->package = $request['package'];
+    $travelDate->from = Carbon::create($request['from_date']);
+    $travelDate->to = Carbon::create($request['to_date']);
+    $travelDate->save();
 
     return Redirect::route('package.get-travel-date')->with('status', 'travel-date-submitted');
+  }
+
+  /**
+   * Submit update travel date form.
+   */
+  public function patchTravelDate(Request $request, string $id)
+  {
+    $travelDateData = TravelDate::findOrFail($id);
+
+    $this->validate($request, [
+      'package' => ['required', 'string', 'max:255'],
+      'from_date' => ['required', 'date'],
+      'to_date' => ['required', 'date'],
+    ]);
+
+    $fromDate = Carbon::parse($request['from_date']);
+    $toDate = Carbon::parse($request['to_date']);
+
+    if ($request['package'] === '12 Days 10 Nights') {
+      if (($fromDate->diffInDays($toDate) + 1) > 12) {
+        return Redirect::route('package.get-travel-date')->with('status', 'exceed-12-days');
+      }
+    } else if ($request['package'] === '22 Days 20 Nights') {
+      if (($fromDate->diffInDays($toDate) + 1) > 22) {
+        return Redirect::route('package.get-travel-date')->with('status', 'exceed-22-days');
+      }
+    }
+
+    $travelDateData->update([
+      'package' => $request['package'],
+      'from' => Carbon::create($request['from_date']),
+      'to' => Carbon::create($request['to_date']),
+    ]);
+
+    return Redirect::route('package.get-travel-date')->with('status', 'travel-date-updated');
   }
 
   /**

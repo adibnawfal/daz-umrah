@@ -19,6 +19,8 @@ class Feedback extends Model
     'rating',
     'title',
     'details',
+    'reply',
+    'favourite',
   ];
 
   public function user()

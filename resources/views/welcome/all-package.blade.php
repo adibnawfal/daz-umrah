@@ -35,13 +35,13 @@
 
               <!-- Badge -->
               <div class="flex gap-x-2">
-                @if (isset($packageData->package_12_10_id))
+                @if ($packageData->package_12_10->room_4_5)
                   <p
                     class="text-[0.6rem] gap-1.5 py-1.5 mb-2 px-3 rounded-lg uppercase font-semibold bg-gray-800/[0.1] text-gray-800">
                     {{ $packageData->package_12_10->package }}
                   </p>
                 @endif
-                @if (isset($packageData->package_22_20_id))
+                @if ($packageData->package_22_20->room_4_5)
                   <p
                     class="text-[0.6rem] gap-1.5 py-1.5 mb-2 px-3 rounded-lg uppercase font-semibold bg-gray-800/[0.1] text-gray-800">
                     {{ $packageData->package_22_20->package }}
@@ -87,7 +87,7 @@
                   <p class="text-xs text-gray-800 dark:text-gray-200">Price from</p>
                   <p class="text-xl font-semibold text-gray-800 dark:text-gray-400">
                     RM
-                    @if (isset($packageData->package_12_10_id))
+                    @if ($packageData->package_12_10->room_4_5)
                       {{ number_format($packageData->package_12_10->room_4_5, 0, ',') }}
                     @else
                       {{ number_format($packageData->package_22_20->room_4_5, 0, ',') }}

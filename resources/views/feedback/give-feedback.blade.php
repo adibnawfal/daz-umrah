@@ -100,10 +100,10 @@
           <div class="sm:flex">
             <input type="text" name="first_name" id="first_name" placeholder="First Name"
               class="relative block w-full px-3 py-2 -mt-px text-sm border-gray-200 shadow-sm pe-11 -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-              autocomplete="first_name" value="{{ $user->first_name }}" disabled>
+              value="{{ old('first_name', $user->first_name) }}" disabled>
             <input type="text" name="last_name" id="last_name" placeholder="Last Name"
               class="relative block w-full px-3 py-2 -mt-px text-sm border-gray-200 shadow-sm pe-11 -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-              autocomplete="last_name" value="{{ $user->last_name }}" disabled>
+              value="{{ old('last_name', $user->last_name) }}" disabled>
           </div>
         </div>
         <!-- End Full Name -->
@@ -117,7 +117,7 @@
         <div class="sm:col-span-9">
           <input type="email" name="email" id="email" placeholder="example@dazumrah.com"
             class="block w-full px-3 py-2 text-sm border-gray-200 rounded-lg shadow-sm pe-11 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-            autocomplete="username" value="{{ $user->email }}" disabled>
+            value="{{ old('email', $user->email) }}" disabled>
         </div>
         <!-- End Email Address -->
 

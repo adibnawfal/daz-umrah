@@ -420,9 +420,9 @@
                               </svg>
                               Write Remarks
                             </button>
-                            @if ($reservationData->status === 'Make Payment')
-                              <button
-                                class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            @if ($reservationData->identity_card && $reservationData->passport)
+                              <a class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                href="{{ route('umrah.download-documents', $reservationData->id) }}">
                                 <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                   stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-down">
@@ -432,7 +432,7 @@
                                   <path d="m9 15 3 3 3-3" />
                                 </svg>
                                 Download Documents
-                              </button>
+                              </a>
                             @endif
                           </div>
                           <div class="py-2 first:pt-0 last:pb-0">
@@ -440,14 +440,15 @@
                               class="flex items-center w-full px-3 py-2 text-sm text-red-600 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                               <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
-                                <path d="M3 6h18" />
-                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                                <line x1="10" x2="10" y1="11" y2="17" />
-                                <line x1="14" x2="14" y1="11" y2="17" />
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-off">
+                                <path d="M4.2 4.2A2 2 0 0 0 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 1.82-1.18" />
+                                <path d="M21 15.5V6a2 2 0 0 0-2-2H9.5" />
+                                <path d="M16 2v4" />
+                                <path d="M3 10h7" />
+                                <path d="M21 10h-5.5" />
+                                <path d="m2 2 20 20" />
                               </svg>
-                              Delete
+                              Delete Reservation
                             </button>
                           </div>
                         </div>

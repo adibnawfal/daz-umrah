@@ -1,4 +1,4 @@
-@php
+{{-- @php
   $is12Days10Nights = isset($packageData->package_12_10_id);
   $is22Days20Nights = isset($packageData->package_22_20_id);
   $selectedDate = $is12Days10Nights ? '12 days 10 nights' : '22 days 20 nights';
@@ -745,4 +745,4 @@
       }
     }))
   })
-</script>
+</script> --}}

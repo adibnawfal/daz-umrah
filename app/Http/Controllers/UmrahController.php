@@ -12,6 +12,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class UmrahController extends Controller
 {
@@ -135,6 +136,34 @@ class UmrahController extends Controller
     }
 
     return Redirect::route('umrah.reservation-list')->with('status', 'details-updated');
+  }
+
+  /**
+   * Download reservation documents.
+   */
+  public function downloadDocuments(string $id)
+  {
+    $reservationData = Reservation::findOrFail($id);
+
+    $zip = new ZipArchive;
+    $zipFileName = 'reservation_' . $reservationData->id . '.zip';
+
+    if ($zip->open(storage_path('app/files/umrah/' . $zipFileName), ZipArchive::CREATE) === TRUE) {
+      $filesToZip = [
+        storage_path('app/files/umrah/' . $reservationData->identity_card),
+        storage_path('app/files/umrah/' . $reservationData->passport),
+      ];
+
+      foreach ($filesToZip as $file) {
+        $zip->addFile($file, basename($file));
+      }
+
+      $zip->close();
+
+      return response()->download(storage_path('app/files/umrah/' . $zipFileName))->deleteFileAfterSend(true);
+    } else {
+      return Redirect::route('umrah.reservation-list')->with('status', 'download-failure');
+    }
   }
 
   /**

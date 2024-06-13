@@ -234,7 +234,7 @@
               @foreach ($customer as $customerData)
                 <tr>
                   <!-- No. -->
-                  <td class="align-top size-px whitespace-nowrap">
+                  <td class="size-px whitespace-nowrap">
                     <div class="py-3 ps-6">
                       <span class="text-sm text-gray-800 dark:text-gray-200">{{ $count++ }}.</span>
                     </div>
@@ -242,7 +242,7 @@
                   <!-- End No. -->
 
                   <!-- Profile Picture -->
-                  <td class="align-top size-px whitespace-nowrap">
+                  <td class="size-px whitespace-nowrap">
                     <div class="py-3 ps-6">
                       @if ($customerData->profile_img)
                         <img class="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-gray-800"
@@ -262,7 +262,7 @@
                   <!-- End Profile Picture -->
 
                   <!-- First Name -->
-                  <td class="align-top size-px whitespace-nowrap">
+                  <td class="size-px whitespace-nowrap">
                     <div class="py-3 ps-6">
                       <span class="text-sm text-gray-600 dark:text-neutral-400">
                         {{ $customerData->first_name }}
@@ -272,7 +272,7 @@
                   <!-- End First Name -->
 
                   <!-- Last Name -->
-                  <td class="align-top size-px whitespace-nowrap">
+                  <td class="size-px whitespace-nowrap">
                     <div class="py-3 ps-6">
                       <span class="text-sm text-gray-600 dark:text-neutral-400">
                         @if ($customerData->last_name)
@@ -286,7 +286,7 @@
                   <!-- End Last Name -->
 
                   <!-- Email -->
-                  <td class="align-top size-px whitespace-nowrap">
+                  <td class="size-px whitespace-nowrap">
                     <div class="py-3 ps-6">
                       <span class="text-sm text-gray-600 dark:text-neutral-400">
                         {{ $customerData->email }}
@@ -296,7 +296,7 @@
                   <!-- End Email -->
 
                   <!-- Role -->
-                  <td class="align-top size-px whitespace-nowrap">
+                  <td class="size-px whitespace-nowrap">
                     <div class="py-3 ps-6">
                       <span
                         class="inline-flex items-center gap-1.5 py-1 px-2 rounded-lg text-xs font-medium bg-gray-100 text-gray-800 dark:bg-neutral-900 dark:text-neutral-200">
@@ -307,7 +307,7 @@
                   <!-- End Role -->
 
                   <!-- Phone No -->
-                  <td class="align-top size-px whitespace-nowrap">
+                  <td class="size-px whitespace-nowrap">
                     <div class="py-3 ps-6">
                       <span class="text-sm text-gray-600 dark:text-neutral-400">
                         @if ($customerData->phone_no)
@@ -321,7 +321,7 @@
                   <!-- End Phone No -->
 
                   <!-- Address -->
-                  <td class="align-top size-px whitespace-nowrap">
+                  <td class="size-px whitespace-nowrap">
                     <div class="py-3 ps-6">
                       <span class="text-sm text-gray-600 dark:text-neutral-400">
                         @if ($customerData->address1)
@@ -339,7 +339,7 @@
                   <!-- End Address -->
 
                   <!-- Created -->
-                  <td class="align-top size-px whitespace-nowrap">
+                  <td class="size-px whitespace-nowrap">
                     <div class="py-3 ps-6">
                       <span class="text-sm text-gray-600 dark:text-neutral-400">
                         {{ $customerData->created_at->format('d F Y') }}

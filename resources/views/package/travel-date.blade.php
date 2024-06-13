@@ -38,7 +38,7 @@
             <path d="M12 18h.01" />
             <path d="M16 18h.01" />
           </svg>
-          Manage Travel Date
+          Travel Date
         </p>
       </li>
     </ol>
@@ -49,9 +49,13 @@
       class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
       <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <path d="M5 12h14" />
-        <path d="M12 5v14" />
+        stroke-linejoin="round" class="lucide lucide-calendar-plus">
+        <path d="M8 2v4" />
+        <path d="M16 2v4" />
+        <path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8" />
+        <path d="M3 10h18" />
+        <path d="M16 19h6" />
+        <path d="M19 16v6" />
       </svg>
       Add Travel Date
     </button>
@@ -75,7 +79,7 @@
       <!-- List -->
       <ul class="grid grid-cols-2 text-sm gap-y-2 sm:text-base">
         @foreach ($travelDate as $travelDateData)
-          @if ($travelDateData->package === '22 Days 20 Nights')
+          @if ($travelDateData->package === '12 Days 10 Nights')
             <button data-hs-overlay="#hs-update-travel-date-{{ $travelDateData->id }}-modal">
               <li class="flex space-x-3 tracking-tight group/item">
                 <span
@@ -106,7 +110,7 @@
       <!-- End List -->
 
       <!-- Information -->
-      <p class="mt-8 text-sm text-gray-500 dark:text-neutral-500">Select any date to delete.</p>
+      <p class="mt-8 text-sm text-gray-500 dark:text-neutral-500">Select any date to update.</p>
       <!-- End Information -->
     </div>
     <!-- End 12 Days 10 Nights -->
@@ -157,7 +161,7 @@
       <!-- End List -->
 
       <!-- Information -->
-      <p class="mt-8 text-sm text-gray-500 dark:text-neutral-500">Select any date to delete.</p>
+      <p class="mt-8 text-sm text-gray-500 dark:text-neutral-500">Select any date to update.</p>
       <!-- End Information -->
 
     </div>

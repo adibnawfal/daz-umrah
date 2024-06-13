@@ -56,7 +56,7 @@
               stroke-linejoin="round" class="lucide lucide-check">
               <path d="M20 6 9 17l-5-5" />
             </svg>
-            Confirm
+            Update
           </button>
       </form>
     </div>

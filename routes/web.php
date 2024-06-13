@@ -26,8 +26,8 @@ Route::get('/welcome/package/details/{id}', [WelcomeController::class, 'getPacka
 
 Route::middleware('auth')->group(function () {
   // Welcome
-  Route::get('/welcome/package/reservation/{packageId}/price/{priceId}/room/{room}', [WelcomeController::class, 'getUmrahReservation'])->name('welcome.get-umrah-reservation');
-  Route::post('/welcome/package/reservation/{packageId}/price/{priceId}/room/{room}', [WelcomeController::class, 'postUmrahReservation'])->name('welcome.post-umrah-reservation');
+  Route::get('/welcome/package/reservation/{packageId}/{selectedPackage}/{room}', [WelcomeController::class, 'getUmrahReservation'])->name('welcome.get-umrah-reservation');
+  Route::post('/welcome/package/reservation/{packageId}/{selectedPackage}/{room}', [WelcomeController::class, 'postUmrahReservation'])->name('welcome.post-umrah-reservation');
 
   // Dashboard
   Route::get('/dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard');
@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
   Route::patch('/umrah/reservation/remarks/{id}', [UmrahController::class, 'patchWriteRemarks'])->name('umrah.patch-write-remarks');
   Route::get('/umrah/reservation/details/{id}', [UmrahController::class, 'getUpdateDetails'])->name('umrah.get-update-details');
   Route::put('/umrah/reservation/details/{id}', [UmrahController::class, 'putUpdateDetails'])->name('umrah.put-update-details');
+  Route::get('/umrah/reservation/details/documents/{id}', [UmrahController::class, 'downloadDocuments'])->name('umrah.download-documents');
   Route::get('/umrah/reservation/payment/{id}', [UmrahController::class, 'getMakePayment'])->name('umrah.get-make-payment');
   Route::patch('/umrah/reservation/payment/{id}', [UmrahController::class, 'patchMakePayment'])->name('umrah.patch-make-payment');
   Route::get('/umrah/reservation/payment/success/{id}', [UmrahController::class, 'paymentSuccess'])->name('umrah.payment-success');
@@ -66,6 +67,12 @@ Route::middleware('auth')->group(function () {
   Route::patch('/profile/information', [ProfileController::class, 'patchProfileInformation'])->name('profile.patch-profile-information');
   Route::patch('/profile/address', [ProfileController::class, 'patchProfileAddress'])->name('profile.patch-profile-address');
   Route::delete('/profile/delete', [ProfileController::class, 'deleteProfile'])->name('profile.delete-profile');
+  Route::get('/profile/staff', [ProfileController::class, 'getStaff'])->name('profile.staff');
+  Route::get('/profile/staff/add', [ProfileController::class, 'getAddStaff'])->name('profile.get-add-staff');
+  Route::post('/profile/staff/add', [ProfileController::class, 'postAddStaff'])->name('profile.post-add-staff');
+  Route::get('/profile/staff/update/{id}', [ProfileController::class, 'getUpdateStaff'])->name('profile.get-update-staff');
+  Route::patch('/profile/staff/update/{id}', [ProfileController::class, 'patchUpdateStaff'])->name('profile.patch-update-staff');
+  Route::delete('/profile/staff/delete/{id}', [ProfileController::class, 'deleteStaff'])->name('profile.delete-staff');
 
   // Report
   Route::get('/report', [ReportController::class, 'getReport'])->name('report');
@@ -92,8 +99,10 @@ Route::middleware('auth')->group(function () {
   Route::get('/feedback', [FeedbackController::class, 'getFeedback'])->name('feedback');
   Route::get('/feedback/give', [FeedbackController::class, 'getGiveFeedback'])->name('feedback.get-give-feedback');
   Route::post('/feedback/give', [FeedbackController::class, 'postGiveFeedback'])->name('feedback.post-give-feedback');
-  Route::get('/feedback/edit/{id}', [FeedbackController::class, 'getEditFeedback'])->name('feedback.get-edit-feedback');
-  Route::put('/feedback/edit/{id}', [FeedbackController::class, 'putEditFeedback'])->name('feedback.put-edit-feedback');
+  Route::get('/feedback/update/{id}', [FeedbackController::class, 'getUpdateFeedback'])->name('feedback.get-update-feedback');
+  Route::patch('/feedback/update/{id}', [FeedbackController::class, 'patchUpdateFeedback'])->name('feedback.patch-update-feedback');
+  Route::patch('/feedback/reply/{id}', [FeedbackController::class, 'patchReplyFeedback'])->name('feedback.reply-feedback');
+  Route::patch('/feedback/favourites/{id}', [FeedbackController::class, 'patchAddToFavourites'])->name('feedback.add-to-favourites');
   Route::delete('/feedback/delete/{id}', [FeedbackController::class, 'deleteFeedback'])->name('feedback.delete-feedback');
 });
 

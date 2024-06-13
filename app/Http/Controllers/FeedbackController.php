@@ -15,8 +15,6 @@ class FeedbackController extends Controller
    */
   public function getFeedback(Request $request): View
   {
-    $feedback = '';
-
     if (Auth::User()->role == 'admin' || Auth::User()->role == 'staff') {
       $feedback = Feedback::all();
     } else {
@@ -45,7 +43,6 @@ class FeedbackController extends Controller
   public function postGiveFeedback(Request $request)
   {
     $feedback = new Feedback();
-    $userId = auth()->user()->id;
 
     $this->validate($request, [
       'rating' => ['required', 'integer', 'min:0'],
@@ -53,49 +50,77 @@ class FeedbackController extends Controller
       'details' => ['required', 'string', 'max:255'],
     ]);
 
-    $feedback->user_id = $userId;
+    $feedback->user_id = $request->user()->id;
     $feedback->rating = $request['rating'];
     $feedback->title = $request['title'];
     $feedback->details = $request['details'];
+    $feedback->favourite = false;
     $feedback->save();
 
     return Redirect::route('feedback')->with('status', 'feedback-submitted');
   }
 
   /**
-   * Display edit feedback page.
+   * Display update feedback page.
    */
-  public function getEditFeedback(Request $request, string $id): View
+  public function getUpdateFeedback(Request $request, string $id): View
   {
-    $feedback = Feedback::find($id);
+    $feedback = Feedback::findOrFail($id);
 
-    return view('feedback.edit-feedback', [
+    return view('feedback.update-feedback', [
       'user' => $request->user(),
       'feedback' => $feedback,
     ]);
   }
 
   /**
-   * Submit edit feedback form.
+   * Submit update feedback form.
    */
-  public function putEditFeedback(Request $request, string $id)
+  public function patchUpdateFeedback(Request $request, string $id)
   {
-    $feedback = Feedback::find($id);
+    $feedback = Feedback::findOrFail($id);
 
     $this->validate($request, [
-      'user_id' => ['required', 'exists:users,id'],
       'rating' => ['required', 'integer', 'min:0'],
       'title' => ['required', 'string', 'max:255'],
       'details' => ['required', 'string', 'max:255'],
     ]);
 
-    $feedback->user_id = $request['user_id'];
-    $feedback->rating = $request['rating'];
-    $feedback->title = $request['title'];
-    $feedback->details = $request['details'];
-    $feedback->save();
+    $feedback->update([
+      'rating' => $request['rating'],
+      'title' => $request['title'],
+      'details' => $request['details'],
+    ]);
 
     return Redirect::route('feedback')->with('status', 'feedback-updated');
+  }
+
+  /**
+   * Submit reply feedback form.
+   */
+  public function patchReplyFeedback(Request $request, string $id)
+  {
+    $feedbackData = Feedback::findOrFail($id);
+
+    $this->validate($request, [
+      'reply' => ['nullable', 'string', 'max:255'],
+    ]);
+
+    $feedbackData->update(['reply' => $request['reply']]);
+
+    return Redirect::route('feedback')->with('status', 'feedback-replied');
+  }
+
+  /**
+   * Submit add to favourite form.
+   */
+  public function patchAddToFavourites(string $id)
+  {
+    $feedbackData = Feedback::findOrFail($id);
+
+    $feedbackData->update(['favourite' => !$feedbackData->favourite]);
+
+    return Redirect::route('feedback')->with('status', 'feedback-added-to-favourites');
   }
 
   /**
@@ -103,7 +128,7 @@ class FeedbackController extends Controller
    */
   public function deleteFeedback(string $id)
   {
-    $feedback = Feedback::find($id);
+    $feedback = Feedback::findOrFail($id);
     $feedback->delete();
 
     return Redirect::route('feedback')->with('status', 'feedback-deleted');

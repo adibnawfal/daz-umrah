@@ -1,4 +1,3 @@
-<!-- Add Travel Date Modal -->
 <div id="hs-add-travel-date-modal"
   class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
   <div
@@ -95,4 +94,3 @@
     </div>
   </div>
 </div>
-<!-- End Add Travel Date Modal -->

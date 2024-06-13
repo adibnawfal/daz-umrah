@@ -118,9 +118,10 @@
                   href="{{ route('feedback.get-give-feedback') }}">
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14" />
-                    <path d="M12 5v14" />
+                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-plus">
+                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                    <path d="M8 12h8" />
+                    <path d="M12 8v8" />
                   </svg>
                   Give Feedback
                 </a>
@@ -236,6 +237,19 @@
                       </span>
                       <span
                         class="block text-sm text-gray-600 dark:text-neutral-400">{{ $feedbackData->details }}</span>
+                      @if ($feedbackData->reply)
+                        <div
+                          class="inline-flex items-center p-1 mt-1 text-xs text-gray-500 -ms-1 gap-x-2 dark:text-neutral-400">
+                          <svg class="flex-shrink-0 rounded-full size-4" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-corner-down-right">
+                            <polyline points="15 10 20 15 15 20" />
+                            <path d="M4 4v7a4 4 0 0 0 4 4h12" />
+                          </svg>
+                          {{ $feedbackData->reply }}
+                        </div>
+                      @endif
                     </div>
                   </td>
                   <!-- End Feedback -->
@@ -298,7 +312,7 @@
                               Actions
                             </span>
                             <a class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                              href="{{ route('feedback.get-edit-feedback', $feedbackData->id) }}">
+                              href="{{ route('feedback.get-update-feedback', $feedbackData->id) }}">
                               <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line">
@@ -306,33 +320,60 @@
                                 <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
                                 <path d="m15 5 3 3" />
                               </svg>
-                              Edit Feedback
+                              Update Feedback
                             </a>
-                            <a class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                              href="#">
+                            <button
+                              class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                              data-hs-overlay="#hs-reply-feedback-{{ $feedbackData->id }}-modal">
                               <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart">
-                                <path
-                                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-reply">
+                                <polyline points="9 17 4 12 9 7" />
+                                <path d="M20 18v-2a4 4 0 0 0-4-4H4" />
                               </svg>
-                              Add to favorites
-                            </a>
+                              Reply Feedback
+                            </button>
+                            <form method="post"
+                              action="{{ route('feedback.add-to-favourites', $feedbackData->id) }}">
+                              @csrf
+                              @method('patch')
+
+                              <button type="submit"
+                                class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                @if ($feedbackData->favourite)
+                                  <svg class="size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" viewBox="0 0 24 24" fill="#c31e39"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-heart">
+                                    <path
+                                      d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                                  </svg>
+                                @else
+                                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-heart">
+                                    <path
+                                      d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                                  </svg>
+                                @endif
+                                Add to favorites
+                              </button>
+                            </form>
                           </div>
                           <div class="py-2 first:pt-0 last:pb-0">
                             <button
-                              class="flex items-center w-full px-3 py-2 text-sm text-red-600 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                              class="flex items-center w-full px-3 py-2 text-sm text-[#c31e39] rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                               data-hs-overlay="#hs-delete-feedback-{{ $feedbackData->id }}-modal">
                               <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2">
-                                <path d="M3 6h18" />
-                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                                <line x1="10" x2="10" y1="11" y2="17" />
-                                <line x1="14" x2="14" y1="11" y2="17" />
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-message-circle-off">
+                                <path d="M20.5 14.9A9 9 0 0 0 9.1 3.5" />
+                                <path d="m2 2 20 20" />
+                                <path d="M5.6 5.6C3 8.3 2.2 12.5 4 16l-2 6 6-2c3.4 1.8 7.6 1.1 10.3-1.7" />
                               </svg>
-                              Delete
+                              Delete Feedback
                             </button>
                           </div>
                         </div>
@@ -342,6 +383,7 @@
                   <!-- End Actions -->
                 </tr>
                 @include('feedback.partials.modal.hs-delete-feedback-modal')
+                @include('feedback.partials.modal.hs-reply-feedback-modal')
               @endforeach
             </tbody>
             <!-- End Body -->

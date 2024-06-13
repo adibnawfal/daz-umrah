@@ -61,7 +61,7 @@
 
       <div class="py-8">
         <!-- Form -->
-        <form method="POST" action="{{ route('register') }}">
+        <form method="post" action="{{ route('register') }}">
           @csrf
 
           <div class="lg:max-w-lg lg:mx-auto lg:me-0 ms-auto">

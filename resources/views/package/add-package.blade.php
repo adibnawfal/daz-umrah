@@ -45,12 +45,11 @@
       <p class="flex items-center text-sm font-semibold text-gray-800 dark:text-white">
         <svg class="flex-shrink-0 me-3 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" class="lucide lucide-clipboard-pen-line">
-          <rect width="8" height="4" x="8" y="2" rx="1" />
-          <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5" />
-          <path d="M16 4h2a2 2 0 0 1 1.73 1" />
-          <path d="M8 18h1" />
-          <path d="M18.4 9.6a2 2 0 0 1 3 3L17 17l-4 1 1-4Z" />
+          stroke-linejoin="round" class="lucide lucide-clipboard-plus">
+          <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+          <path d="M9 14h6" />
+          <path d="M12 17v-6" />
         </svg>
         Add Package
       </p>
@@ -343,12 +342,11 @@
           class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
           <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="lucide lucide-clipboard-pen-line">
-            <rect width="8" height="4" x="8" y="2" rx="1" />
-            <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5" />
-            <path d="M16 4h2a2 2 0 0 1 1.73 1" />
-            <path d="M8 18h1" />
-            <path d="M18.4 9.6a2 2 0 0 1 3 3L17 17l-4 1 1-4Z" />
+            stroke-linejoin="round" class="lucide lucide-clipboard-plus">
+            <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+            <path d="M9 14h6" />
+            <path d="M12 17v-6" />
           </svg>
           Add Package
         </button>

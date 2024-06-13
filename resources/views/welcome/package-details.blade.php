@@ -1,5 +1,7 @@
 @extends('welcome')
 
 @section('content')
-  @include('package.partials.view-package-details')
+  <!-- Package Details -->
+  <livewire:packagedetails :packageData="$packageData" :travelDate="$travelDate" />
+  <!-- End Package Details -->
 @endsection

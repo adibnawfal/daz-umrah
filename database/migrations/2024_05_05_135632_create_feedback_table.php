@@ -17,6 +17,8 @@ return new class extends Migration {
       $table->integer('rating');
       $table->string('title');
       $table->string('details');
+      $table->string('reply')->nullable();
+      $table->boolean('favourite');
       $table->timestamps();
     });
   }
