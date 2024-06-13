@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
-use App\Models\Price;
 use App\Models\TravelDate;
 use App\Models\Payment;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 
 class WelcomeController extends Controller
 {
@@ -22,6 +22,27 @@ class WelcomeController extends Controller
 
     return view('welcome.view', [
       'packages' => $packages,
+    ]);
+  }
+
+  /**
+   * Display register page.
+   */
+  public function getRegister(Request $request): View
+  {
+    return view('auth.register', [
+      'firstName' => $request->first_name,
+      'lastName' => $request->last_name,
+    ]);
+  }
+
+  /**
+   * Display register page from footer.
+   */
+  public function getRegisterFooter(Request $request): View
+  {
+    return view('auth.register', [
+      'email' => $request->email,
     ]);
   }
 

@@ -47,29 +47,31 @@
   <!-- End Avatar Group -->
 
   <!-- Form -->
-  <form>
+  <form method="get" action="{{ route('welcome.register') }}">
     <div
       class="mx-auto max-w-2xl sm:flex sm:space-x-3 p-3 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-900/[.2]">
       <div class="pb-2 sm:pb-0 sm:flex-[1_0_0%]">
-        <label for="hs-hero-name-1" class="block text-sm font-medium dark:text-white"><span class="sr-only">First
-            Name</span></label>
-        <input type="text" id="hs-hero-name-1"
+        <label for="first_name" class="block text-sm font-medium dark:text-white">
+          <span class="sr-only">First Name</span>
+        </label>
+        <input type="text" id="first_name" name="first_name"
           class="block w-full px-4 py-3 text-sm border-transparent rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] dark:bg-slate-900 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
           placeholder="First Name">
       </div>
       <div
         class="pt-2 sm:pt-0 sm:ps-3 border-t border-gray-200 sm:border-t-0 sm:border-s sm:flex-[1_0_0%] dark:border-gray-700">
-        <label for="hs-hero-email-1" class="block text-sm font-medium dark:text-white"><span class="sr-only">Last
-            Name</span></label>
-        <input type="email" id="hs-hero-email-1"
+        <label for="last_name" class="block text-sm font-medium dark:text-white">
+          <span class="sr-only">Last Name</span>
+        </label>
+        <input type="text" id="last_name" name="last_name"
           class="block w-full px-4 py-3 text-sm border-transparent rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] dark:bg-slate-900 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
           placeholder="Last Name">
       </div>
       <div class="pt-2 sm:pt-0 grid sm:block sm:flex-[0_0_auto]">
-        <a class="inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-white bg-[#c31e39] border border-transparent rounded-lg gap-x-2 hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-          href="#">
+        <button type="submit"
+          class="inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-white bg-[#c31e39] border border-transparent rounded-lg gap-x-2 hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
           Get's started
-        </a>
+        </button>
       </div>
     </div>
   </form>

@@ -78,83 +78,89 @@
                 </p>
               </div>
 
+              @php
+                if (!isset($firstName)) {
+                    $firstName = null;
+                }
+                if (!isset($lastName)) {
+                    $lastName = null;
+                }
+                if (!isset($email)) {
+                    $email = null;
+                }
+              @endphp
               <div class="mt-5">
-                <!-- Form -->
-                <form>
-                  <div class="grid gap-y-4">
-
-                    <div class="grid grid-cols-2 gap-x-4">
-                      <!-- First Name -->
-                      <div>
-                        <label for="first_name" class="block mb-2 text-sm dark:text-white">First Name</label>
-                        <input type="text" id="first_name" name="first_name" placeholder="Enter your first name"
-                          class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                          autocomplete="first-name" value="{{ old('first_name') }}" autofocus>
-                        <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
-                      </div>
-                      <!-- End First Name -->
-
-                      <!-- Last Name -->
-                      <div>
-                        <label for="last_name" class="block mb-2 text-sm dark:text-white">Last Name</label>
-                        <input type="text" id="last_name" name="last_name" placeholder="Enter your last name"
-                          class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                          autocomplete="last-name" value="{{ old('last_name') }}">
-                        <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
-                      </div>
-                      <!-- End Last Name -->
-                    </div>
-
-                    <!-- Email Address -->
+                <div class="grid gap-y-4">
+                  <div class="grid grid-cols-2 gap-x-4">
+                    <!-- First Name -->
                     <div>
-                      <label for="email" class="block mb-2 text-sm dark:text-white">Email Address</label>
-                      <input type="email" id="email" name="email" placeholder="Enter your email address"
+                      <label for="first_name" class="block mb-2 text-sm dark:text-white">First Name</label>
+                      <input type="text" id="first_name" name="first_name" placeholder="Enter your first name"
                         class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                        autocomplete="email" value="{{ old('email') }}">
-                      <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        autocomplete="first-name" value="{{ old('first_name', $firstName) }}" autofocus>
+                      <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
                     </div>
-                    <!-- End Email Address -->
+                    <!-- End First Name -->
 
-                    <!-- Password -->
+                    <!-- Last Name -->
                     <div>
-                      <label for="password" class="block mb-2 text-sm dark:text-white">Password</label>
-                      <input type="password" id="password" name="password" placeholder="Enter your password"
+                      <label for="last_name" class="block mb-2 text-sm dark:text-white">Last Name</label>
+                      <input type="text" id="last_name" name="last_name" placeholder="Enter your last name"
                         class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                        autocomplete="new-password">
-                      <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        autocomplete="last-name" value="{{ old('last_name', $lastName) }}">
+                      <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
                     </div>
-                    <!-- End Password -->
-
-                    <!-- Confirm Password -->
-                    <div>
-                      <label for="password_confirmation" class="block mb-2 text-sm dark:text-white">Confirm
-                        Password</label>
-                      <input type="password" id="password_confirmation" name="password_confirmation"
-                        class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                        placeholder="Re-type your password" autocomplete="new-password">
-                      <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-                    </div>
-                    <!-- End Confirm Password -->
-
-                    <!-- Checkbox -->
-                    <div class="flex flex-col justify-center">
-                      <div class="flex items-center gap-x-3">
-                        <input type="checkbox" id="terms_and_conditions" name="terms_and_conditions"
-                          class="shrink-0 mt-0.5 border-gray-200 rounded text-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-[#c31e39] dark:checked:border-[#c31e39] dark:focus:ring-offset-gray-800"
-                          @checked(old('terms_and_conditions'))>
-                        <label for="terms_and_conditions" class="text-sm dark:text-white">I accept the <a
-                            class="font-medium text-[#c31e39] decoration-2 hover:underline dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            href="#">Terms and Conditions</a></label>
-                      </div>
-                      <x-input-error :messages="$errors->get('terms_and_conditions')" class="mt-2" />
-                    </div>
-                    <!-- End Checkbox -->
-
-                    <button type="submit"
-                      class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-white bg-[#c31e39] border border-transparent rounded-lg gap-x-2 hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Register</button>
+                    <!-- End Last Name -->
                   </div>
-                </form>
-                <!-- End Form -->
+
+                  <!-- Email Address -->
+                  <div>
+                    <label for="email" class="block mb-2 text-sm dark:text-white">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address"
+                      class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                      autocomplete="email" value="{{ old('email', $email) }}">
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                  </div>
+                  <!-- End Email Address -->
+
+                  <!-- Password -->
+                  <div>
+                    <label for="password" class="block mb-2 text-sm dark:text-white">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password"
+                      class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                      autocomplete="new-password">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                  </div>
+                  <!-- End Password -->
+
+                  <!-- Confirm Password -->
+                  <div>
+                    <label for="password_confirmation" class="block mb-2 text-sm dark:text-white">Confirm
+                      Password</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation"
+                      class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                      placeholder="Re-type your password" autocomplete="new-password">
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                  </div>
+                  <!-- End Confirm Password -->
+
+                  <!-- Checkbox -->
+                  <div class="flex flex-col justify-center">
+                    <div class="flex items-center gap-x-3">
+                      <input type="checkbox" id="terms_and_conditions" name="terms_and_conditions"
+                        class="shrink-0 mt-0.5 border-gray-200 rounded text-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-[#c31e39] dark:checked:border-[#c31e39] dark:focus:ring-offset-gray-800"
+                        @checked(old('terms_and_conditions'))>
+                      <label for="terms_and_conditions" class="text-sm dark:text-white">I accept the <a
+                          class="font-medium text-[#c31e39] decoration-2 hover:underline dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                          href="#">Terms and Conditions</a></label>
+                    </div>
+                    <x-input-error :messages="$errors->get('terms_and_conditions')" class="mt-2" />
+                  </div>
+                  <!-- End Checkbox -->
+
+                  <button type="submit"
+                    class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-white bg-[#c31e39] border border-transparent rounded-lg gap-x-2 hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Register</button>
+                </div>
               </div>
             </div>
             <!-- End Card -->

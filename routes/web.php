@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'getWelcome'])->name('welcome');
+Route::get('/welcome/register', [WelcomeController::class, 'getRegister'])->name('welcome.register');
+Route::get('/welcome/register/footer', [WelcomeController::class, 'getRegisterFooter'])->name('welcome.register-footer');
 Route::get('/welcome/package', [WelcomeController::class, 'getAllPackage'])->name('welcome.all-package');
 Route::get('/welcome/package/details/{id}', [WelcomeController::class, 'getPackageDetails'])->name('welcome.package-details');
 

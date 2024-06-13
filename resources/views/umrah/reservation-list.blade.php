@@ -39,7 +39,7 @@
     <div class="p-4 overflow-y-auto text-center sm:p-10">
 
       <div class="flex items-center justify-center mb-8">
-        <img width="400" src="{{ asset('images/umrah/reservation-list.svg') }}">
+        <img width="400" src="{{ asset('storage/images/umrah/reservation-list.svg') }}">
       </div>
 
       <h3 class="mb-2 text-xl font-bold text-gray-800 dark:text-neutral-200">

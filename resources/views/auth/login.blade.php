@@ -82,50 +82,46 @@
               <x-auth-session-status class="mt-5" :status="session('status')" />
 
               <div class="mt-5">
-                <!-- Form -->
-                <form>
-                  <div class="grid gap-y-4">
-                    <!-- Email Address -->
-                    <div>
-                      <label for="email" class="block mb-2 text-sm dark:text-white">Email Address</label>
-                      <input type="email" id="email" name="email" placeholder="Enter your email address"
-                        class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                        autocomplete="email" value="{{ old('email') }}" autofocus>
-                      <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                    </div>
-                    <!-- End Email Address -->
-
-                    <!-- Password -->
-                    <div>
-                      <div class="flex items-center justify-between">
-                        <label for="password" class="block mb-2 text-sm dark:text-white">Password</label>
-                        @if (Route::has('password.request'))
-                          <a class="text-sm font-medium text-[#c31e39] decoration-2 hover:underline dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            href="{{ route('password.request') }}">Forgot password?</a>
-                          </a>
-                        @endif
-                      </div>
-                      <input type="password" id="password" name="password" placeholder="Enter your password"
-                        class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                        autocomplete="current-password">
-                      <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                    </div>
-                    <!-- End Password -->
-
-                    <!-- Checkbox -->
-                    <div class="flex gap-x-3">
-                      <input type="checkbox" id="remember_me" name="remember" @checked(old('remember'))
-                        class="shrink-0 mt-0.5 border-gray-200 rounded text-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-[#c31e39] dark:checked:border-[#c31e39] dark:focus:ring-offset-gray-800">
-                      <label for="remember_me" class="text-sm dark:text-white">Remember
-                        me</label>
-                    </div>
-                    <!-- End Checkbox -->
-
-                    <button type="submit"
-                      class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-white bg-[#c31e39] border border-transparent rounded-lg gap-x-2 hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Login</button>
+                <div class="grid gap-y-4">
+                  <!-- Email Address -->
+                  <div>
+                    <label for="email" class="block mb-2 text-sm dark:text-white">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address"
+                      class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                      autocomplete="email" value="{{ old('email') }}" autofocus>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                   </div>
-                </form>
-                <!-- End Form -->
+                  <!-- End Email Address -->
+
+                  <!-- Password -->
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <label for="password" class="block mb-2 text-sm dark:text-white">Password</label>
+                      @if (Route::has('password.request'))
+                        <a class="text-sm font-medium text-[#c31e39] decoration-2 hover:underline dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                          href="{{ route('password.request') }}">Forgot password?</a>
+                        </a>
+                      @endif
+                    </div>
+                    <input type="password" id="password" name="password" placeholder="Enter your password"
+                      class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                      autocomplete="current-password">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                  </div>
+                  <!-- End Password -->
+
+                  <!-- Checkbox -->
+                  <div class="flex gap-x-3">
+                    <input type="checkbox" id="remember_me" name="remember" @checked(old('remember'))
+                      class="shrink-0 mt-0.5 border-gray-200 rounded text-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-[#c31e39] dark:checked:border-[#c31e39] dark:focus:ring-offset-gray-800">
+                    <label for="remember_me" class="text-sm dark:text-white">Remember
+                      me</label>
+                  </div>
+                  <!-- End Checkbox -->
+
+                  <button type="submit"
+                    class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-white bg-[#c31e39] border border-transparent rounded-lg gap-x-2 hover:bg-[#9c182e] disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Login</button>
+                </div>
               </div>
             </div>
             <!-- End Card -->

@@ -1,6 +1,6 @@
 <div class="flex gap-x-6">
   @if ($user->profile_img)
-    <img class="inline-block size-[100px] rounded-lg mb-3" src="{{ asset('images/users/' . $user->profile_img) }}"
+    <img class="inline-block size-[100px] rounded-lg mb-3" src="{{ asset('storage/images/users/' . $user->profile_img) }}"
       alt="Profile Picture">
   @else
     <div>

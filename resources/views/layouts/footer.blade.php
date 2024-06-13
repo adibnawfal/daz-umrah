@@ -59,19 +59,19 @@
       <div class="col-span-2">
         <h4 class="font-semibold text-gray-50">Stay up to date</h4>
 
-        <form>
+        <form method="get" action="{{ route('welcome.register-footer') }}">
           <div
             class="flex flex-col items-center gap-2 p-2 mt-4 bg-white rounded-lg sm:flex-row sm:gap-3 dark:bg-gray-800">
             <div class="w-full">
-              <label for="hero-input" class="sr-only">Search</label>
-              <input type="text" id="hero-input" name="hero-input"
+              <label for="email" class="sr-only">Search</label>
+              <input type="email" id="email" name="email"
                 class="block w-full px-4 py-3 text-sm border-transparent rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
                 placeholder="Enter your email">
             </div>
-            <a class="inline-flex items-center justify-center w-full p-3 text-sm font-semibold text-white bg-[#c31e39] hover:bg-[#9c182e] dark:bg-gray-900 border border-transparent rounded-lg sm:w-auto whitespace-nowrap gap-x-2 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">
-              Subscribe
-            </a>
+            <button type="submit"
+              class="inline-flex items-center justify-center w-full p-3 text-sm font-semibold text-white bg-[#c31e39] hover:bg-[#9c182e] dark:bg-gray-900 border border-transparent rounded-lg sm:w-auto whitespace-nowrap gap-x-2 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+              Get's started
+            </button>
           </div>
           <p class="mt-3 text-sm text-gray-300">
             New UI kits or big discounts. Never spam.
