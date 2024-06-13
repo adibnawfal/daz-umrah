@@ -87,7 +87,7 @@
             class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
             @if (Auth::user()->profile_img)
               <img class="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-gray-800"
-                src="{{ asset('images/users/' . Auth::user()->profile_img) }}" alt="Profile Picture">
+                src="{{ asset('storage/images/users/' . Auth::user()->profile_img) }}" alt="Profile Picture">
             @else
               <div>
                 <span

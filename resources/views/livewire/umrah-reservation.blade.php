@@ -196,7 +196,7 @@
         class="relative flex flex-col bg-white border border-gray-200 shadow-lg pointer-events-auto basis-2/5 rounded-xl dark:bg-neutral-800 h-max">
         <div
           class="relative overflow-hidden text-center bg-center bg-no-repeat bg-cover saturate-0 min-h-32 rounded-t-xl"
-          style="background-image: url('{{ asset('images/packages/' . $packageData->cover_img) }}')">
+          style="background-image: url('{{ asset('storage/images/package/' . $packageData->cover_img) }}')">
           <!-- SVG Background Element -->
           <figure class="absolute inset-x-0 bottom-0 -mb-px">
             <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
