@@ -13,11 +13,12 @@
 
     <div class="max-w-[85rem] px-4 pt-10 sm:px-6 lg:px-8 md:pt-14 lg:pt-20 mx-auto">
       <!-- Title -->
-      <div class="max-w-2xl mx-auto mb-10 text-center">
+      <div class="flex flex-col items-center mb-10">
         <h2
           class="text-3xl font-bold leading-tight text-[#c31e39] md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight bg-clip-text">
           Package {{ $packageData->name }} {{ $packageData->year }}</h2>
-        <p class="mt-2 text-gray-800 dark:text-gray-200">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="mt-2 text-center text-gray-800 dark:text-gray-200">Discover our exclusive Umrah package, designed for a
+          memorable Umrah experience.</p>
       </div>
       <!-- End Title -->
 
@@ -66,7 +67,7 @@
               @endif
             </span>
           </p>
-          <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet</p>
+          <p class="mt-2 text-sm text-gray-500">Comfortable accommodation</p>
           <ul class="mt-7 space-y-2.5 text-sm">
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -125,7 +126,7 @@
               @endif
             </span>
           </p>
-          <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur</p>
+          <p class="mt-2 text-sm text-gray-500">Comfortable accommodation</p>
           <ul class="mt-7 space-y-2.5 text-sm">
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -179,7 +180,7 @@
               @endif
             </span>
           </p>
-          <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet</p>
+          <p class="mt-2 text-sm text-gray-500">Comfortable accommodation</p>
           <ul class="mt-7 space-y-2.5 text-sm">
             <li class="flex space-x-2">
               <svg class="flex-shrink-0 mt-0.5 size-4 text-[#c31e39]" xmlns="http://www.w3.org/2000/svg"
@@ -224,8 +225,8 @@
       <!-- Flight -->
       <div class="mb-10 md:mb-14 lg:mb-20">
         <div class="w-2/3 mx-auto mt-10 mb-6 text-center sm:w-1/2 lg:w-1/3 md:mt-14 lg:mt-24">
-          <h2 class="text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit nam
-            vitae risus fringilla</h2>
+          <h2 class="text-gray-600 dark:text-gray-400">Travel with our trusted airline partners for a comfortable and
+            seamless journey.</h2>
         </div>
         <div class="flex items-center justify-center gap-x-6 sm:gap-x-12 lg:gap-x-24">
           <img
@@ -244,7 +245,7 @@
       <div class="mb-10 md:mb-14 lg:mb-20">
         <div class="max-w-2xl mx-auto mb-10 text-center lg:mb-14">
           <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white">Hotel Makkah and Madinah</h2>
-          <p class="mt-1 text-gray-600 dark:text-gray-400">Hotel Makkah and Madinah details</p>
+          <p class="mt-1 text-gray-600 dark:text-gray-400">Stay at top-rated hotels in Makkah and Madinah.</p>
         </div>
         <div class="grid gap-6 lg:grid-cols-2">
           <!-- Hotel Makkah -->
@@ -567,7 +568,7 @@
       <div class="mb-10 md:mb-14 lg:mb-20"">
         <div class="max-w-2xl mx-auto mb-10 text-center lg:mb-14">
           <h2 class="text-xl font-bold md:text-3xl md:leading-tight dark:text-white">Package Included</h2>
-          <p class="mt-1 text-gray-600 dark:text-gray-400">List of items included in the package</p>
+          <p class="mt-1 text-gray-600 dark:text-gray-400">List of items included in the package.</p>
         </div>
         <div class="max-w-4xl mx-auto">
           <div class="grid gap-3 md:grid-cols-2">
@@ -581,7 +582,7 @@
                   <path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" />
                 </svg>
                 <h3 class="text-gray-800 dark:text-gray-200 ms-5 sm:ms-8">
-                  Visa dan Takaful Perjalanan
+                  Visa and Travel Insurance
                 </h3>
               </div>
               <div class="flex items-center">
@@ -594,7 +595,7 @@
                   <path d="m8.86 6.78-.45-1.81a2 2 0 0 1 1.45-2.43l1.94-.48a2 2 0 0 1 2.43 1.46l.45 1.8" />
                 </svg>
                 <h3 class="text-gray-800 dark:text-gray-200 ms-5 sm:ms-8">
-                  Jamuan Tengahari Nasi Arab di Taif
+                  Arabic Rice Lunch in Taif
                 </h3>
               </div>
               <div class="flex items-center">
@@ -605,7 +606,7 @@
                   <circle cx="12" cy="10" r="3" />
                 </svg>
                 <h3 class="text-gray-800 dark:text-gray-200 ms-5 sm:ms-8">
-                  Umrah 3 Kali di Miqat yang Berbeza
+                  Perform Umrah 3 times at different Miqats
                 </h3>
               </div>
               <div class="flex items-center">
@@ -622,7 +623,7 @@
                   <circle cx="16" cy="18" r="2" />
                 </svg>
                 <h3 class="text-gray-800 dark:text-gray-200 ms-5 sm:ms-8">
-                  Ziarah Makkah, Madinah, dan Taif
+                  Visit Makkah, Madinah, and Taif
                 </h3>
               </div>
             </div>
@@ -638,7 +639,7 @@
                   <circle cx="8" cy="20" r="2" />
                 </svg>
                 <h3 class="text-gray-800 dark:text-gray-200 ms-5 sm:ms-8">
-                  Beg Bagasi, Beg Sling, dan Beg Kasut
+                  Luggage Bag, Sling Bag, and Shoe Bag
                 </h3>
               </div>
               <div class="flex items-center">
@@ -651,7 +652,7 @@
                     d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97" />
                 </svg>
                 <h3 class="text-gray-800 dark:text-gray-200 ms-5 sm:ms-8">
-                  Air Zam2 5 Liter
+                  5 Liters of ZamZam Water
                 </h3>
               </div>
               <div class="flex items-center">
@@ -664,7 +665,7 @@
                     d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z" />
                 </svg>
                 <h3 class="text-gray-800 dark:text-gray-200 ms-5 sm:ms-8">
-                  Kursus dan Buku Umrah
+                  Umrah Course and Book
                 </h3>
               </div>
               <div class="flex items-center">
@@ -677,7 +678,7 @@
                   <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
                 <h3 class="text-gray-800 dark:text-gray-200 ms-5 sm:ms-8">
-                  Pembimbing Mutawif dan Mutawifah
+                  Mutawwif and Mutawifiah Guides
                 </h3>
               </div>
             </div>

@@ -38,7 +38,7 @@
   <!-- End Breadcrumb -->
 
   <!-- Stats -->
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
+  {{-- <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
     <!-- Card -->
     <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-800">
       <div class="flex p-4 md:p-5 gap-x-4">
@@ -215,15 +215,16 @@
       </div>
     </div>
     <!-- End Card -->
-  </div>
+  </div> --}}
   <!-- End Stats -->
 
   <div class="flex w-full gap-6">
     <div
-      class="w-full p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700 basis-3/5">
-      <div class="flex flex-col w-full">
-        <h1 class="text-xl font-bold">Live Location</h1>
-        <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      class="w-full p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+      <div class="flex flex-col w-full mb-8">
+        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">Live Location</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400">View the current location of customers during Umrah.
+        </p>
       </div>
       <div class="relative w-full shadow h-[30rem] sm:rounded">
         <div class="absolute inset-0">
@@ -234,7 +235,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-6 basis-2/5">
+    {{-- <div class="flex flex-col gap-6 basis-2/5">
       <!-- Location -->
       <div class="p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
         <div class="mb-8">
@@ -292,8 +293,6 @@
         {!! $chart->container() !!}
       </div>
       <!-- End Charts -->
-    </div>
-    {{-- <div class="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 ">
     </div> --}}
   </div>
 

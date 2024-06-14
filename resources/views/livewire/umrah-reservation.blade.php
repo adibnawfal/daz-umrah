@@ -66,10 +66,10 @@
       <div class="flex flex-col basis-3/5">
         <div class="mb-8">
           <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-            Package Information
+            Reservation Information
           </h2>
           <p class="text-sm text-gray-600 dark:text-gray-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Provide Umrah reservation information.
           </p>
         </div>
 
@@ -98,7 +98,7 @@
               Profile Information
             </h2>
             <p class="text-sm text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Provide profile information for Umrah reservation.
             </p>
           </div>
 

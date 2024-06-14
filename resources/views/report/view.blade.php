@@ -45,7 +45,7 @@
         Users
       </h2>
       <p class="text-sm text-gray-600 dark:text-gray-400">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Explore detailed reports and insights about all users in the system.
       </p>
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -57,7 +57,7 @@
             All User
           </h3>
           <p class="text-sm text-gray-600 dark:text-neutral-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Detailed information on all registered users.
           </p>
         </div>
         <div class="flex items-center justify-between">
@@ -80,7 +80,7 @@
             Staff
           </h3>
           <p class="text-sm text-gray-600 dark:text-neutral-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Detailed information on registered staff.
           </p>
         </div>
         <div class="flex items-center justify-between">
@@ -103,7 +103,7 @@
             Customer
           </h3>
           <p class="text-sm text-gray-600 dark:text-neutral-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Detailed information on registered customer.
           </p>
         </div>
         <div class="flex items-center justify-between">
@@ -128,7 +128,7 @@
         Umrah Packages
       </h2>
       <p class="text-sm text-gray-600 dark:text-gray-400">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Discover various Umrah packages with detailed itineraries and services.
       </p>
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -140,7 +140,7 @@
             All Package
           </h3>
           <p class="text-sm text-gray-600 dark:text-neutral-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Detailed information on all available Umrah packages.
           </p>
         </div>
         <div class="flex items-center justify-between">
@@ -163,7 +163,7 @@
             12 Days 10 Nights
           </h3>
           <p class="text-sm text-gray-600 dark:text-neutral-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Detailed information on 12 days 10 nights Umrah packages.
           </p>
         </div>
         <div class="flex items-center justify-between">
@@ -186,7 +186,7 @@
             22 Days 20 Nights
           </h3>
           <p class="text-sm text-gray-600 dark:text-neutral-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Detailed information on 22 days 20 nights Umrah packages.
           </p>
         </div>
         <div class="flex items-center justify-between">
@@ -211,7 +211,7 @@
         Hotels
       </h2>
       <p class="text-sm text-gray-600 dark:text-gray-400">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Find information on hotels available within our travel packages.
       </p>
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -223,7 +223,7 @@
             All Hotel
           </h3>
           <p class="text-sm text-gray-600 dark:text-neutral-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Detailed information on all available hotels.
           </p>
         </div>
         <div class="flex items-center justify-between">
@@ -246,7 +246,7 @@
             Hotel Makkah
           </h3>
           <p class="text-sm text-gray-600 dark:text-neutral-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Detailed information for Hotel Makkah.
           </p>
         </div>
         <div class="flex items-center justify-between">
@@ -269,7 +269,7 @@
             Hotel Madinah
           </h3>
           <p class="text-sm text-gray-600 dark:text-neutral-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Detailed information for Hotel Madinah.
           </p>
         </div>
         <div class="flex items-center justify-between">

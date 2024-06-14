@@ -6,7 +6,7 @@
     <div>
       <span class="inline-flex items-center justify-center size-[100px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-3">
         <span class="text-xl font-medium leading-none text-gray-800 dark:text-gray-200">
-          {{ substr($user->first_name, 0, 1) }} {{ substr($user->last_name, 0, 1) }}
+          {{ substr($user->first_name, 0, 1) }}{{ substr($user->last_name, 0, 1) }}
         </span>
       </span>
     </div>

@@ -12,7 +12,7 @@
   <!-- End Title -->
 
   <!-- Avatar Group -->
-  <div class="text-center sm:flex sm:justify-center sm:items-center sm:text-start">
+  {{-- <div class="text-center sm:flex sm:justify-center sm:items-center sm:text-start">
     <div class="flex-shrink-0 pb-5 sm:flex sm:pb-0 sm:pe-5">
       <!-- Avatar Group -->
       <div class="flex justify-center -space-x-3">
@@ -43,7 +43,7 @@
       <div class="text-lg font-semibold text-gray-800">Trust travel</div>
       <div class="text-sm text-gray-500">Rated best over 37k reviews</div>
     </div>
-  </div>
+  </div> --}}
   <!-- End Avatar Group -->
 
   <!-- Form -->

@@ -1,8 +1,8 @@
 <!-- Title -->
 <div class="max-w-2xl mx-auto mb-10 text-center lg:mb-14">
   <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">About Us</h2>
-  <p class="mt-1 text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Vestibulum vitae enim a eros elementum rhoncus lacinia eu justo.</p>
+  <p class="mt-1 text-gray-600 dark:text-gray-400">We are dedicated to providing exceptional services for your Umrah
+    journey. Join us for a seamless and enriching Umrah experience.</p>
 </div>
 <!-- End Title -->
 
@@ -20,10 +20,10 @@
       </svg>
       <div class="ms-5 sm:ms-8">
         <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
-          Kursus Umrah
+          Umrah Courses
         </h3>
         <p class="mt-1 text-gray-600 dark:text-gray-400">
-          Kursus Umrah percuma setiap tahun untuk sesiapa sahaja.
+          Free Umrah courses every year for everyone.
       </div>
     </div>
     <!-- End Icon Block -->
@@ -38,10 +38,10 @@
       </svg>
       <div class="ms-5 sm:ms-8">
         <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
-          Penerbangan
+          Flights
         </h3>
         <p class="mt-1 text-gray-600 dark:text-gray-400">
-          Tiket penerbangan pergi dan balik ekonomi dan business class.
+          Round-trip economy and business class flight tickets.
         </p>
       </div>
     </div>
@@ -62,10 +62,10 @@
       </svg>
       <div class="ms-5 sm:ms-8">
         <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
-          Penginapan
+          Accommodation
         </h3>
         <p class="mt-1 text-gray-600 dark:text-gray-400">
-          Hotel dipilih dengan teliti untuk berada lebih dekat dengan Haramain.
+          Carefully selected hotels for a closer stay to the Haramain.
         </p>
       </div>
     </div>
@@ -86,10 +86,10 @@
       </svg>
       <div class="ms-5 sm:ms-8">
         <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
-          Pengisian Rohani
+          Spiritual Enrichment
         </h3>
         <p class="mt-1 text-gray-600 dark:text-gray-400">
-          Boleh menunaikan Umrah sebanyak mana yang mereka mampu.
+          Perform Umrah as many times as you can.
         </p>
       </div>
     </div>
@@ -107,10 +107,10 @@
       </svg>
       <div class="ms-5 sm:ms-8">
         <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
-          Mutawwif & Mutawiffah
+          Mutawwif & Mutawwifah
         </h3>
         <p class="mt-1 text-gray-600 dark:text-gray-400">
-          Barisan Mutawwif dan Mutawwifah yang berpengalaman.
+          Experienced Mutawwif and Mutawwifah teams.
         </p>
       </div>
     </div>
@@ -133,10 +133,10 @@
       </svg>
       <div class="ms-5 sm:ms-8">
         <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
-          Pengangkutan
+          Transportation
         </h3>
         <p class="mt-1 text-gray-600 dark:text-gray-400">
-          Pengangkutan yang selesa dan berhawa dingin.
+          Comfortable and air-conditioned transportation.
         </p>
       </div>
     </div>

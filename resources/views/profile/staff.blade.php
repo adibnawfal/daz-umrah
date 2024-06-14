@@ -50,7 +50,7 @@
                 All Staff
               </h2>
               <p class="text-sm text-gray-600 dark:text-neutral-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                View and manage all staff members' information.
               </p>
             </div>
 

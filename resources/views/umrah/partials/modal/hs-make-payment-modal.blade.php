@@ -9,7 +9,7 @@
 
         <div
           class="relative overflow-hidden text-center bg-center bg-no-repeat bg-cover saturate-0 min-h-32 rounded-t-xl"
-          style="background-image: url('{{ asset('images/packages/' . $reservationData->package->cover_img) }}')">
+          style="background-image: url('{{ asset('storage/images/package/' . $reservationData->package->cover_img) }}')">
           <!-- Close Button -->
           <div class="absolute top-2 end-2">
             <button type="button"

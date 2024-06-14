@@ -7,8 +7,7 @@
         Safety is our first priority
       </h2>
       <p class="text-gray-600 dark:text-gray-400">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae enim a eros elementum rhoncus
-        lacinia eu justo.
+        Your safety and comfort are our utmost concern. We ensure a secure and pleasant journey for all our travelers.
       </p>
     </div>
     <!-- End Title -->
@@ -39,7 +38,7 @@
           </div>
           <div class="grow ms-4">
             <div class="font-semibold text-gray-800 dark:text-gray-200">Adib Nawfal</div>
-            <div class="text-xs text-gray-500">Student University Tun Hussein Onn</div>
+            <div class="text-xs text-gray-500">Universiti Tun Hussein Onn Student</div>
           </div>
         </div>
       </footer>
@@ -57,7 +56,7 @@
             540+
           </div>
           <p class="text-sm text-gray-600 sm:text-base dark:text-gray-400">
-            Penerbangan setahun
+            Flights per year
           </p>
         </li>
 
@@ -72,7 +71,7 @@
             23%
           </div>
           <p class="text-sm text-gray-600 sm:text-base dark:text-gray-400">
-            Komen positif
+            Positive feedback
           </p>
         </li>
 
@@ -87,7 +86,7 @@
             9.3%
           </div>
           <p class="text-sm text-gray-600 sm:text-base dark:text-gray-400">
-            Pelanggan mengulang
+            Repeat customers
           </p>
         </li>
 
@@ -96,7 +95,7 @@
             10+
           </div>
           <p class="text-sm text-gray-600 sm:text-base dark:text-gray-400">
-            Mutawwif berpengalaman
+            Experienced Mutawwif and Mutawwifah
           </p>
         </li>
       </ul>

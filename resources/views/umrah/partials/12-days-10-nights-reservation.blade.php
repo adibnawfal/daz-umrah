@@ -11,7 +11,7 @@
               12 Days 10 Nights
             </h2>
             <p class="text-sm text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Manage the 12 Days 10 Nights Umrah reservation details.
             </p>
           </div>
 
@@ -420,9 +420,28 @@
                               </svg>
                               Write Remarks
                             </button>
-                            @if ($reservationData->status === 'Make Payment')
-                              <button
-                                class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            @if ($reservationData->payment->method === 'Cash')
+                              <form method="post" action="{{ route('umrah.paid-cash', $reservationData->id) }}">
+                                @csrf
+                                @method('patch')
+
+                                <button type="submit"
+                                  class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-banknote">
+                                    <rect width="20" height="12" x="2" y="6" rx="2" />
+                                    <circle cx="12" cy="12" r="2" />
+                                    <path d="M6 12h.01M18 12h.01" />
+                                  </svg>
+                                  Paid by Cash
+                                </button>
+                              </form>
+                            @endif
+                            @if ($reservationData->identity_card && $reservationData->passport)
+                              <a class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                href="{{ route('umrah.download-documents', $reservationData->id) }}">
                                 <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                   stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-down">
@@ -432,7 +451,7 @@
                                   <path d="m9 15 3 3 3-3" />
                                 </svg>
                                 Download Documents
-                              </button>
+                              </a>
                             @endif
                           </div>
                           <div class="py-2 first:pt-0 last:pb-0">

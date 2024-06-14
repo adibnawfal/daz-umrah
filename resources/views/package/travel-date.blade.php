@@ -68,7 +68,9 @@
     <div
       class="w-1/2 p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
       <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-200">12 Days 10 Nights</h3>
-      <div class="text-sm text-gray-500 dark:text-neutral-500">Musim persekolahan.</div>
+      <div class="text-sm text-gray-500 dark:text-neutral-500">Manage travel dates for the 12 Days 10 Nights Umrah
+        package.
+      </div>
 
       <div class="my-6">
         <span
@@ -119,7 +121,9 @@
     <div
       class="w-1/2 p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
       <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-200">22 Days 20 Nights</h3>
-      <div class="text-sm text-gray-500 dark:text-neutral-500">Musim cuti sekolah.</div>
+      <div class="text-sm text-gray-500 dark:text-neutral-500">Manage travel dates for the 22 Days 20 Nights Umrah
+        package.
+      </div>
 
       <div class="my-6">
         <span

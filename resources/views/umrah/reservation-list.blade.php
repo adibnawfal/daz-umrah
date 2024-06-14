@@ -75,8 +75,7 @@
     @if ($user->role === 'admin' || $user->role === 'staff')
       @include('umrah.partials.12-days-10-nights-reservation')
       @include('umrah.partials.22-days-20-nights-reservation')
-    @endif
-    @if ($user->role === 'admin')
+    @elseif ($user->role === 'customer')
       @include('umrah.partials.customer-reservation')
     @endif
   @endif

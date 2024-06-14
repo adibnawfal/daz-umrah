@@ -18,52 +18,63 @@
       <!-- End Col -->
 
       <div class="col-span-1">
-        <h4 class="font-semibold text-gray-50">Product</h4>
+        <h4 class="font-semibold text-gray-50">Welcome</h4>
 
         <div class="grid mt-3 space-y-3">
-          <p><a
-              class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Pricing</a></p>
-          <p><a
-              class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Changelog</a></p>
-          <p><a
-              class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Docs</a></p>
+          <p>
+            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              href="#">Home
+            </a>
+          </p>
+          <p>
+            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              href="#">Package
+            </a>
+          </p>
+          <p>
+            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              href="#">About Us
+            </a>
+          </p>
         </div>
       </div>
       <!-- End Col -->
 
       <div class="col-span-1">
-        <h4 class="font-semibold text-gray-50">Company</h4>
+        <h4 class="font-semibold text-gray-50">Package</h4>
 
         <div class="grid mt-3 space-y-3">
-          <p><a
-              class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">About us</a></p>
-          <p><a
-              class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Blog</a></p>
-          <p><a
-              class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Careers</a> <span
-              class="inline px-2 py-1 text-xs text-white bg-[#9c182e] dark:bg-[#c31e39] rounded-lg ms-1">We're
-              hiring</span></p>
-          <p><a
-              class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Customers</a></p>
+          <p>
+            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              href="#">Rayhan</a>
+          </p>
+          <p>
+            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              href="#">Rafa</a>
+          </p>
+          <p>
+            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              href="#">Raisha</a>
+            {{-- <span class="inline px-2 py-1 text-xs text-white bg-[#9c182e] dark:bg-[#c31e39] rounded-lg ms-1">We're
+              hiring
+            </span> --}}
+          </p>
+          <p>
+            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              href="#">Safwa</a>
+          </p>
         </div>
       </div>
       <!-- End Col -->
 
       <div class="col-span-2">
-        <h4 class="font-semibold text-gray-50">Stay up to date</h4>
+        <h4 class="font-semibold text-gray-50">Register now</h4>
 
         <form method="get" action="{{ route('welcome.register-footer') }}">
           <div
             class="flex flex-col items-center gap-2 p-2 mt-4 bg-white rounded-lg sm:flex-row sm:gap-3 dark:bg-gray-800">
             <div class="w-full">
-              <label for="email" class="sr-only">Search</label>
+              <label for="email" class="sr-only">Email</label>
               <input type="email" id="email" name="email"
                 class="block w-full px-4 py-3 text-sm border-transparent rounded-lg focus:border-[#c31e39] focus:ring-[#c31e39] disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-900 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
                 placeholder="Enter your email">
@@ -73,9 +84,9 @@
               Get's started
             </button>
           </div>
-          <p class="mt-3 text-sm text-gray-300">
+          {{-- <p class="mt-3 text-sm text-gray-300">
             New UI kits or big discounts. Never spam.
-          </p>
+          </p> --}}
         </form>
       </div>
       <!-- End Col -->

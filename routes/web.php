@@ -60,6 +60,7 @@ Route::middleware('auth')->group(function () {
   Route::patch('/umrah/reservation/payment/{id}', [UmrahController::class, 'patchMakePayment'])->name('umrah.patch-make-payment');
   Route::get('/umrah/reservation/payment/success/{id}', [UmrahController::class, 'paymentSuccess'])->name('umrah.payment-success');
   Route::get('/umrah/reservation/payment/failure', [UmrahController::class, 'paymentFailure'])->name('umrah.payment-failure');
+  Route::patch('/umrah/reservation/payment/cash/{id}', [UmrahController::class, 'paidCash'])->name('umrah.paid-cash');
   Route::patch('/umrah/reservation/cancel/{id}', [UmrahController::class, 'patchCancelReservation'])->name('umrah.patch-cancel-reservation');
 
   // Profile

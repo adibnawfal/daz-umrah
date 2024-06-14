@@ -71,7 +71,7 @@
                 12 Days 10 Nights
               </h2>
               <p class="text-sm text-gray-600 dark:text-neutral-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Detailed information on 12 days 10 nights Umrah packages.
               </p>
             </div>
 

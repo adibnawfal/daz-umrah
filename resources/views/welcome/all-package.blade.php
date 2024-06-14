@@ -6,8 +6,8 @@
       <!-- Title -->
       <div class="max-w-2xl mx-auto mb-10 text-center lg:mb-14">
         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Latest Umrah Package</h2>
-        <p class="mt-1 text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Vestibulum vitae enim a eros elementum rhoncus lacinia eu justo.</p>
+        <p class="mt-1 text-gray-600 dark:text-gray-400">Discover our latest Umrah packages, offering exceptional
+          accommodations and services for a memorable Umrah journey.</p>
       </div>
       <!-- End Title -->
 

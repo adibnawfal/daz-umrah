@@ -127,8 +127,8 @@ class UmrahController extends Controller
         File::makeDirectory($path, 0777, true, true);
       }
 
-      Storage::putFileAs('files/umrah', new NewFile($identityCard), $fileNameIdentityCard);
-      Storage::putFileAs('files/umrah', new NewFile($passport), $fileNamePassport);
+      Storage::putFileAs('public/files/umrah', new NewFile($identityCard), $fileNameIdentityCard);
+      Storage::putFileAs('public/files/umrah', new NewFile($passport), $fileNamePassport);
 
       $reservationData->identity_card = $fileNameIdentityCard;
       $reservationData->passport = $fileNamePassport;
@@ -247,6 +247,21 @@ class UmrahController extends Controller
   public function paymentFailure()
   {
     return Redirect::route('umrah.reservation-list')->with('status', 'payment-failure');
+  }
+
+  /**
+   * Submit paid by cash form.
+   */
+  public function paidCash(string $id)
+  {
+    $reservationData = Reservation::findOrFail($id);
+    $reservationData->payment()->update([
+      'status' => 'Paid',
+      'method' => 'Cash',
+      'date_paid' => Carbon::now()->toDateTimeString(),
+    ]);
+
+    return Redirect::route('umrah.reservation-list')->with('status', 'payment-success');
   }
 
   /**

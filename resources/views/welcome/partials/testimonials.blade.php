@@ -3,7 +3,7 @@
   <div class="hidden mb-24 md:block md:mb-0 sm:px-6">
     <div class="relative">
       <img class="rounded-xl"
-        src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=500&h=600&q=80"
+        src="https://images.unsplash.com/photo-1677835238946-20fc43ab0533?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="Image Description">
 
       <!-- SVG Element -->
@@ -85,8 +85,8 @@
 
         <p
           class="text-xl italic font-medium text-gray-800 md:text-2xl md:leading-normal xl:text-3xl xl:leading-normal dark:text-gray-200">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae enim a eros elementum
-          rhoncus lacinia eu justo. Etiam at facilisis metus. Quisque sagittis in massa a tempus.
+          The experience was absolutely amazing. Everything was well organized and the team was extremely professional.
+          Highly recommend!
         </p>
       </div>
 
@@ -98,18 +98,18 @@
               alt="Image Description">
           </div>
           <div class="ms-4 md:ms-0">
-            <div class="text-base font-semibold text-gray-800 dark:text-gray-200">Adib Nawfal</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">Student University Tun Hussein Onn</div>
+            <div class="text-base font-semibold text-gray-800 dark:text-gray-200">Nur Fatehah</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">Universiti Tun Hussein Onn Student</div>
           </div>
         </div>
       </footer>
 
-      <div class="mt-8 lg:mt-14">
+      {{-- <div class="mt-8 lg:mt-14">
         <a class="inline-flex items-center px-4 py-3 text-sm font-semibold text-white bg-gray-800 border border-transparent rounded-lg gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-white dark:text-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
           href="#">
           Read more
         </a>
-      </div>
+      </div> --}}
     </blockquote>
     <!-- End Blockquote -->
   </div>
