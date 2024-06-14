@@ -204,7 +204,7 @@ class PackageController extends Controller
         $filename = 'package_' . time() . '.' . $image->getClientOriginalExtension();
 
         // Ensure the directory exists
-        $path = storage_path('app/public/images/package');
+        $path = public_path('images/package');
         if (!File::isDirectory($path)) {
           File::makeDirectory($path, 0777, true, true);
         }

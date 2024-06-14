@@ -43,7 +43,7 @@ class ProfileController extends Controller
       $filename = 'user_' . $request->user()->id . '_' . time() . '.' . $image->getClientOriginalExtension();
 
       // Ensure the directory exists
-      $path = storage_path('app/public/images/users');
+      $path = public_path('images/users');
       if (!File::isDirectory($path)) {
         File::makeDirectory($path, 0777, true, true);
       }

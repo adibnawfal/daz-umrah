@@ -5,7 +5,7 @@
     @if ($packageData->cover_img)
       <div
         class="absolute rounded-t-xl top-0 left-0 right-0 w-full h-[550px] overflow-hidden saturate-0 bg-center bg-cover -z-[1]"
-        style="background-image: url('{{ asset('storage/images/package/' . $packageData->cover_img) }}')">
+        style="background-image: url('{{ asset('images/package/' . $packageData->cover_img) }}')">
         <div class="absolute top-0 bg-white size-full opacity-80 -z-[1]"></div>
       </div>
     @endif

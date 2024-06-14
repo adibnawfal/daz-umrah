@@ -15,7 +15,7 @@
       <div class="relative">
         @if ($packageData->cover_img)
           <img class="object-cover w-full rounded-xl h-[170px] border border-gray-200"
-            src="{{ asset('storage/images/package/' . $packageData->cover_img) }}" alt="Cover Image">
+            src="{{ asset('images/package/' . $packageData->cover_img) }}" alt="Cover Image">
         @else
           <div class="flex justify-center items-center w-full rounded-xl h-[170px] bg-gray-50 border border-gray-200">
             <p class="text-xs font-semibold text-gray-500 uppercase ">Cover Image</p>
