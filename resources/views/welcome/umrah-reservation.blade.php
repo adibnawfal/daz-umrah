@@ -1,6 +1,6 @@
 @extends('welcome')
 
 @section('content')
-  <livewire:umrahreservation :user="$user" :packageData="$packageData" :travelDate="$travelDate" :selectedPackage="$selectedPackage" :room="$room"
+  <livewire:UmrahReservation :user="$user" :packageData="$packageData" :travelDate="$travelDate" :selectedPackage="$selectedPackage" :room="$room"
     :packageAmount="$packageAmount" />
 @endsection

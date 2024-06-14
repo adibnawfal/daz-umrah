@@ -2,6 +2,6 @@
 
 @section('content')
   <!-- Package Details -->
-  <livewire:packagedetails :packageData="$packageData" :travelDate="$travelDate" />
+  <livewire:PackageDetails :packageData="$packageData" :travelDate="$travelDate" />
   <!-- End Package Details -->
 @endsection
