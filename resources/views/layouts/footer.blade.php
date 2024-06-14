@@ -23,17 +23,17 @@
         <div class="grid mt-3 space-y-3">
           <p>
             <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Home
+              href="{{ url('/#home') }}">Home
             </a>
           </p>
           <p>
             <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Package
+              href="{{ route('welcome.all-package') }}">Package
             </a>
           </p>
           <p>
             <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">About Us
+              href="{{ url('/#aboutus') }}">About Us
             </a>
           </p>
         </div>
@@ -44,25 +44,17 @@
         <h4 class="font-semibold text-gray-50">Package</h4>
 
         <div class="grid mt-3 space-y-3">
-          <p>
-            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Rayhan</a>
-          </p>
-          <p>
-            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Rafa</a>
-          </p>
-          <p>
-            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Raisha</a>
-            {{-- <span class="inline px-2 py-1 text-xs text-white bg-[#9c182e] dark:bg-[#c31e39] rounded-lg ms-1">We're
-              hiring
-            </span> --}}
-          </p>
-          <p>
-            <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              href="#">Safwa</a>
-          </p>
+          @php
+            $packages = App\Models\Package::all();
+          @endphp
+          @foreach ($packages->take(4) as $packageData)
+            <p>
+              <a class="inline-flex text-sm text-gray-300 gap-x-2 hover:text-gray-50 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                href="{{ route('welcome.package-details', $packageData->id) }}">
+                {{ $packageData->name }}
+              </a>
+            </p>
+          @endforeach
         </div>
       </div>
       <!-- End Col -->
