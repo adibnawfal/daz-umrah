@@ -48,25 +48,12 @@
 
     <button type="submit"
       class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-      @if (session('status') === 'password-updated')
-        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-          class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
-          role="status" aria-label="loading"></span>
-        <svg x-data="{ show: false }" x-show="show" x-transition x-init="setTimeout(() => show = true, 2000)" class="flex-shrink-0 size-4"
-          xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          class="lucide lucide-key-round">
-          <path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z" />
-          <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
-        </svg>
-      @else
-        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" class="lucide lucide-key-round">
-          <path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z" />
-          <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
-        </svg>
-      @endif
+      <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" class="lucide lucide-key-round">
+        <path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z" />
+        <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+      </svg>
       Update Password
     </button>
   </div>

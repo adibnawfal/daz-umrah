@@ -162,4 +162,130 @@
     <!-- End Card -->
   </div>
   <!-- End Grid -->
+
+  @if (session('status') === 'package-submitted')
+    <div id="dismiss-toast"
+      class="fixed bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+      <div class="space-y-5">
+        <div class="p-4 border-teal-500 rounded-xl bg-teal-50 border-s-4 dark:bg-teal-800/30" role="alert">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <span
+                class="inline-flex items-center justify-center text-teal-800 bg-teal-200 border-4 border-teal-100 rounded-full size-8 dark:border-teal-900 dark:bg-teal-800 dark:text-teal-400">
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-check">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+            </div>
+            <div class="ms-3">
+              <h3 class="font-semibold text-gray-800 dark:text-white">
+                Package Added.
+              </h3>
+              <p class="text-sm text-gray-700 dark:text-neutral-400">
+                The package has been successfully added to the system.
+              </p>
+            </div>
+            <div class="ms-8">
+              <button type="button"
+                class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                data-hs-remove-element="#dismiss-toast">
+                <span class="sr-only">Close</span>
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @elseif (session('status') === 'package-submit-failure')
+    <div id="dismiss-toast"
+      class="fixed bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+      <div class="space-y-5">
+        <div class="p-4 border-red-500 rounded-xl bg-red-50 border-s-4 dark:bg-red-800/30" role="alert">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <span
+                class="inline-flex items-center justify-center text-red-800 bg-red-200 border-4 border-red-100 rounded-full size-8 dark:border-red-900 dark:bg-red-800 dark:text-red-400">
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </span>
+            </div>
+            <div class="ms-3">
+              <h3 class="font-semibold text-gray-800 dark:text-white">
+                Add Package Failed!
+              </h3>
+              <p class="text-sm text-gray-700 dark:text-neutral-400">
+                An error occurred during the add package process.
+              </p>
+            </div>
+            <div class="ms-8">
+              <button type="button"
+                class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                data-hs-remove-element="#dismiss-toast">
+                <span class="sr-only">Close</span>
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @elseif (session('status') === 'package-deleted')
+    <div id="dismiss-toast"
+      class="fixed bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+      <div class="space-y-5">
+        <div class="p-4 border-teal-500 rounded-xl bg-teal-50 border-s-4 dark:bg-teal-800/30" role="alert">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <span
+                class="inline-flex items-center justify-center text-teal-800 bg-teal-200 border-4 border-teal-100 rounded-full size-8 dark:border-teal-900 dark:bg-teal-800 dark:text-teal-400">
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-check">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+            </div>
+            <div class="ms-3">
+              <h3 class="font-semibold text-gray-800 dark:text-white">
+                Package Deleted.
+              </h3>
+              <p class="text-sm text-gray-700 dark:text-neutral-400">
+                The package has been successfully deleted from the system.
+              </p>
+            </div>
+            <div class="ms-8">
+              <button type="button"
+                class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                data-hs-remove-element="#dismiss-toast">
+                <span class="sr-only">Close</span>
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endif
 </x-app-layout>

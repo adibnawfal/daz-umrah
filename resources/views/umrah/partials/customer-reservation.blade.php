@@ -434,19 +434,21 @@
                               Update Details
                             </a>
                           @elseif ($reservationData->status === 'Make Payment')
-                            <button
-                              class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                              data-hs-overlay="#hs-make-payment-{{ $reservationData->id }}-modal">
-                              <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-circle-dollar-sign">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
-                                <path d="M12 18V6" />
-                              </svg>
-                              Make Payment
-                            </button>
+                            @if ($reservationData->payment->status !== 'Paid')
+                              <button
+                                class="flex items-center w-full px-3 py-2 text-sm text-gray-800 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                data-hs-overlay="#hs-make-payment-{{ $reservationData->id }}-modal">
+                                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round"
+                                  class="lucide lucide-circle-dollar-sign">
+                                  <circle cx="12" cy="12" r="10" />
+                                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
+                                  <path d="M12 18V6" />
+                                </svg>
+                                Make Payment
+                              </button>
+                            @endif
                           @endif
                         </div>
                         <div class="py-2 first:pt-0 last:pb-0">

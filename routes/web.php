@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/umrah/reservation/payment/failure', [UmrahController::class, 'paymentFailure'])->name('umrah.payment-failure');
   Route::patch('/umrah/reservation/payment/cash/{id}', [UmrahController::class, 'paidCash'])->name('umrah.paid-cash');
   Route::patch('/umrah/reservation/cancel/{id}', [UmrahController::class, 'patchCancelReservation'])->name('umrah.patch-cancel-reservation');
+  Route::delete('/umrah/reservation/delete/{id}', [UmrahController::class, 'deleteReservation'])->name('umrah.delete-reservation');
 
   // Profile
   Route::get('/profile', [ProfileController::class, 'getProfile'])->name('profile');

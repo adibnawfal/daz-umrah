@@ -277,4 +277,15 @@ class UmrahController extends Controller
 
     return Redirect::route('umrah.reservation-list')->with('status', 'reservation-canceled');
   }
+
+  /**
+   * Delete reservation.
+   */
+  public function deleteReservation(string $id)
+  {
+    $reservationData = Reservation::findOrFail($id);
+    $reservationData->delete();
+
+    return Redirect::route('umrah.reservation-list')->with('status', 'reservation-deleted');
+  }
 }

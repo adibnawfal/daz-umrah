@@ -70,6 +70,213 @@
       <!-- End Address Information -->
     </div>
   </div>
+
+  @if (session('status') === 'picture-updated')
+    <div id="dismiss-toast"
+      class="fixed bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+      <div class="space-y-5">
+        <div class="p-4 border-teal-500 rounded-xl bg-teal-50 border-s-4 dark:bg-teal-800/30" role="alert">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <span
+                class="inline-flex items-center justify-center text-teal-800 bg-teal-200 border-4 border-teal-100 rounded-full size-8 dark:border-teal-900 dark:bg-teal-800 dark:text-teal-400">
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-check">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+            </div>
+            <div class="ms-3">
+              <h3 class="font-semibold text-gray-800 dark:text-white">
+                Profile Picture Updated.
+              </h3>
+              <p class="text-sm text-gray-700 dark:text-neutral-400">
+                The profile picture has been successfully updated to the system.
+              </p>
+            </div>
+            <div class="ms-8">
+              <button type="button"
+                class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                data-hs-remove-element="#dismiss-toast">
+                <span class="sr-only">Close</span>
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @elseif (session('status') === 'picture-deleted')
+    <div id="dismiss-toast"
+      class="fixed bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+      <div class="space-y-5">
+        <div class="p-4 border-teal-500 rounded-xl bg-teal-50 border-s-4 dark:bg-teal-800/30" role="alert">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <span
+                class="inline-flex items-center justify-center text-teal-800 bg-teal-200 border-4 border-teal-100 rounded-full size-8 dark:border-teal-900 dark:bg-teal-800 dark:text-teal-400">
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-check">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+            </div>
+            <div class="ms-3">
+              <h3 class="font-semibold text-gray-800 dark:text-white">
+                Profile Picture Deleted.
+              </h3>
+              <p class="text-sm text-gray-700 dark:text-neutral-400">
+                The profile picture has been successfully deleted from the system.
+              </p>
+            </div>
+            <div class="ms-8">
+              <button type="button"
+                class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                data-hs-remove-element="#dismiss-toast">
+                <span class="sr-only">Close</span>
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @elseif (session('status') === 'profile-updated')
+    <div id="dismiss-toast"
+      class="fixed bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+      <div class="space-y-5">
+        <div class="p-4 border-teal-500 rounded-xl bg-teal-50 border-s-4 dark:bg-teal-800/30" role="alert">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <span
+                class="inline-flex items-center justify-center text-teal-800 bg-teal-200 border-4 border-teal-100 rounded-full size-8 dark:border-teal-900 dark:bg-teal-800 dark:text-teal-400">
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-check">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+            </div>
+            <div class="ms-3">
+              <h3 class="font-semibold text-gray-800 dark:text-white">
+                Profile Information Updated.
+              </h3>
+              <p class="text-sm text-gray-700 dark:text-neutral-400">
+                The profile information has been successfully updated to the system.
+              </p>
+            </div>
+            <div class="ms-8">
+              <button type="button"
+                class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                data-hs-remove-element="#dismiss-toast">
+                <span class="sr-only">Close</span>
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @elseif (session('status') === 'address-updated')
+    <div id="dismiss-toast"
+      class="fixed bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+      <div class="space-y-5">
+        <div class="p-4 border-teal-500 rounded-xl bg-teal-50 border-s-4 dark:bg-teal-800/30" role="alert">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <span
+                class="inline-flex items-center justify-center text-teal-800 bg-teal-200 border-4 border-teal-100 rounded-full size-8 dark:border-teal-900 dark:bg-teal-800 dark:text-teal-400">
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-check">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+            </div>
+            <div class="ms-3">
+              <h3 class="font-semibold text-gray-800 dark:text-white">
+                Address Information Updated.
+              </h3>
+              <p class="text-sm text-gray-700 dark:text-neutral-400">
+                The address information has been successfully updated to the system.
+              </p>
+            </div>
+            <div class="ms-8">
+              <button type="button"
+                class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                data-hs-remove-element="#dismiss-toast">
+                <span class="sr-only">Close</span>
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @elseif (session('status') === 'password-updated')
+    <div id="dismiss-toast"
+      class="fixed bottom-0 m-8 transition duration-300 end-0 hs-removing:translate-x-5 hs-removing:opacity-0">
+      <div class="space-y-5">
+        <div class="p-4 border-teal-500 rounded-xl bg-teal-50 border-s-4 dark:bg-teal-800/30" role="alert">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <span
+                class="inline-flex items-center justify-center text-teal-800 bg-teal-200 border-4 border-teal-100 rounded-full size-8 dark:border-teal-900 dark:bg-teal-800 dark:text-teal-400">
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-check">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+            </div>
+            <div class="ms-3">
+              <h3 class="font-semibold text-gray-800 dark:text-white">
+                Password Updated.
+              </h3>
+              <p class="text-sm text-gray-700 dark:text-neutral-400">
+                The password has been successfully updated to the system.
+              </p>
+            </div>
+            <div class="ms-8">
+              <button type="button"
+                class="inline-flex items-center justify-center flex-shrink-0 text-gray-800 rounded-lg opacity-50 size-5 hover:opacity-100 focus:outline-none focus:opacity-100 dark:text-white"
+                data-hs-remove-element="#dismiss-toast">
+                <span class="sr-only">Close</span>
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endif
 </x-app-layout>
 
 {{-- <x-app-layout>

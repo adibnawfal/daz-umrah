@@ -7,9 +7,9 @@
   </p>
 </div>
 
-<form id="send-verification" method="post" action="{{ route('verification.send') }}">
+{{-- <form id="send-verification" method="post" action="{{ route('verification.send') }}">
   @csrf
-</form>
+</form> --}}
 
 <form method="post" action="{{ route('profile.patch-profile-information') }}">
   @csrf
@@ -68,7 +68,7 @@
         autocomplete="username" value="{{ old('email', $user->email) }}">
       <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
-      @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
+      {{-- @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
         <div>
           <p class="mt-2 text-sm text-gray-800">
             {{ __('Your email address is unverified.') }}
@@ -85,7 +85,7 @@
             </p>
           @endif
         </div>
-      @endif
+      @endif --}}
     </div>
     <!-- End Col -->
 
@@ -129,26 +129,13 @@
 
     <button type="submit"
       class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-      @if (session('status') === 'profile-updated')
-        <span x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-          class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
-          role="status" aria-label="loading"></span>
-        <svg x-data="{ show: false }" x-show="show" x-transition x-init="setTimeout(() => show = true, 2000)" class="flex-shrink-0 size-4"
-          xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          class="lucide lucide-user">
-          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-          <circle cx="12" cy="7" r="4" />
-        </svg>
-      @else
-        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" class="lucide lucide-user-check">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-          <circle cx="9" cy="7" r="4" />
-          <polyline points="16 11 18 13 22 9" />
-        </svg>
-      @endif
+      <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" class="lucide lucide-user-check">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <polyline points="16 11 18 13 22 9" />
+      </svg>
       Update Profile
     </button>
   </div>
