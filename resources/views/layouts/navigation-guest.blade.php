@@ -1,5 +1,5 @@
 <!-- Navigation Guest -->
-<header class="z-50 flex flex-wrap w-full pb-2 text-sm sm:justify-start sm:flex-col sm:pb-0">
+<header class="z-50 flex flex-wrap w-full text-sm sm:justify-start sm:flex-col">
 
   <!-- Topbar -->
   <div class="w-full bg-[#9c182e] dark:bg-gray-900">
@@ -119,7 +119,8 @@
 
   <!-- Navbar -->
   <nav class="w-full bg-[#c31e39] dark:bg-gray-800" aria-label="Global">
-    <div class="relative max-w-[85rem] w-full px-4 mx-auto sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
+    <div
+      class="relative max-w-[85rem] w-full px-4 py-4 mx-auto sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 sm:py-0">
 
       <!-- Bottom Left -->
       <div class="flex items-center justify-between w-full">
@@ -136,7 +137,7 @@
 
         <div class="sm:hidden">
           <button type="button"
-            class="flex items-center justify-center text-sm font-semibold text-gray-800 border border-gray-200 rounded-lg hs-collapse-toggle size-9 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            class="flex items-center justify-center text-sm font-semibold border rounded-lg text-gray-50 border-gray-50 hs-collapse-toggle size-9 focus:bg-transparent disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation"
             aria-label="Toggle navigation">
             <svg class="flex-shrink-0 hs-collapse-open:hidden size-4" xmlns="http://www.w3.org/2000/svg"

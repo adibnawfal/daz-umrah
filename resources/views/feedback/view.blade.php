@@ -58,7 +58,7 @@
             <div>
               <div class="inline-flex gap-x-2">
                 <!-- Filter -->
-                <div class="hs-dropdown relative inline-block [--placement:bottom-right]"
+                {{-- <div class="hs-dropdown relative inline-block [--placement:bottom-right]"
                   data-hs-dropdown-auto-close="inside">
                   <button id="hs-as-table-table-filter-dropdown" type="button"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
@@ -111,15 +111,15 @@
                       </label>
                     </div>
                   </div>
-                </div>
+                </div> --}}
                 <!-- End Filter -->
 
                 <!-- Give Feedback -->
                 <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   href="{{ route('feedback.get-give-feedback') }}">
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-plus">
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-message-circle-plus">
                     <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
                     <path d="M8 12h8" />
                     <path d="M12 8v8" />
@@ -206,8 +206,7 @@
                       <div class="flex items-center gap-x-3">
                         @if ($feedbackData->user->profile_img)
                           <img class="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-gray-800"
-                            src="{{ asset('images/users/' . $feedbackData->user->profile_img) }}"
-                            alt="Profile Picture">
+                            src="{{ asset('images/users/' . $feedbackData->user->profile_img) }}" alt="Profile Picture">
                         @else
                           <div>
                             <span

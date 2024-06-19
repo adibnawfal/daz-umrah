@@ -57,7 +57,7 @@
             <div>
               <div class="inline-flex gap-x-2">
                 <!-- Filter -->
-                <div class="hs-dropdown relative inline-block [--placement:bottom-right]"
+                {{-- <div class="hs-dropdown relative inline-block [--placement:bottom-right]"
                   data-hs-dropdown-auto-close="inside">
                   <button id="hs-as-table-table-filter-dropdown" type="button"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
@@ -110,14 +110,14 @@
                       </label>
                     </div>
                   </div>
-                </div>
+                </div> --}}
                 <!-- End Filter -->
 
                 <a class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-900 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   href="{{ route('profile.get-add-staff') }}">
                   <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus">
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-user-plus">
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />
                     <line x1="19" x2="19" y1="8" y2="14" />

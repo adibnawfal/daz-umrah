@@ -39,7 +39,7 @@ class DashboardController extends Controller
     $gpsData->longitude = $request->longitude;
     $gpsData->save();
 
-    return response()->json(['message' => 'GPS data saved successfully'], 200);
+    // return response()->json(['message' => 'GPS data saved successfully'], 200);
   }
 
   /**
