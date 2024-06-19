@@ -133,7 +133,7 @@
       </li>
       <!-- End Umrah -->
 
-      @if (Auth::user()->role === 'admin' || Auth::user()->role === 'staff')
+      @if (Auth::user()->role === 'admin')
         <!-- Profile -->
         <li class="hs-accordion" id="profile-accordion">
           <button type="button"
@@ -175,7 +175,7 @@
           </div>
         </li>
         <!-- End Profile -->
-      @elseif (Auth::user()->role === 'customer')
+      @elseif (Auth::user()->role === 'staff' || Auth::user()->role === 'customer')
         <!-- Umrah -->
         <li>
           <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"

@@ -71,7 +71,7 @@
         Update Staff
       </h2>
       <p class="text-sm text-gray-600 dark:text-gray-400">
-        Lorem ipsum.
+        Update selected staff.
       </p>
     </div>
     <!-- End Title -->

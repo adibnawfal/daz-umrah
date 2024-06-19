@@ -64,7 +64,7 @@
         Add Staff
       </h2>
       <p class="text-sm text-gray-600 dark:text-gray-400">
-        Lorem ipsum.
+        Add new staff.
       </p>
     </div>
     <!-- End Title -->
