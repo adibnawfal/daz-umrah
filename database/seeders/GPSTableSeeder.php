@@ -19,27 +19,44 @@ class GPSTableSeeder extends Seeder
     DB::table('g_p_s')->insert([
       // GPS 1
       [
-        'latitude' => 1.849429,
-        'longitude' => 103.073490,
+        'latitude' => 1.862886,
+        'longitude' => 103.103923,
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],
 
       // GPS 2
       [
-        'latitude' => 1.849393,
-        'longitude' => 103.073520,
+        'latitude' => 1.862857,
+        'longitude' => 103.103978,
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],
 
       // GPS 3
       [
-        'latitude' => 1.849419,
-        'longitude' => 103.073510,
+        'latitude' => 1.862876,
+        'longitude' => 103.103975,
         'created_at' => $datetime,
         'updated_at' => $datetime,
       ],
+
+      // GPS 4
+      [
+        'latitude' => 1.862924,
+        'longitude' => 103.103812,
+        'created_at' => $datetime,
+        'updated_at' => $datetime,
+      ],
+
+      // GPS 5
+      [
+        'latitude' => 1.862842,
+        'longitude' => 103.103932,
+        'created_at' => $datetime,
+        'updated_at' => $datetime,
+      ],
+
     ]);
   }
 }

@@ -326,6 +326,18 @@
                         </svg>
                         {{ $reservationData->status }}
                       </span>
+                    @elseif ($reservationData->status === 'Rejected')
+                      <span
+                        class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 border border-red-200">
+                        <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x">
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="m15 9-6 6" />
+                          <path d="m9 9 6 6" />
+                        </svg>
+                        {{ $reservationData->status }}
+                      </span>
                     @elseif ($reservationData->status === 'Canceled')
                       <span
                         class="inline-flex w-max items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 border border-red-200">
@@ -382,6 +394,8 @@
                             aria-valuemax="100"></div>
                         </div>
                       </div>
+                    @elseif ($reservationData->status === 'Rejected')
+                      <span class="text-sm text-gray-600 dark:text-neutral-400">-</span>
                     @elseif ($reservationData->status === 'Canceled')
                       <span class="text-sm text-gray-600 dark:text-neutral-400">-</span>
                     @endif
@@ -450,23 +464,25 @@
                             @endif
                           @endif
                         </div>
-                        <div class="py-2 first:pt-0 last:pb-0">
-                          <button
-                            class="flex items-center w-full px-3 py-2 text-sm text-red-600 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                            data-hs-overlay="#hs-cancel-reservation-{{ $reservationData->id }}-modal">
-                            <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                              stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-off">
-                              <path d="M4.2 4.2A2 2 0 0 0 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 1.82-1.18" />
-                              <path d="M21 15.5V6a2 2 0 0 0-2-2H9.5" />
-                              <path d="M16 2v4" />
-                              <path d="M3 10h7" />
-                              <path d="M21 10h-5.5" />
-                              <path d="m2 2 20 20" />
-                            </svg>
-                            Cancel Reservation
-                          </button>
-                        </div>
+                        @if ($reservationData->status !== 'Approved' && $reservationData->status !== 'Rejected')
+                          <div class="py-2 first:pt-0 last:pb-0">
+                            <button
+                              class="flex items-center w-full px-3 py-2 text-sm text-red-600 rounded-lg gap-x-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                              data-hs-overlay="#hs-cancel-reservation-{{ $reservationData->id }}-modal">
+                              <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-off">
+                                <path d="M4.2 4.2A2 2 0 0 0 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 1.82-1.18" />
+                                <path d="M21 15.5V6a2 2 0 0 0-2-2H9.5" />
+                                <path d="M16 2v4" />
+                                <path d="M3 10h7" />
+                                <path d="M21 10h-5.5" />
+                                <path d="m2 2 20 20" />
+                              </svg>
+                              Cancel Reservation
+                            </button>
+                          </div>
+                        @endif
                       </div>
                     </div>
                   </div>

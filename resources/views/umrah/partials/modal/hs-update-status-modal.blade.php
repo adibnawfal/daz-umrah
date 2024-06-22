@@ -33,6 +33,7 @@
               <option @selected(old('status', $reservationData->status) == 'Update Details') value='Update Details'>Update Details</option>
               <option @selected(old('status', $reservationData->status) == 'Make Payment') value='Make Payment'>Make Payment</option>
               <option @selected(old('status', $reservationData->status) == 'Approved') value='Approved'>Approved</option>
+              <option @selected(old('status', $reservationData->status) == 'Rejected') value='Rejected'>Rejected</option>
             </select>
             <x-input-error :messages="$errors->get('status')" class="mt-2" />
           </div>

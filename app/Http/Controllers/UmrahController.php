@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
+use App\Models\User;
 use App\Models\Reservation;
+use App\Notifications\ReservationNotification;
 use Illuminate\Http\Request;
 use Illuminate\Http\File as NewFile;
 use Illuminate\View\View;
@@ -61,6 +63,10 @@ class UmrahController extends Controller
         $remarks = 'Your reservation is completed.';
         break;
 
+      case 'Rejected':
+        $remarks = 'Your reservation is rejected. Kindly contact the owner personally at +60174701159 to discuss further.';
+        break;
+
       default:
         $remarks = '';
         break;
@@ -69,6 +75,9 @@ class UmrahController extends Controller
     $reservationData->status = $request['status'];
     $reservationData->remarks = $remarks;
     $reservationData->save();
+
+    $user = User::findOrFail($reservationData->user_id);
+    $user->notify(new ReservationNotification($reservationData));
 
     return Redirect::route('umrah.reservation-list')->with('status', 'status-updated');
   }

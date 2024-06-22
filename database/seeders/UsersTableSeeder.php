@@ -30,12 +30,12 @@ class UsersTableSeeder extends Seeder
         'updated_at' => $datetime,
       ],
 
-      // Staff
+      // Staff 1
       [
         'first_name' => 'Staff',
-        'last_name' => null,
-        'email' => 'staff@dazumrah.com',
-        'password' => Hash::make('staff12345'),
+        'last_name' => 'Adib',
+        'email' => 'xchaoz1999@gmail.com',
+        'password' => Hash::make('chaoz12345'),
         'role' => 'staff',
         'created_at' => $datetime,
         'updated_at' => $datetime,
@@ -83,7 +83,29 @@ class UsersTableSeeder extends Seeder
         'role' => 'customer',
         'created_at' => $datetime,
         'updated_at' => $datetime,
-      ]
+      ],
+
+      // Staff 2
+      [
+        'first_name' => 'Staff',
+        'last_name' => 'Rahim',
+        'email' => 'chaozcompany15@gmail.com',
+        'password' => Hash::make('chaoz12345'),
+        'role' => 'staff',
+        'created_at' => $datetime,
+        'updated_at' => $datetime,
+      ],
+
+      // Staff 3
+      [
+        'first_name' => 'Staff',
+        'last_name' => 'Zainul',
+        'email' => 'budgetcalculatorapp@gmail.com',
+        'password' => Hash::make('budget12345'),
+        'role' => 'staff',
+        'created_at' => $datetime,
+        'updated_at' => $datetime,
+      ],
     ]);
   }
 }

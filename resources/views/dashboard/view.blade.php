@@ -218,6 +218,74 @@
   </div> --}}
   <!-- End Stats -->
 
+  <!-- Table -->
+  {{-- <div class="grid gap-4 lg:grid-cols-2 sm:gap-6">
+    <!-- Table 1 -->
+    <div class="p-4 md:p-5 min-h-[410px] flex flex-col bg-white border shadow-sm rounded-xl">
+      <!-- Header -->
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-sm text-gray-500">
+            Income
+          </h2>
+          <p class="text-xl font-medium text-gray-800 sm:text-2xl">
+            $126,238.49
+          </p>
+        </div>
+
+        <div>
+          <span
+            class="py-[5px] px-1.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-md bg-teal-100 text-teal-800">
+            <svg class="inline-block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+            25%
+          </span>
+        </div>
+      </div>
+      <!-- End Header -->
+
+      <div id="hs-multiple-bar-charts"></div>
+    </div>
+    <!-- End Table 1 -->
+
+    <!-- Table 2 -->
+    <div class="p-4 md:p-5 min-h-[410px] flex flex-col bg-white border shadow-sm rounded-xl">
+      <!-- Header -->
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-sm text-gray-500">
+            Visitors
+          </h2>
+          <p class="text-xl font-medium text-gray-800 sm:text-2xl">
+            80.3k
+          </p>
+        </div>
+
+        <div>
+          <span
+            class="py-[5px] px-1.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-md bg-red-100 text-red-800">
+            <svg class="inline-block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 5v14" />
+              <path d="m19 12-7 7-7-7" />
+            </svg>
+            2%
+          </span>
+        </div>
+      </div>
+      <!-- End Header -->
+
+      <div id="hs-single-area-chart"></div>
+    </div>
+    <!-- End Table 2 -->
+  </div> --}}
+  <!-- End Table -->
+
   <div class="flex w-full gap-6">
     <div
       class="w-full p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
@@ -295,7 +363,6 @@
       <!-- End Charts -->
     </div> --}}
   </div>
-
 
   <script>
     // Fetch GPS data from the server and update the map
