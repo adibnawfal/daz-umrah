@@ -9,7 +9,7 @@
         <div class="flex items-center gap-x-5">
           <!-- Follow Us -->
           <div class="inline-flex items-center justify-center gap-2 text-sm font-medium text-gray-300">
-            Follow us on
+            <span class="hidden min-[481px]:block">Follow us on</span>
             <a class="hover:text-gray-50" href="https://www.facebook.com/DhiyaAzZahraTravel" target="_blank">
               <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -44,7 +44,7 @@
               <path d="M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05" />
               <circle cx="12" cy="12" r="10" />
             </svg>
-            English (US)
+            <span class="hidden min-[391px]:block">English (US)</span>
           </a>
           <!-- End Language -->
 

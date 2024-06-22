@@ -17,9 +17,9 @@
     <!-- End Navigation Toggle -->
 
     <!-- Breadcrumb -->
-    <ol class="flex items-center ms-3 whitespace-nowrap" aria-label="Breadcrumb">
+    {{-- <ol class="flex items-center ms-3 whitespace-nowrap" aria-label="Breadcrumb">
       <li class="flex items-center text-sm text-gray-800 dark:text-gray-400">
-        Application Layout
+        Home
         <svg class="flex-shrink-0 mx-3 overflow-visible size-2.5 text-gray-400 dark:text-gray-600" width="16"
           height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14" stroke="currentColor"
@@ -29,8 +29,10 @@
       <li class="text-sm font-semibold text-gray-800 truncate dark:text-gray-400" aria-current="page">
         Dashboard
       </li>
-    </ol>
+    </ol> --}}
     <!-- End Breadcrumb -->
+
+    <span class="text-sm text-gray-800 ms-3 dark:text-gray-400">Sidebar</span>
   </div>
 </div>
 <!-- End Sidebar Toggle -->
@@ -87,8 +89,8 @@
             </svg>
             Package
             <svg class="hidden hs-accordion-active:block ms-auto size-4" xmlns="http://www.w3.org/2000/svg"
-              width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="m18 15-6-6-6 6" />
             </svg>
             <svg class="block hs-accordion-active:hidden ms-auto size-4" xmlns="http://www.w3.org/2000/svg"

@@ -3,7 +3,7 @@
     Manage Travel Date
   </x-slot>
 
-  <div class="inline-flex items-start justify-between">
+  <div class="inline-flex items-start justify-between flex-col gap-4 min-[444px]:gap-0 min-[444px]:flex-row">
     <!-- Breadcrumb -->
     <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
       <li class="inline-flex items-center">
@@ -63,10 +63,10 @@
     <!-- End Button -->
   </div>
 
-  <div class="flex w-full gap-x-6">
+  <div class="flex flex-col w-full gap-6 min-[744px]:flex-row">
     <!-- 12 Days 10 Nights -->
     <div
-      class="w-1/2 p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+      class="w-full min-[744px]:w-1/2 p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
       <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-200">12 Days 10 Nights</h3>
       <div class="text-sm text-gray-500 dark:text-neutral-500">Manage travel dates for the 12 Days 10 Nights Umrah
         package.
@@ -79,7 +79,7 @@
       </div>
 
       <!-- List -->
-      <ul class="grid grid-cols-2 text-sm gap-y-2 sm:text-base">
+      <ul class="grid grid-cols-1 min-[1444px]:grid-cols-2 text-sm gap-y-2 sm:text-base">
         @foreach ($travelDate as $travelDateData)
           @if ($travelDateData->package === '12 Days 10 Nights')
             <button data-hs-overlay="#hs-update-travel-date-{{ $travelDateData->id }}-modal">
@@ -119,7 +119,7 @@
 
     <!-- 22 Days 20 Nights -->
     <div
-      class="w-1/2 p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
+      class="w-full min-[744px]:w-1/2 p-4 bg-white border border-gray-200 h-max rounded-xl sm:p-7 dark:bg-gray-800 dark:border-gray-700">
       <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-200">22 Days 20 Nights</h3>
       <div class="text-sm text-gray-500 dark:text-neutral-500">Manage travel dates for the 22 Days 20 Nights Umrah
         package.
@@ -132,7 +132,7 @@
       </div>
 
       <!-- List -->
-      <ul class="grid grid-cols-2 text-sm gap-y-2 sm:text-base">
+      <ul class="grid grid-cols-1 min-[1444px]:grid-cols-2 text-sm gap-y-2 sm:text-base">
         @foreach ($travelDate as $travelDateData)
           @if ($travelDateData->package === '22 Days 20 Nights')
             <button data-hs-overlay="#hs-update-travel-date-{{ $travelDateData->id }}-modal">
